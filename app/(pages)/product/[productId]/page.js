@@ -1,0 +1,33 @@
+
+import { products } from '../../../../utils/products'
+import ListRating from './ListRating'
+import ProductDetails from './ProductDetails'
+
+
+const ProductPage = ({ params }) => {
+  const product = products.find((p) => p.id === params.productId)
+
+  // console.log(product)
+
+  if (!product || product === undefined)
+    return (
+      <h2 className='w-full flex items-center justify-center font-bold mt-8'>
+        That product is no longer available
+      </h2>
+    )
+
+  return (
+    <div className='p-4 md:p-2'>
+      <ProductDetails product={product} />
+      <div className='flex flex-col mt-20 gap-4'>
+        <div>Add Rating</div>
+        {/* Next share */}
+
+
+        <ListRating product={product} />
+      </div>
+    </div>
+  )
+}
+
+export default ProductPage

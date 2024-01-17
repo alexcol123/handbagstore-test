@@ -30,7 +30,7 @@ const ProductImages = ({ cartProduct, product }) => {
               } `}
             >
               <Image
-                priority
+         
                 src={imageArr[i]}
                 height={200}
                 width={140}

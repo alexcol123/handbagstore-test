@@ -5,12 +5,12 @@ import NavBar from './components/nav/NavBar'
 import Footer from './components/footer/Footer'
 import CartProvider from '../providers/CartProvider'
 import { Toaster } from 'react-hot-toast'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '600', '700'],
 })
-
 
 export const metadata = {
   title: 'Handbag Store',
@@ -28,7 +28,10 @@ export default function RootLayout({ children }) {
           />
           <CartProvider>
             <NavBar />
-            <main className=' container mx-auto mt-36'>{children}</main>
+            <main className=' container mx-auto mt-36'>
+              {children}
+              <SpeedInsights />
+            </main>
           </CartProvider>
           <Footer />
         </div>

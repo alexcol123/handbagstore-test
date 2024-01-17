@@ -25,7 +25,7 @@ export const metadata = {
   title: 'Inside Product details page',
   description:
     'Desc  inside product details page,Handbags at the best prices buy today',
-}
+  }
 
 const ProductDetails = ({ product }) => {
   const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart()

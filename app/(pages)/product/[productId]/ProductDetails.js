@@ -6,7 +6,7 @@ import Image from 'next/image'
 // import ProductImages from "@/app/components/products/ProductImages"
 // import SetColor from "@/app/components/products/SetColor"
 
-import { useRouter } from 'next/navigation'
+import {  useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { MdCheckCircle } from 'react-icons/md'
 import ProductPrice from '../../../components/products/ProductPrice'
@@ -21,9 +21,33 @@ import ProductImages from '@/app/components/products/ProductImages'
 import { CartContext, useCart } from '@/hooks/useCart'
 import Share from './Share'
 
+import { usePathname } from 'next/navigation'
+
 
 
 const ProductDetails = ({ product }) => {
+
+  const pathname = usePathname()
+  // console.log(pathname)
+
+  // const shareLinkUrl = `https://handbagstore-test-3.vercel.app/${pathname}`
+  // console.log(shareLinkUrl)
+
+  const [url, seturl] = useState(null)
+
+  useEffect(() => {
+
+    if(window!== undefined){
+     seturl(window.location.href)
+    }
+
+  }, [])
+
+  // console.log(url)
+  
+
+
+console.log(url)
   const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart()
 
   // console.log(cartProducts)
@@ -128,7 +152,9 @@ const ProductDetails = ({ product }) => {
         <h2 className='text-3xl font-medium'>{product.name}</h2>
 
         {/* Share  */}
-        <Share />
+       <div>
+        {url !== null &&  <Share  url={url}/>}
+       </div>
 
         <div className='badge badge-neutral uppercase px-4 py-1'>
           {product.brand}

@@ -18,13 +18,12 @@ import {
   EmailIcon,
 } from 'next-share'
 
-const Share = () => {
+const Share = ({ url }) => {
+  console.log(typeof url)
   return (
     <div>
       <FacebookShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
+        url={url}
         quote={'Inside product page best prices on new handbags.'}
         hashtag={'#handbags'}
       >
@@ -32,66 +31,43 @@ const Share = () => {
       </FacebookShareButton>
 
       <PinterestShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
+        url={url}
         media={'next-share is a social share buttons for your next React apps.'}
       >
         <PinterestIcon size={32} round />
       </PinterestShareButton>
 
       <RedditShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
+        url={url}
         title={'next-share is a social share buttons for your next React apps.'}
       >
         <RedditIcon size={32} round />
       </RedditShareButton>
 
       <TwitterShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
+        url={url}
         title={'next-share is a social share buttons for your next React apps.'}
       >
         <TwitterIcon size={32} round />
       </TwitterShareButton>
 
       <WhatsappShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
+        url={url}
         title={'next-share is a social share buttons for your next React apps.'}
         separator=':: '
       >
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
 
-      <LinkedinShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
-      >
+      <LinkedinShareButton url={url}>
         <LinkedinIcon size={32} round />
       </LinkedinShareButton>
 
-      <FacebookMessengerShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
-        appId={''}
-      >
+      <FacebookMessengerShareButton url={url} appId={''}>
         <FacebookMessengerIcon size={32} round />
       </FacebookMessengerShareButton>
 
-      <EmailShareButton
-        url={
-          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
-        }
-        subject={'Next Share'}
-        body='body'
-      >
+      <EmailShareButton url={url} subject={'Next Share'} body='body'>
         <EmailIcon size={32} round />
       </EmailShareButton>
     </div>

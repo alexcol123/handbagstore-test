@@ -2,21 +2,20 @@ import { products } from '../../../../utils/products'
 import ListRating from './ListRating'
 import ProductDetails from './ProductDetails'
 
-// import img from '../../../../public/yellow.jpg'
 
-export const metadata = {
-  title: 'Handbag Store',
-  description: 'Handbags at the best prices buy today',
-  metadataBase: new URL('https://handbagstore-test-3.vercel.app'),
+// export const metadata = {
+//   title: 'Handbag Store',
+//   description: 'Handbags at the best prices buy today',
+//   metadataBase: new URL('https://handbagstore-test-3.vercel.app'),
 
-  openGraph: {
-    images: [
-      {
-        url: 'https://images.pexels.com/photos/1204464/pexels-photo-1204464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      },
-    ],
-  },
-}
+//   openGraph: {
+//     images: [
+//       {
+//         url: 'https://images.pexels.com/photos/1204464/pexels-photo-1204464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+//       },
+//     ],
+//   },
+// }
 
 const ProductPage = ({ params }) => {
   const product = products.find((p) => p.id === params.productId)

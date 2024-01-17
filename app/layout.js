@@ -15,6 +15,17 @@ const poppins = Poppins({
 export const metadata = {
   title: 'Handbag Store',
   description: 'Handbags at the best prices buy today',
+  metadataBase: new URL('https://handbagstore-test-3.vercel.app/'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'de-DE': '/de-DE',
+    },
+  },
+  openGraph: {
+    images: './opengraph-image.png',
+  },
 }
 
 export default function RootLayout({ children }) {

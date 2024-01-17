@@ -2,7 +2,7 @@ import { products } from '../../../../utils/products'
 import ListRating from './ListRating'
 import ProductDetails from './ProductDetails'
 
-import img from '../../../../public/yellow.jpg'
+// import img from '../../../../public/yellow.jpg'
 
 export const metadata = {
   title: 'Handbag Store',
@@ -15,7 +15,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    images: [{ url: img }],
+    images: ['../../../../public/pink.jpg'],
   },
 }
 

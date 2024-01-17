@@ -4,7 +4,7 @@ import { FacebookShareButton, FacebookIcon } from 'next-share'
 
 
 const Share = () => {
-  console.log(img)
+
   return (
     <div>
       <FacebookShareButton

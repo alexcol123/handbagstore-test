@@ -12,13 +12,16 @@ const poppins = Poppins({
   weight: ['300', '400', '600', '700'],
 })
 
+
+//https://www.youtube.com/shorts/MYU_7RK3RHM
+
 export const metadata = {
   title: 'Layout comp Handbag page',
   description: 'Handbags description ',
 
-  openGraph: {
-    images: './opengraph-image.png',
-  },
+  // openGraph: {
+  //   images: './opengraph-image.png',
+  // },
 }
 
 export default function RootLayout({ children }) {

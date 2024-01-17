@@ -6,9 +6,9 @@ const Share = () => {
   return (
     <div>
       <FacebookShareButton
-        url={'https://github.com/next-share'}
-        quote={'next-share is a social share buttons for your next React apps.'}
-        hashtag={'#nextshare'}
+        url={'https://handbagstore-test.vercel.app/product/1'}
+        quote={'best prices on new handbags.'}
+        hashtag={'#handbags'}
       >
         <FacebookIcon size={32} round />
       </FacebookShareButton>

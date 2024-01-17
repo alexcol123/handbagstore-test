@@ -12,7 +12,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    images: '../../../img1.jpg',
+    images: [{ url: '../../../../public/yellow.jpg' }],
   },
 }
 

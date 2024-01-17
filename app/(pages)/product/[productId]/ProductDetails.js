@@ -21,6 +21,12 @@ import ProductImages from '@/app/components/products/ProductImages'
 import { CartContext, useCart } from '@/hooks/useCart'
 import Share from './Share'
 
+export const metadata = {
+  title: 'Inside Product details page',
+  description:
+    'Desc  inside product details page,Handbags at the best prices buy today',
+}
+
 const ProductDetails = ({ product }) => {
   const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart()
 

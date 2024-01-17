@@ -1,14 +1,13 @@
 // Next share
 import { FacebookShareButton, FacebookIcon } from 'next-share'
 
-
-
 const Share = () => {
-
   return (
     <div>
       <FacebookShareButton
-        url={'https://handbagstore-test-3.vercel.app/product/1'}
+        url={
+          'https://handbagstore-test-3.vercel.app/product/64a4ebe300900d44bb50628a'
+        }
         quote={'Inside product page best prices on new handbags.'}
         hashtag={'#handbags'}
       >

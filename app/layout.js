@@ -15,6 +15,10 @@ const poppins = Poppins({
 export const metadata = {
   title: 'Layout comp Handbag page',
   description: 'Handbags description ',
+
+  openGraph: {
+    images: './opengraph-image.png',
+  },
 }
 
 export default function RootLayout({ children }) {

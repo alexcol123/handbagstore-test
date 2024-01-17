@@ -1,5 +1,6 @@
 // Next share
 import { FacebookShareButton, FacebookIcon } from 'next-share'
+import img from '../../../../public/yellow.jpg'
 
 export const metadata = {
   title: 'Handbag Store',
@@ -12,11 +13,12 @@ export const metadata = {
     },
   },
   openGraph: {
-    images: [{ url: '../../../../public/yellow.jpg' }],
+    images: [{ url: img }],
   },
 }
 
 const Share = () => {
+  console.log(img)
   return (
     <div>
       <FacebookShareButton

@@ -4,7 +4,7 @@ import { FacebookShareButton, FacebookIcon } from 'next-share'
 export const metadata = {
   title: 'Handbag Store',
   description: 'Handbags at the best prices buy today',
-  metadataBase: new URL('https://handbagstore-test-3.vercel.app/product/1'),
+  metadataBase: new URL('https://handbagstore-test-3.vercel.app'),
   alternates: {
     canonical: '/',
     languages: {

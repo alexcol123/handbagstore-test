@@ -1,8 +1,21 @@
-
 import { products } from '../../../../utils/products'
 import ListRating from './ListRating'
 import ProductDetails from './ProductDetails'
 
+export const metadata = {
+  title: 'Handbag Store',
+  description: 'Handbags at the best prices buy today',
+  metadataBase: new URL('https://handbagstore-test-3.vercel.app'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+    },
+  },
+  openGraph: {
+    images: '../../../img1.jpg',
+  },
+}
 
 const ProductPage = ({ params }) => {
   const product = products.find((p) => p.id === params.productId)
@@ -22,7 +35,6 @@ const ProductPage = ({ params }) => {
       <div className='flex flex-col mt-20 gap-4'>
         <div>Add Rating</div>
         {/* Next share */}
-
 
         <ListRating product={product} />
       </div>

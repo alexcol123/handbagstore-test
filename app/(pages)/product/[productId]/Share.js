@@ -6,7 +6,7 @@ const Share = () => {
   return (
     <div>
       <FacebookShareButton
-        url={'https://handbagstore-test-3-dp0bcbdox-alexcol123.vercel.app/'}
+        url={'https://handbagstore-test-3.vercel.app/'}
         quote={'best prices on new handbags.'}
         hashtag={'#handbags'}
       >

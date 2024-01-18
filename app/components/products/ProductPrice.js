@@ -1,3 +1,4 @@
+import { formatPrice } from '@/utils/formatPrice'
 import React from 'react'
 
 const ProductPrice = ({price , isOnSale, salePrice, fontSize='text-sm'}) => {
@@ -6,7 +7,7 @@ const ProductPrice = ({price , isOnSale, salePrice, fontSize='text-sm'}) => {
     {isOnSale && salePrice !== 0 ? (
       <>
         <span className='line-through'>${price} </span>
-        <span>${salePrice}</span>
+        <span>{ formatPrice( salePrice)}</span>
       </>
     ) : (
       <span>${price}</span>

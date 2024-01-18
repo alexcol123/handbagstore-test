@@ -1,9 +1,10 @@
 import React from 'react'
+import CartClient from './CartClient'
 
 const CartPage = () => {
   return (
     <div>
-      Cart Page Up in hea
+      <CartClient />
     </div>
   )
 }

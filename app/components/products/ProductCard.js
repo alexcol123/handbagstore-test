@@ -8,8 +8,6 @@ import ProductSaleBadge from './ProductSaleBadge'
 import ProductColorOptions from './ProductColorOptions'
 
 const ProductCard = ({ product }) => {
-
-
   return (
     <Link href={`/product/${product.id}`}>
       <div className='h-full  bg-base-200 relative  flex flex-col items-center rounded  hover:bg-base-300  transition duration-300 overflow-hidden '>
@@ -29,7 +27,7 @@ const ProductCard = ({ product }) => {
           <h2 className='w-full flex items-center '>
             {truncateText(product.brand, 22)}
           </h2>
-          <h2 className=' text-xs font-light opacity-80 '>
+          <h2 className=' text-xs md:text-sm font-light opacity-80 '>
             {truncateText(product.name, 50)}
           </h2>
 
@@ -39,8 +37,6 @@ const ProductCard = ({ product }) => {
             salePrice={product.salePrice}
             fontSize='text-sm'
           />
-
-          
 
           {/* Optional items absolute  */}
           <div className='absolute top-[-33px] left-0 right-0'>

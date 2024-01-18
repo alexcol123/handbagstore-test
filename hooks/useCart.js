@@ -38,6 +38,21 @@ export const CartContextProvider = ({ children }) => {
     toast.success('Product Added to Cart')
   }
 
+  const handleRemoveProductFromCart = useCallback(
+    (product) => {
+      if (cartProducts) {
+        const filteredProducts = cartProducts.filter(
+          (item) => item.id !== product.id
+        )
+
+        setcartProducts(filteredProducts)
+        localStorage.setItem('cartItems', JSON.stringify(filteredProducts))
+      }
+      toast.success('Product Deleted form  Cart')
+    },
+    [cartProducts]
+  )
+
   const value = {
     // State
     cartTotalQty,
@@ -45,6 +60,7 @@ export const CartContextProvider = ({ children }) => {
 
     // functions
     handleAddProductToCart,
+    handleRemoveProductFromCart
   }
 
   //return <CartContext.Provider value={value} {...children} />

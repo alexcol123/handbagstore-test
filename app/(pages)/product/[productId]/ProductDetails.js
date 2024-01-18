@@ -40,7 +40,7 @@ const ProductDetails = ({ product }) => {
 
   // console.log(url)
 
-  console.log(url)
+
   const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart()
 
   // console.log(cartProducts)
@@ -79,9 +79,13 @@ const ProductDetails = ({ product }) => {
     brand: product.brand,
 
     currentColor: product.colors[0].color,
+    selectedImage: product.colors[0].image[0],
+
     quantity: 1,
     price: product.price,
   })
+
+  console.log(cartProduct.selectedImage)
 
   //  console.log(cartProduct.currentColor)
 
@@ -96,6 +100,7 @@ const ProductDetails = ({ product }) => {
       ...prev,
 
       currentColor: product.colors[i].color,
+      selectedImage: product.colors[i].image[0],
     }))
   }
 

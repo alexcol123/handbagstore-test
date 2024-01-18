@@ -10,16 +10,13 @@ const MyButton = ({ label, disabled, outline, small, icon: Icon, onClick }) => {
       className={`
       btn
       btn-block
-  
       disabled:opacity-60
-    disabled:cursor-not-allowed
-
+      disabled:cursor-not-allowed
     hover:opacity-80
     transition
- 
     flex items-center justify-center gap-8
     text-center	
-  
+    
     ${
       outline
         ? 'border border-primary text-primary  '
@@ -29,8 +26,10 @@ const MyButton = ({ label, disabled, outline, small, icon: Icon, onClick }) => {
 
     `}
     >
-      {Icon && <Icon size={24} />}
-      {label}
+      <div>
+        {Icon && <Icon size={24} />}
+        {label}
+      </div>
     </button>
   )
 }

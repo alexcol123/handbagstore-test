@@ -1,5 +1,6 @@
 'use client'
 
+import { Caprasimo } from 'next/font/google'
 import {
   createContext,
   useCallback,
@@ -53,6 +54,60 @@ export const CartContextProvider = ({ children }) => {
     [cartProducts]
   )
 
+  const handleCartQtyIncrease = useCallback(
+    (product) => {
+      let updatedCart
+      if (product.quantity >= 25) {
+        return toast.error('Opps! Maximun of 25 reached')
+      }
+
+      if (cartProducts) {
+        updatedCart = [...cartProducts]
+
+        const existingIndex = cartProducts.findIndex(
+          (item) => item.id === product.id
+        )
+
+        if (existingIndex > -1) {
+          ++updatedCart[existingIndex].quantity
+        }
+
+        setcartProducts(updatedCart)
+        localStorage.setItem('cartItems', JSON.stringify(updatedCart))
+      }
+      toast.success('Product Added', {id:'qty'})
+    },
+    [cartProducts]
+  )
+
+  const handleCartQtyDecrease = useCallback(
+    (product) => {
+
+      console.log(product)
+      let updatedCart
+      if (product.quantity <=1) {
+        return toast.error('Opps! Minimun reached')
+      }
+
+      if (cartProducts) {
+        updatedCart = [...cartProducts]
+
+        const existingIndex = cartProducts.findIndex(
+          (item) => item.id === product.id
+        )
+
+        if (existingIndex > -1) {
+          --updatedCart[existingIndex].quantity
+        }
+
+        setcartProducts(updatedCart)
+        localStorage.setItem('cartItems', JSON.stringify(updatedCart))
+      }
+      toast.success('Product Removed', {id:'qty'})
+    },
+    [cartProducts]
+  )
+
   const value = {
     // State
     cartTotalQty,
@@ -60,7 +115,9 @@ export const CartContextProvider = ({ children }) => {
 
     // functions
     handleAddProductToCart,
-    handleRemoveProductFromCart
+    handleRemoveProductFromCart,
+    handleCartQtyIncrease,
+    handleCartQtyDecrease,
   }
 
   //return <CartContext.Provider value={value} {...children} />

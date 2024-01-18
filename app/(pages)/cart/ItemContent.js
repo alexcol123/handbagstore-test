@@ -12,7 +12,7 @@ import { formatPrice } from '@/utils/formatPrice'
 import SetQuantity from '@/app/components/products/SetQuantity'
 
 const ItemContent = ({ item }) => {
-  const { handleRemoveProductFromCart, handleQtyIncrease, handleQtyDecrease } =
+  const { handleRemoveProductFromCart, handleCartQtyIncrease ,handleCartQtyDecrease} =
     useCart()
 
   console.log(item)
@@ -61,10 +61,10 @@ const ItemContent = ({ item }) => {
           cartCounter={true}
           cartProduct={item}
           handleQtyIncrease={() => {
-            handleQtyIncrease(item)
+            handleCartQtyIncrease(item)
           }}
           handleQtyDecrease={() => {
-            handleQtyDecrease(item)
+            handleCartQtyDecrease(item)
           }}
         />
       </div>

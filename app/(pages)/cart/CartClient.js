@@ -5,11 +5,12 @@ import Link from 'next/link'
 import { MdArrowBack } from 'react-icons/md'
 import ItemContent from './ItemContent'
 import MyButton from '@/app/components/MyButton'
+import { formatPrice } from '@/utils/formatPrice'
 
 const CartClient = () => {
-  const { cartProducts, handleClearCart } = useCart()
+  const { cartProducts, handleClearCart, cartTotalAmount } = useCart()
 
-  console.log(cartProducts)
+  // console.log(cartProducts)
 
   if (!cartProducts || cartProducts.length === 0) {
     return (
@@ -59,8 +60,8 @@ const CartClient = () => {
         <div className='text-sm w-full px-8  md:w-[400px]  lg:w-[500px]px-4 flex flex-col gap-4 items-center md:items-start'>
           <div className='flex justify-between w-full text-base font-semibold'>
             <span>Subtotal</span>
-            $850
-            {/* <span>{(cartTotalAmount)}</span> */}
+         
+            <span>{ formatPrice(cartTotalAmount)}</span>
           </div>
           <p className='text-slate-500/80'>
             Taxes and Shipping calculated at checkout

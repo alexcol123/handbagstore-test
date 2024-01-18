@@ -133,7 +133,7 @@ const ProductDetails = ({ product }) => {
         <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
 
         {/* Share  */}
-        {/* <div>{url !== null && <Share url={url} />}</div> */}
+        <div>{url !== null && <Share url={url} />}</div>
 
         <div className='badge badge-neutral uppercase px-4 py-1'>
           {product.brand}

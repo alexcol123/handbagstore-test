@@ -19,7 +19,7 @@ const ItemContent = ({ item }) => {
 
   } = useCart()
 
-  console.log(item)
+  // console.log(item)
 
   return (
     <div className='grid grid-cols-5 text-xs  md-text-sm gap-2 border border-primary/60 py-4 mb-4 items-center px-2'>

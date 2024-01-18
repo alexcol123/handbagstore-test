@@ -15,11 +15,36 @@ export const CartContext = createContext(null)
 export const CartContextProvider = ({ children }) => {
   const [cartTotalQty, setcartTotalQty] = useState(0)
   const [cartProducts, setcartProducts] = useState(null)
+  const [cartTotalAmount, setcartTotalAmount] = useState(0)
 
   useEffect(() => {
     const itemsInLs = localStorage.getItem('cartItems')
     setcartProducts(JSON.parse(itemsInLs))
   }, [])
+
+  useEffect(() => {
+    if (cartProducts) {
+      const getTotals = () => {
+        const { total, qty } = cartProducts.reduce(
+          (acc, item) => {
+            const itemTotal = item.price * item.quantity
+            acc.total += itemTotal
+            acc.qty += item.quantity
+
+            return acc
+          },
+          { total: 0, qty: 0 }
+        )
+
+        setcartTotalQty(qty)
+        setcartTotalAmount(total)
+      }
+      getTotals()
+    }
+  }, [cartProducts])
+
+  console.log('qty' , cartTotalQty)
+  console.log('amt', cartTotalAmount)
 
   const handleAddProductToCart = (product) => {
     setcartProducts((prev) => {
@@ -117,6 +142,7 @@ export const CartContextProvider = ({ children }) => {
   const value = {
     // State
     cartTotalQty,
+    cartTotalAmount,
     cartProducts,
 
     // functions

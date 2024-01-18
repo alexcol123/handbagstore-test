@@ -3,14 +3,13 @@
 import React from 'react'
 
 const SetColor = ({ images, cartProduct, handleColorSelect }) => {
-
   //console.log(images)
   // console.log(images , cartProduct, handleColorSelect)
 
   //product.images[0].image[0]
   return (
     <div>
-      <div className='flex gap-4 items-center'>
+      <div className='flex gap-4 items-center text-base  md:text-lg'>
         <span className='font-semibold'>Color</span>
         <div className='flex gap-3 md:gap-1'>
           {images.map((image, i) => {
@@ -24,7 +23,11 @@ const SetColor = ({ images, cartProduct, handleColorSelect }) => {
                 onClick={() => handleColorSelect(image, i)}
                 key={i}
                 className={`h-7 w-7 rounded-full  flex items-center justify-center
-             ${cartProduct.currentColor === image.color ?  'border-4  border-success' : ''} 
+             ${
+               cartProduct.currentColor === image.color
+                 ? 'border-4  border-success'
+                 : ''
+             } 
                 `}
               >
                 <div

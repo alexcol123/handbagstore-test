@@ -15,8 +15,9 @@ const ProductImages = ({ cartProduct, product }) => {
   const imageArr = imageList[0].image
 
   return (
-    <div className='flex  gap-4 p-2'>
-      <div className='flex flex-col  items-center gap-0 md:gap-2 lg:gap-3 max-h-[600px]  w-fit overflow-y-scroll '>
+    <div className='flex flex-col md:flex-row  gap-4 p-2'>
+      {/*  Image scroll */}
+      <div className='flex flex-row md:flex-col order-last md:order-first  items-center gap-2 md:gap-2 lg:gap-3 max-h-[600px]  w-fit   md:overflow-y-scroll '>
         {imageArr.map((img, i) => {
           // console.log(img)
 
@@ -30,12 +31,11 @@ const ProductImages = ({ cartProduct, product }) => {
               } `}
             >
               <Image
-         
                 src={imageArr[i]}
                 height={200}
                 width={140}
                 alt='product'
-                className='w-20  h-full object-cover'
+                className='w-20  h-full object-cover min-w-12 '
               />
             </div>
           )

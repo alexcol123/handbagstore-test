@@ -6,7 +6,7 @@ import Image from 'next/image'
 // import ProductImages from "@/app/components/products/ProductImages"
 // import SetColor from "@/app/components/products/SetColor"
 
-import {  useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { MdCheckCircle } from 'react-icons/md'
 import ProductPrice from '../../../components/products/ProductPrice'
@@ -23,10 +23,7 @@ import Share from './Share'
 
 import { usePathname } from 'next/navigation'
 
-
-
 const ProductDetails = ({ product }) => {
-
   const pathname = usePathname()
   // console.log(pathname)
 
@@ -36,18 +33,14 @@ const ProductDetails = ({ product }) => {
   const [url, seturl] = useState(null)
 
   useEffect(() => {
-
-    if(window!== undefined){
-     seturl(window.location.href)
+    if (window !== undefined) {
+      seturl(window.location.href)
     }
-
   }, [])
 
   // console.log(url)
-  
 
-
-console.log(url)
+  console.log(url)
   const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart()
 
   // console.log(cartProducts)
@@ -129,32 +122,13 @@ console.log(url)
 
       <ProductImages product={product} cartProduct={cartProduct} />
 
-      {/* <div className='relative overflow-hidden'>
-        <Image
-          priority
-          src={cartProduct.selectedImg}
-          height={700}
-          width={600}
-          alt='product'
-          className=' w-full h-full object-cover  flex-1 transition duration-300  hover:scale-110  '
-        />
-
-        <div className='absolute top-8 right-5'>
-          <ProductSaleBadge isOnSale={product.isOnSale} />
-        </div>
-      </div> */}
-
-      {/* <ProductImages cartProduct={cartProduct} product={product} handleColorSelect={handleColorSelect} /> */}
-
       {/* Details */}
 
-      <div className='flex flex-col  items-start justify-center gap-4  '>
-        <h2 className='text-3xl font-medium'>{product.name}</h2>
+      <div className='flex flex-col  items-start justify-center  gap-3 md:gap-4  '>
+        <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
 
         {/* Share  */}
-       <div>
-        {url !== null &&  <Share  url={url}/>}
-       </div>
+        {/* <div>{url !== null && <Share url={url} />}</div> */}
 
         <div className='badge badge-neutral uppercase px-4 py-1'>
           {product.brand}
@@ -171,10 +145,12 @@ console.log(url)
         </div>
 
         <Horizontal />
-        <div className='text-justify opacity-80'>{product.description}</div>
+        <div className='text-base  md:text-lg text-justify opacity-80 leading-5 md:leading-normal '>
+          {product.description}
+        </div>
         <Horizontal />
-        <>
-          <div className='flex items-center justify-center'>
+        <div className='text-sm  md:text-lg'>
+          <div className='flex items-center '>
             <span className='font-semibold mr-2 '>Price:</span>
             <ProductPrice
               price={product.price}
@@ -204,7 +180,7 @@ console.log(url)
               {product.inStock ? 'In Stock' : 'Out of Stock'}{' '}
             </span>
           </div>
-        </>
+        </div>
         <Horizontal />
 
         {isProductInCart ? (

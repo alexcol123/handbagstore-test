@@ -2,7 +2,6 @@ import { products } from '../../../../utils/products'
 import ListRating from './ListRating'
 import ProductDetails from './ProductDetails'
 
-
 // MORE ABOUT METADATA https://www.youtube.com/shorts/MYU_7RK3RHM
 
 export const metadata = {

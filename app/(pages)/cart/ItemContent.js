@@ -12,8 +12,12 @@ import { formatPrice } from '@/utils/formatPrice'
 import SetQuantity from '@/app/components/products/SetQuantity'
 
 const ItemContent = ({ item }) => {
-  const { handleRemoveProductFromCart, handleCartQtyIncrease ,handleCartQtyDecrease} =
-    useCart()
+  const {
+    handleRemoveProductFromCart,
+    handleCartQtyIncrease,
+    handleCartQtyDecrease,
+
+  } = useCart()
 
   console.log(item)
 

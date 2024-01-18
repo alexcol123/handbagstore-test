@@ -58,7 +58,7 @@ export const CartContextProvider = ({ children }) => {
     (product) => {
       let updatedCart
       if (product.quantity >= 25) {
-        return toast.error('Opps! Maximun of 25 reached')
+        return toast.error('Opps! Maximun reached 25', { id: 'qty' })
       }
 
       if (cartProducts) {
@@ -75,18 +75,17 @@ export const CartContextProvider = ({ children }) => {
         setcartProducts(updatedCart)
         localStorage.setItem('cartItems', JSON.stringify(updatedCart))
       }
-      toast.success('Product Added', {id:'qty'})
+      toast.success('Product Added', { id: 'qty' })
     },
     [cartProducts]
   )
 
   const handleCartQtyDecrease = useCallback(
     (product) => {
-
       console.log(product)
       let updatedCart
-      if (product.quantity <=1) {
-        return toast.error('Opps! Minimun reached')
+      if (product.quantity <= 1) {
+        return toast.error('Opps! Minimun reached', { id: 'qty' })
       }
 
       if (cartProducts) {
@@ -103,10 +102,17 @@ export const CartContextProvider = ({ children }) => {
         setcartProducts(updatedCart)
         localStorage.setItem('cartItems', JSON.stringify(updatedCart))
       }
-      toast.success('Product Removed', {id:'qty'})
+      toast.success('Product Removed', { id: 'qty' })
     },
     [cartProducts]
   )
+
+  const handleClearCart = useCallback(() => {
+    setcartProducts(null)
+    setcartTotalQty(0)
+    toast.success('Cart Items Removed', { id: 'qty' })
+    localStorage.setItem('cartItems', JSON.stringify(null))
+  }, [cartProducts])
 
   const value = {
     // State
@@ -118,6 +124,7 @@ export const CartContextProvider = ({ children }) => {
     handleRemoveProductFromCart,
     handleCartQtyIncrease,
     handleCartQtyDecrease,
+    handleClearCart,
   }
 
   //return <CartContext.Provider value={value} {...children} />

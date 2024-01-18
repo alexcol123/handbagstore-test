@@ -7,7 +7,7 @@ import ItemContent from './ItemContent'
 import MyButton from '@/app/components/MyButton'
 
 const CartClient = () => {
-  const { cartProducts } = useCart()
+  const { cartProducts, handleClearCart } = useCart()
 
   console.log(cartProducts)
 
@@ -46,15 +46,13 @@ const CartClient = () => {
       </div>
 
       {/*  Cart Menu */}
-      <div className=' border-t  border-slate-200 py-4 flex justify-between gap-4'>
-        <div className='hidden md:block w-32'>
+      <div className=' border-t  border-slate-200 py-4 flex  justify-between gap-4'>
+        <div className=' hidden md:block w-full md:w-32'>
           <MyButton
             label='Clear Cart'
             small
             outline
-            onClick={() => {
-              handleClearCart()
-            }}
+            onClick={handleClearCart}
           />
         </div>
 

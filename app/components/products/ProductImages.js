@@ -53,7 +53,7 @@ const ProductImages = ({ cartProduct, product }) => {
               height={700}
               width={600}
               alt='product'
-              className=' min-w-full h-[700px] object-cover object-center flex-1 transition duration-300  hover:scale-110   '
+              className=' min-w-full h-[400px]  md:h-[700px]  lg:h-[700px] object-cover object-center transition duration-300  hover:scale-110    '
             />
           </div>
           <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 '>

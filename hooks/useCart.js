@@ -43,8 +43,8 @@ export const CartContextProvider = ({ children }) => {
     }
   }, [cartProducts])
 
-  console.log('qty' , cartTotalQty)
-  console.log('amt', cartTotalAmount)
+  // console.log('qty' , cartTotalQty)
+  // console.log('amt', cartTotalAmount)
 
   const handleAddProductToCart = (product) => {
     setcartProducts((prev) => {
@@ -107,7 +107,7 @@ export const CartContextProvider = ({ children }) => {
 
   const handleCartQtyDecrease = useCallback(
     (product) => {
-      console.log(product)
+
       let updatedCart
       if (product.quantity <= 1) {
         return toast.error('Opps! Minimun reached', { id: 'qty' })
@@ -137,7 +137,7 @@ export const CartContextProvider = ({ children }) => {
     setcartTotalQty(0)
     toast.success('Cart Items Removed', { id: 'qty' })
     localStorage.setItem('cartItems', JSON.stringify(null))
-  }, [cartProducts])
+  }, [])
 
   const value = {
     // State

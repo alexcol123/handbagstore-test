@@ -17,7 +17,7 @@ const ProductImages = ({ cartProduct, product }) => {
   return (
     <div className='flex flex-col md:flex-row  gap-4 p-2'>
       {/*  Image scroll */}
-      <div className='flex flex-row md:flex-col order-last md:order-first  items-center gap-2 md:gap-2 lg:gap-3 max-h-[600px]  w-fit   md:overflow-y-scroll '>
+      <div className='flex flex-row md:flex-col order-last md:order-first  items-center gap-2 md:gap-2 lg:gap-3 max-h-[600px]  w-fit   md:overflow-y-scroll  '>
         {imageArr.map((img, i) => {
           // console.log(img)
 

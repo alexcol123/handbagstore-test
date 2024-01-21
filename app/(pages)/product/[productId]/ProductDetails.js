@@ -40,7 +40,6 @@ const ProductDetails = ({ product }) => {
 
   // console.log(url)
 
-
   const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart()
 
   // console.log(cartProducts)
@@ -122,7 +121,7 @@ const ProductDetails = ({ product }) => {
   const cartCounter = () => {}
 
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 rounded'>
+    <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 rounded  border overflow-hidden '>
       {/* Images */}
 
       <ProductImages product={product} cartProduct={cartProduct} />

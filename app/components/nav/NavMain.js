@@ -1,24 +1,22 @@
 'use client'
 import NavSearch from './NavSearch'
 import { FaSearch } from 'react-icons/fa'
-import { Redressed, Salsa } from 'next/font/google'
+import { Redressed,  } from 'next/font/google'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useCart } from '@/hooks/useCart'
-
-
-const salsa = Salsa({ subsets: ['latin'], weight: ['400'] })
+import { formatPrice } from '@/utils/formatPrice'
+import MyLogo from '../MyLogo'
 
 const NavMain = ({ categoriesLinks }) => {
-
-  const {  cartTotalAmount, cartTotalQty } = useCart()
+  const { cartTotalAmount, cartTotalQty } = useCart()
   return (
     <div className='navbar bg-base-300 '>
       {/* Nav Start  */}
       <div className='navbar-start '>
-        <div className=' text-primary text:sm md:text-2xl'>
-          <Link href={'/'} className={salsa.className}>
-            Handbag Store
+        <div className=' text-primary text:sm md:text-2xl '>
+          <Link href={'/'}>
+            <MyLogo />
           </Link>
         </div>
       </div>
@@ -66,7 +64,9 @@ const NavMain = ({ categoriesLinks }) => {
                   d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
                 />
               </svg>
-              <span className='badge badge-sm indicator-item border-primary '>{cartTotalQty}</span>
+              <span className='badge badge-sm indicator-item border-primary '>
+                {cartTotalQty}
+              </span>
             </div>
           </div>
 
@@ -75,8 +75,10 @@ const NavMain = ({ categoriesLinks }) => {
             className='mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-300 shadow'
           >
             <div className='card-body'>
-              <span className='font-bold text-lg'>{cartTotalQty} {cartTotalQty ===1 ?"Item" : "Items"}</span>
-              <span className='text-info'>Subtotal: {cartTotalAmount}</span>
+              <span className='font-bold text-lg'>
+                {cartTotalQty} {cartTotalQty === 1 ? 'Item' : 'Items'}
+              </span>
+              <span className=''>Subtotal: {formatPrice(cartTotalAmount)}</span>
               <div className='card-actions'>
                 <Link href='/cart' className='btn btn-primary btn-block'>
                   View cart

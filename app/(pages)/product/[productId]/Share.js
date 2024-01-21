@@ -19,7 +19,7 @@ import {
 } from 'next-share'
 
 const Share = ({ url }) => {
-  console.log(typeof url)
+  // console.log(typeof url)
   return (
     <div className='bg-base-200/50 py-2 px-4 rounded'>
       <h2 className='text-center mb-2'>Share on Social Media</h2>

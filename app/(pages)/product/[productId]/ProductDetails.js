@@ -50,7 +50,7 @@ const ProductDetails = ({ product }) => {
         setisProductInCart(true)
       }
     }
-  }, [cartProducts])
+  }, [cartProducts, product.id])
 
   const Horizontal = () => {
     return <hr className='w-60 opacity-80' />

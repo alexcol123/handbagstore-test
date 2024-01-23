@@ -34,7 +34,7 @@ const LoginForm = ({ currentUser }) => {
       router.push('/cart')
       router.refresh()
     }
-  }, [])
+  }, [currentUser, router])
 
   const [isLoading, setisLoading] = useState(false)
 
@@ -76,14 +76,18 @@ const LoginForm = ({ currentUser }) => {
         btnBGColor='bg-orange-400 '
         label={'Continue with Google'}
         icon={AiOutlineGoogle}
-        onClick={() => { signIn('google')}}
+        onClick={() => {
+          signIn('google')
+        }}
       />
 
       <MyButton
         btnBGColor='bg-blue-600 '
         label={'Continue with Facebook'}
         icon={FaFacebook}
-        onClick={() => {signIn('facebook')}}
+        onClick={() => {
+          signIn('facebook')
+        }}
       />
 
       <div className='divider'>OR</div>

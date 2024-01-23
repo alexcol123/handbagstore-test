@@ -68,17 +68,17 @@ export const authOptions = {
     }),
   ],
 
+  secret: process.env.NEXTAUTH_SECRET,
+
   pages: {
     signIn: '/login',
   },
 
-  debug: process.env.NODE_ENV === 'development',
+  // debug: process.env.NODE_ENV === 'development',
 
   session: {
     strategy: 'jwt',
   },
-
-  secret: process.env.NEXTAUTH_SECRET,
 }
 
 export default NextAuth(authOptions)

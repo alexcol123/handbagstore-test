@@ -37,7 +37,7 @@ const RegisterForm = ({ currentUser }) => {
       router.push('/cart')
       router.refresh()
     }
-  }, [])
+  }, [currentUser, router])
 
   const onSubmit = (data) => {
     setisLoading(true)

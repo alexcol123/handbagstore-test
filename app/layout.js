@@ -7,6 +7,7 @@ import CartProvider from '../providers/CartProvider'
 import { Toaster } from 'react-hot-toast'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
+export const dynamic = "force-dynamic"
 
 const poppins = Poppins({
   subsets: ['latin'],

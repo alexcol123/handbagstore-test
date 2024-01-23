@@ -4,6 +4,8 @@ import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { FaRegUser } from "react-icons/fa";
+
 import toast from 'react-hot-toast'
 
 const UserMenu = ({ currentUser }) => {
@@ -14,19 +16,22 @@ const UserMenu = ({ currentUser }) => {
       <div
         tabIndex={0}
         role='button'
-        className='btn btn-ghost btn-circle avatar'
+        className='btn btn-ghost btn-circle avatar  '
       >
         <div className='w-10 rounded-full '>
-          <Image
-            src={
-              currentUser?.image
-                ? currentUser?.image
-                : 'https://images.pexels.com/photos/2816544/pexels-photo-2816544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-            }
-            width={200}
-            height={200}
-            alt='avatar'
-          />
+          {currentUser?.image ? (
+            <Image
+              src={currentUser?.image && currentUser?.image}
+              width={200}
+              height={200}
+              alt='avatar'
+            />
+          ) : (
+            <FaRegUser
+              size={20}
+              className='h-full w-full p-2 '
+            />
+          )}
         </div>
       </div>
       <ul
@@ -38,6 +43,7 @@ const UserMenu = ({ currentUser }) => {
             {' '}
             {/* Logged In */}
             <div>
+        
               <li>
                 <Link href={'/admin'} className='justify-between font-semibold'>
                   Dashboard
@@ -75,6 +81,7 @@ const UserMenu = ({ currentUser }) => {
           <>
             {/* Not logged In */}
             <div>
+         
               <li>
                 <Link href={'/login'} className='justify-between font-semibold'>
                   Login

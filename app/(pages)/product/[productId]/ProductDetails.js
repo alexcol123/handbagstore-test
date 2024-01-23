@@ -10,9 +10,9 @@ import ProductPrice from '../../../components/products/ProductPrice'
 import ProductShowRating from '../../../components/products/ProductShowRating'
 
 import SetQuantity from '../../../components/products/SetQuantity'
-import MyButton from '@/app/components/MyButton'
-import ProductImages from '@/app/components/products/ProductImages'
-import { useCart } from '@/hooks/useCart'
+import MyButton from '../../../components/MyButton'
+import ProductImages from '../../../components/products/ProductImages'
+import { useCart } from '../../../../hooks/useCart'
 import Share from './Share'
 
 import { usePathname } from 'next/navigation'

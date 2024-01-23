@@ -1,8 +1,8 @@
 'use client'
 
-import Avatar from '@/app/components/Avatar'
-import Heading from '@/app/components/Heading'
-import ProductShowRating from '@/app/components/products/ProductShowRating'
+import Avatar from '../../../components/Avatar'
+import Heading from '../../../components/Heading'
+import ProductShowRating from '../../../components/products/ProductShowRating'
 import moment from 'moment'
 
 const ListRating = ({ product }) => {
@@ -31,7 +31,9 @@ const ListRating = ({ product }) => {
                 </div>
                 <div className='mt-2  '>
                   <ProductShowRating productRating={review.rating} />
-                  <div className='text-center px-6 max-h-[180px] overflow-y-scroll '>{review.comment}</div>
+                  <div className='text-center px-6 max-h-[180px] overflow-y-scroll '>
+                    {review.comment}
+                  </div>
                 </div>
               </div>
             )

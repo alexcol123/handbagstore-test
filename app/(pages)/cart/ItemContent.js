@@ -4,19 +4,18 @@ import React from 'react'
 import { CartProductType } from '../product/[productId]/ProductDetails'
 // import { formatPrice } from '@/utils/formatPrice'
 import Link from 'next/link'
-import { truncateText } from '@/utils/truncateText'
+import { truncateText } from '../../../utils/truncateText'
 import Image from 'next/image'
 // import SetQuantity from '../components/products/SetQuantity'
-import { useCart } from '@/hooks/useCart'
-import { formatPrice } from '@/utils/formatPrice'
-import SetQuantity from '@/app/components/products/SetQuantity'
+import { useCart } from '../../../hooks/useCart'
+import { formatPrice } from '../../../utils/formatPrice'
+import SetQuantity from '../../components/products/SetQuantity'
 
 const ItemContent = ({ item }) => {
   const {
     handleRemoveProductFromCart,
     handleCartQtyIncrease,
     handleCartQtyDecrease,
-
   } = useCart()
 
   // console.log(item)

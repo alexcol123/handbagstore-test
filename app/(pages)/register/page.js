@@ -1,7 +1,7 @@
 import FormWrapSmall from '../../components/FormWrapSmall'
 import React from 'react'
 import RegisterForm from './RegisterForm'
-import { getCurrentUser } from '@/actions/getCurrentUser'
+import { getCurrentUser } from '../../../actions/getCurrentUser'
 
 export const dynamic = 'force-dynamic'
 

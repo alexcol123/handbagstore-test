@@ -1,11 +1,12 @@
 'use client'
-import Heading from '@/app/components/Heading'
-import { useCart } from '@/hooks/useCart'
+import Heading from '../../components/Heading'
+
+import { useCart } from '../../../hooks/useCart'
 import Link from 'next/link'
 import { MdArrowBack } from 'react-icons/md'
 import ItemContent from './ItemContent'
-import MyButton from '@/app/components/MyButton'
-import { formatPrice } from '@/utils/formatPrice'
+import MyButton from '../../components/MyButton'
+import { formatPrice } from '../../../utils/formatPrice'
 
 const CartClient = () => {
   const { cartProducts, handleClearCart, cartTotalAmount } = useCart()
@@ -60,8 +61,8 @@ const CartClient = () => {
         <div className='text-sm w-full px-8  md:w-[400px]  lg:w-[500px]px-4 flex flex-col gap-4 items-center md:items-start'>
           <div className='flex justify-between w-full text-base font-semibold'>
             <span>Subtotal</span>
-         
-            <span>{ formatPrice(cartTotalAmount)}</span>
+
+            <span>{formatPrice(cartTotalAmount)}</span>
           </div>
           <p className='text-slate-500/80'>
             Taxes and Shipping calculated at checkout

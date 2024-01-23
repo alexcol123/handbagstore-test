@@ -1,4 +1,4 @@
-import { formatPrice } from '@/utils/formatPrice'
+import { formatPrice } from '../../../utils/formatPrice'
 import React from 'react'
 
 const ProductPrice = ({ price, isOnSale, salePrice, fontSize = 'text-sm' }) => {

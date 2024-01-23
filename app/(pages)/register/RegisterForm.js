@@ -8,7 +8,8 @@ import { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import {  AiOutlineGoogle } from 'react-icons/ai'
 
-import MyLogo from '@/app/components/MyLogo'
+
+import MyLogo from '../../components/MyLogo'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { signIn } from 'next-auth/react'

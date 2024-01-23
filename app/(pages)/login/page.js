@@ -1,7 +1,7 @@
 import FormWrapSmall from '../../components/FormWrapSmall'
 import React from 'react'
 import LoginForm from './LoginForm'
-import { getCurrentUser } from '@/actions/getCurrentUser'
+import { getCurrentUser } from '../../../actions/getCurrentUser'
 
 const Login = async () => {
 

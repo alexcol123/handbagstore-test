@@ -17,9 +17,17 @@ export const CartContextProvider = ({ children }) => {
   const [cartProducts, setcartProducts] = useState(null)
   const [cartTotalAmount, setcartTotalAmount] = useState(0)
 
+  const [paymentIntent, setPaymentIntent] = useState(null)
+
   useEffect(() => {
     const itemsInLs = localStorage.getItem('cartItems')
+
+    const eshopPaymentIntent= localStorage.getItem('eShopPaymentIntent')
+    const paymentIntent= JSON.parse(eshopPaymentIntent)
+
     setcartProducts(JSON.parse(itemsInLs))
+
+    setPaymentIntent(paymentIntent)
   }, [])
 
   useEffect(() => {

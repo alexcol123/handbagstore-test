@@ -4,12 +4,12 @@ import { FaSearch } from 'react-icons/fa'
 import { Redressed } from 'next/font/google'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useCart } from '@/hooks/useCart'
-import { formatPrice } from '@/utils/formatPrice'
+import { useCart } from '../../../hooks/useCart'
+import { formatPrice } from '../../../utils/formatPrice'
 import MyLogo from '../MyLogo'
 import UserMenu from './UserMenu'
 
-const NavMain = ({ categoriesLinks, currentUser  }) => {
+const NavMain = ({ categoriesLinks, currentUser }) => {
   const { cartTotalAmount, cartTotalQty } = useCart()
   return (
     <div className='navbar bg-base-300 '>

@@ -9,7 +9,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import {  AiOutlineGoogle } from 'react-icons/ai'
 
 
-import MyLogo from '@/app/components/MyLogo'
+import MyLogo from '../../components/MyLogo'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'

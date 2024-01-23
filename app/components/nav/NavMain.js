@@ -1,14 +1,15 @@
 'use client'
 import NavSearch from './NavSearch'
 import { FaSearch } from 'react-icons/fa'
-import { Redressed,  } from 'next/font/google'
+import { Redressed } from 'next/font/google'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useCart } from '@/hooks/useCart'
 import { formatPrice } from '@/utils/formatPrice'
 import MyLogo from '../MyLogo'
+import UserMenu from './UserMenu'
 
-const NavMain = ({ categoriesLinks }) => {
+const NavMain = ({ categoriesLinks, currentUser  }) => {
   const { cartTotalAmount, cartTotalQty } = useCart()
   return (
     <div className='navbar bg-base-300 '>
@@ -89,41 +90,7 @@ const NavMain = ({ categoriesLinks }) => {
         </div>
 
         {/* Avatar */}
-        <div className='dropdown dropdown-end mr-4'>
-          <div
-            tabIndex={0}
-            role='button'
-            className='btn btn-ghost btn-circle avatar'
-          >
-            <div className='w-10 rounded-full'>
-              <Image
-                src={
-                  'https://images.pexels.com/photos/2816544/pexels-photo-2816544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-                }
-                width={200}
-                height={200}
-                alt='avatar'
-              />
-            </div>
-          </div>
-          <ul
-            tabIndex={0}
-            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52'
-          >
-            <li>
-              <a className='justify-between'>
-                Profile
-                <span className='badge'>New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
+        <UserMenu currentUser={currentUser} />
 
         <div className='dropdown  dropdown-end sm:hidden'>
           <div tabIndex={0} role='button' className='btn btn-ghost btn-circle'>
@@ -151,9 +118,11 @@ const NavMain = ({ categoriesLinks }) => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className=' py-1 pl-3 hover:text-primary hover:bg-base-100'
+                  className={` py-1 pl-3 hover:text-primary  ${
+                    item.color && 'text-error font-semibold'
+                  }`}
                 >
-                  {item.name}
+                  <div>{item.name}</div>
                 </Link>
               )
             })}

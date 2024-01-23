@@ -7,22 +7,22 @@ import CartProvider from '../providers/CartProvider'
 import { Toaster } from 'react-hot-toast'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '600', '700'],
 })
-
 
 //https://www.youtube.com/shorts/MYU_7RK3RHM
 
 export const metadata = {
   title: 'Layout comp Handbag page',
   description: 'Handbags description ',
-
-
 }
 
-export default function RootLayout({ children }) {
+export default  function RootLayout({ children }) {
+
+
   return (
     <html lang='en'>
       <body className={poppins.className}>

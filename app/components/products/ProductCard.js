@@ -5,14 +5,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ProductPrice from './ProductPrice'
 import ProductSaleBadge from './ProductSaleBadge'
-import ProductColorOptions from './ProductColorOptions'
+// import ProductColorOptions from './ProductColorOptions'
 
 const ProductCard = ({ product }) => {
   return (
     <Link href={`/product/${product.id}`}>
-      <div className='h-full  bg-base-200 relative  flex flex-col items-center rounded  hover:bg-base-300  transition duration-300 overflow-hidden '>
+      <div className='h-full  bg-base-200 relative  flex flex-col  rounded  hover:bg-base-300  transition duration-300 overflow-hidden '>
         <Image
-          src={product.colors[0].image[0]}
+          src={product.images[0]}
           alt={product.category}
           width={400}
           height={400}
@@ -20,11 +20,11 @@ const ProductCard = ({ product }) => {
         />
         {/* Optional items absolute  */}
         <div className='absolute top-5 right-5'>
-          <ProductSaleBadge isOnSale={product.isOnSale} />
+          <ProductSaleBadge isOnSale={product.isOnSale}/>
         </div>
 
-        <div className=' relative px-3  flex  flex-col gap-1 my-4 flex-grow '>
-          <h2 className='w-full flex items-center '>
+        <div className=' relative px-5  flex  flex-col   gap-1 my-4 flex-grow    '>
+          <h2 className='w-full  '>
             {truncateText(product.brand, 22)}
           </h2>
           <h2 className=' text-xs md:text-sm font-light opacity-80 '>
@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
 
           {/* Optional items absolute  */}
           <div className='absolute top-[-33px] left-0 right-0'>
-            <ProductColorOptions colors={product.colors} />
+            {/* <ProductColorOptions colors={product.colors} /> */}
           </div>
         </div>
       </div>

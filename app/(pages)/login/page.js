@@ -1,12 +1,17 @@
 import FormWrapSmall from '../../components/FormWrapSmall'
 import React from 'react'
 import LoginForm from './LoginForm'
+import { getCurrentUser } from '@/actions/getCurrentUser'
 
-const Login = () => {
+const Login = async () => {
+
+  const currentUser = await getCurrentUser()
+
+
   return (
     <div className='px-8'>
       <FormWrapSmall>
-        <LoginForm />
+        <LoginForm  currentUser={currentUser}/>
       </FormWrapSmall>
     </div>
   )

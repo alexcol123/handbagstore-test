@@ -4,14 +4,19 @@ import Link from 'next/link'
 import Heading from '../../components/Heading'
 import Input from '../../components/inputs/Input'
 import MyButton from '../../components/MyButton'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { AiFillFacebook, AiOutlineGoogle } from 'react-icons/ai'
 import { FaFacebook } from 'react-icons/fa'
-import { FaGooglePlus } from 'react-icons/fa'
-import MyLogo from '@/app/components/MyLogo'
 
-const LoginForm = () => {
+import MyLogo from '@/app/components/MyLogo'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
+
+const LoginForm = ({ currentUser }) => {
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -24,20 +29,43 @@ const LoginForm = () => {
     },
   })
 
+  useEffect(() => {
+    if (currentUser) {
+      router.push('/cart')
+      router.refresh()
+    }
+  }, [])
+
   const [isLoading, setisLoading] = useState(false)
 
   const onSubmit = (data) => {
     setisLoading(true)
-    console.log(data)
+
+    signIn('credentials', { ...data, redirect: false }).then((callback) => {
+      setisLoading(false)
+
+      if (callback?.ok) {
+        router.push('/cart')
+        router.refresh()
+        toast.success('Logged In')
+      }
+
+      if (callback?.error) {
+        toast.error(callback.error)
+      }
+    })
+  }
+
+  if (currentUser) {
+    return <p className='text-center '>Logged In. Redirecting...</p>
   }
 
   return (
     <>
       <div className=' mt-4   '>
         <div className='flex flex-col items-center justify-center gap-0'>
-          <Heading title={'Register to'} />
+          <Heading title={'Login to'} />
           <div className='text-3xl'>
-    
             <MyLogo />
           </div>
           <div className='divider' />
@@ -48,14 +76,14 @@ const LoginForm = () => {
         btnBGColor='bg-orange-400 '
         label={'Continue with Google'}
         icon={AiOutlineGoogle}
-        onClick={() => {}}
+        onClick={() => { signIn('google')}}
       />
 
       <MyButton
         btnBGColor='bg-blue-600 '
         label={'Continue with Facebook'}
         icon={FaFacebook}
-        onClick={() => {}}
+        onClick={() => {signIn('facebook')}}
       />
 
       <div className='divider'>OR</div>

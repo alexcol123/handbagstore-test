@@ -1,34 +1,24 @@
 'use client'
 
 import Image from 'next/image'
-// import MyButton from "@/app/components/MyButton"
-// import Ratings from "@/app/components/Ratings"
-// import ProductImages from "@/app/components/products/ProductImages"
-// import SetColor from "@/app/components/products/SetColor"
 
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { MdCheckCircle } from 'react-icons/md'
 import ProductPrice from '../../../components/products/ProductPrice'
-import ProductBrand from '../../../components/products/ProductBrand'
-import ProductSaleBadge from '../../../components/products/ProductSaleBadge'
 
 import ProductShowRating from '../../../components/products/ProductShowRating'
-import SetColor from '../../../components/products/SetColor'
+
 import SetQuantity from '../../../components/products/SetQuantity'
 import MyButton from '@/app/components/MyButton'
 import ProductImages from '@/app/components/products/ProductImages'
-import { CartContext, useCart } from '@/hooks/useCart'
+import { useCart } from '@/hooks/useCart'
 import Share from './Share'
 
 import { usePathname } from 'next/navigation'
 
 const ProductDetails = ({ product }) => {
   const pathname = usePathname()
-  // console.log(pathname)
-
-  // const shareLinkUrl = `https://handbagstore-test-3.vercel.app/${pathname}`
-  // console.log(shareLinkUrl)
 
   const [url, seturl] = useState(null)
 
@@ -38,11 +28,7 @@ const ProductDetails = ({ product }) => {
     }
   }, [])
 
-  // console.log(url)
-
-  const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart()
-
-  // console.log(cartProducts)
+  const { handleAddProductToCart, cartProducts } = useCart()
 
   const productRating = product?.reviews.reduce(
     (acc, item) => (acc += item.rating / product.reviews.length),
@@ -76,34 +62,11 @@ const ProductDetails = ({ product }) => {
     description: product.description,
     category: product.category,
     brand: product.brand,
-
-    currentColor: product.colors[0].color,
-    selectedImage: product.colors[0].image[0],
-
+    selectedImage: product.images[0],
     quantity: 1,
     price: product.price,
+    size: product.size,
   })
-
-  console.log(cartProduct.selectedImage)
-
-  //  console.log(cartProduct.currentColor)
-
-  // const selectProductColor = () => {
-  //   // setmainImage(product.images[1].image[0])
-  // }
-
-  // console.log('SELECTED IMG', cartProduct.currentColor)
-
-  const handleColorSelect = (value, i) => {
-    setcartProduct((prev) => ({
-      ...prev,
-
-      currentColor: product.colors[i].color,
-      selectedImage: product.colors[i].image[0],
-    }))
-  }
-
-  // console.log(cartProduct.selectedImg)
 
   const handleQtyDecrease = () => {
     setcartProduct((prev) => {
@@ -128,7 +91,7 @@ const ProductDetails = ({ product }) => {
 
       {/* Details */}
 
-      <div className='flex flex-col  items-start justify-center  gap-3 md:gap-4  '>
+      <div className='flex flex-col  items-start justify-center  gap-3 md:gap-4  p-2 md:p-3'>
         <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
 
         {/* Share  */}
@@ -172,6 +135,21 @@ const ProductDetails = ({ product }) => {
             <span className='font-semibold mr-2 '>Brand:</span>
             {product.brand}
           </div>
+
+          {product?.size !== '' && (
+            <div>
+              <span className='font-semibold mr-2 '>Size:</span>
+              {product.size}
+            </div>
+          )}
+
+          {product?.measurements !== '' && (
+            <div>
+              <span className='font-semibold mr-2 '>Measurements:</span>
+              {product.measurements}
+            </div>
+          )}
+
           <div>
             <span className='font-semibold mr-2 '>Availability:</span>
             <span
@@ -205,12 +183,6 @@ const ProductDetails = ({ product }) => {
           </>
         ) : (
           <>
-            <SetColor
-              images={product.colors}
-              cartProduct={cartProduct}
-              handleColorSelect={handleColorSelect}
-            />
-
             <Horizontal />
             <div>Quantity</div>
             <SetQuantity
@@ -232,38 +204,6 @@ const ProductDetails = ({ product }) => {
             </div>
           </>
         )}
-
-        {/* <>
-          <p className='mb-2 text-primary flex  items-center gap-1'>
-            <MdCheckCircle size={20} className='text-accent' />
-            <span>Product Added to cart </span>
-          </p>
-          <div className='w-[350px]'>
-            <MyButton
-                onClick={() => router.push('/cart')}
-                label="View In Cart"
-                outline
-              />
-          </div>
-        </> */}
-
-        {/* <>
-          <Horizontal />
-          <SetQuantity
-            cartProduct={cartProduct}
-            handleQtyDecrease={handleQtyDecrease}
-            handleQtyIncrease={handleQtyIncrease}
-            cartCounter={cartCounter}
-          />
-
-          <Horizontal />
-          <div className='w-[350px]'>
-            <MyButton
-              onClick={() => handleAddProductToCart(cartProduct)}
-              label='Add To Cart'
-            />
-          </div>
-        </> */}
       </div>
     </div>
   )

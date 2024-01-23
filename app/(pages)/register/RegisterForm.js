@@ -6,9 +6,8 @@ import Input from '../../components/inputs/Input'
 import MyButton from '../../components/MyButton'
 import { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { AiFillFacebook, AiOutlineGoogle } from 'react-icons/ai'
-import { FaFacebook } from 'react-icons/fa'
-import { FaGooglePlus } from 'react-icons/fa'
+import {  AiOutlineGoogle } from 'react-icons/ai'
+
 import MyLogo from '@/app/components/MyLogo'
 import axios from 'axios'
 import toast from 'react-hot-toast'
@@ -93,14 +92,7 @@ const RegisterForm = ({ currentUser }) => {
         }}
       />
 
-      <MyButton
-        btnBGColor='bg-blue-600 '
-        label={'Continue with Facebook'}
-        icon={FaFacebook}
-        onClick={() => {
-          signIn('facebook')
-        }}
-      />
+
       <div className='divider'>OR</div>
 
       <h2>Email</h2>

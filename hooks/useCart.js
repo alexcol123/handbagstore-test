@@ -26,7 +26,6 @@ export const CartContextProvider = ({ children }) => {
     const paymentIntent= JSON.parse(eshopPaymentIntent)
 
     setcartProducts(JSON.parse(itemsInLs))
-
     setPaymentIntent(paymentIntent)
   }, [])
 
@@ -147,11 +146,19 @@ export const CartContextProvider = ({ children }) => {
     localStorage.setItem('cartItems', JSON.stringify(null))
   }, [])
 
+
+  const handleSetPaymentIntent = useCallback((val) => {
+    setPaymentIntent(val)
+    localStorage.setItem('eShopPaymentIntent', JSON.stringify(val))
+  }, [paymentIntent])
+
+
   const value = {
     // State
     cartTotalQty,
     cartTotalAmount,
     cartProducts,
+    paymentIntent,
 
     // functions
     handleAddProductToCart,
@@ -159,6 +166,8 @@ export const CartContextProvider = ({ children }) => {
     handleCartQtyIncrease,
     handleCartQtyDecrease,
     handleClearCart,
+    handleSetPaymentIntent
+
   }
 
   //return <CartContext.Provider value={value} {...children} />

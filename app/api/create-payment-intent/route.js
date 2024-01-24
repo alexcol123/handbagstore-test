@@ -29,11 +29,24 @@ export async function POST(request) {
   const body = await request.json()
   const { items, payment_intent_id } = body
 
-  const total = calculateOrderAmount(items) * 100
+  // const total = calculateOrderAmount(items) * 100
+
+  const totalAsFloat = parseFloat(+calculateOrderAmount(items))
+
+  const totalStripeAsCents = calculateOrderAmount(items) * 100
+
+  // console.log(' TOTAL 1 ====================            ')
+  // console.log(typeof totalAsFloat)
+  // console.log(totalAsFloat)
+
+  // console.log(' TOTAL 2 ====================            ')
+  // console.log(typeof totalStripeAsCents)
+  // console.log(totalStripeAsCents)
 
   const orderData = {
     user: { connect: { id: currentUser.id } },
-    amount: total,
+    // amount: total,
+    amount: totalStripeAsCents,
     currency: 'usd',
     status: 'pending',
     deliveryStatus: 'pending',
@@ -49,7 +62,7 @@ export async function POST(request) {
     if (current_intent) {
       const updated_intent = await stripe.paymentIntents.update(
         payment_intent_id,
-        { amount: total }
+        { amount: totalStripeAsCents }
       )
 
       // Update order
@@ -61,7 +74,7 @@ export async function POST(request) {
         prisma.order.update({
           where: { paymentIntentId: payment_intent_id },
           data: {
-            amount: total,
+            amount: totalAsFloat,
             products: items,
           },
         }),
@@ -80,7 +93,7 @@ export async function POST(request) {
     // Create the intent
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: total,
+      amount: totalStripeAsCents,
       currency: 'usd',
       automatic_payment_methods: { enabled: true },
     })

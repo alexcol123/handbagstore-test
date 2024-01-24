@@ -7,8 +7,12 @@ import { MdArrowBack } from 'react-icons/md'
 import ItemContent from './ItemContent'
 import MyButton from '../../components/MyButton'
 import { formatPrice } from '../../../utils/formatPrice'
+import { useRouter } from 'next/navigation'
 
 const CartClient = () => {
+
+const router = useRouter()
+
   const { cartProducts, handleClearCart, cartTotalAmount } = useCart()
 
   // console.log(cartProducts)
@@ -71,7 +75,7 @@ const CartClient = () => {
           <MyButton
             label={'Checkout'}
             outline={false}
-            onClick={() => {}}
+            onClick={() => {router.push('/checkout')}}
             // onClick={() => { currentUser ? router.push('/checkout'): router.push('/login')}}
           />
 

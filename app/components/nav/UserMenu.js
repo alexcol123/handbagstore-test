@@ -9,7 +9,7 @@ import { FaRegUser } from "react-icons/fa";
 import toast from 'react-hot-toast'
 
 const UserMenu = ({ currentUser }) => {
-  console.log(currentUser)
+  // console.log(currentUser)
 
   return (
     <div className='dropdown dropdown-end mr-4'>

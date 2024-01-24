@@ -7,7 +7,7 @@ import CartProvider from '../providers/CartProvider'
 import { Toaster } from 'react-hot-toast'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-export const dynamic = "force-dynamic"
+export const dynamic = 'force-dynamic'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -21,11 +21,27 @@ export const metadata = {
   description: 'Handbags description ',
 }
 
-export default  function RootLayout({ children }) {
-
-
+export default function RootLayout({ children }) {
   return (
     <html lang='en'>
+      <head>
+        <link rel='icon' href='/favicon.ico' sizes='any' />
+
+        <link
+          rel='icon'
+          href='/icon?<generated>'
+          type='image/<generated>'
+          sizes='<generated>'
+        />
+
+        <link
+          rel='apple-touch-icon'
+          href='/apple-icon?<generated>'
+          type='image/<generated>'
+          sizes='<generated>'
+        />
+      </head>
+
       <body className={poppins.className}>
         <div className='min-h-screen overflow-hidden flex flex-col justify-between'>
           <Toaster

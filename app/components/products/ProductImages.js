@@ -5,7 +5,7 @@ import ProductSaleBadge from './ProductSaleBadge'
 
 const ProductImages = ({ cartProduct, product }) => {
 
-console.log(product)
+// console.log(product)
 
   const [curImg, setcurImg] = useState(0)
 

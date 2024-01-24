@@ -62,7 +62,7 @@ const ProductDetails = ({ product }) => {
     description: product.description,
     category: product.category,
     brand: product.brand,
-    selectedImage: product.images[0],
+    selectedImg: product.images[0],
     quantity: 1,
     price: product.price,
     size: product.size,

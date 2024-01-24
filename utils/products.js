@@ -49,7 +49,7 @@ export const products = [
     category: 'wallet',
     inStock: 10,
 
-    salePrice: 59.99,
+    salePrice: 99.99,
     // isOnSale: ['no','sale' ,'clearance' ],
     isOnSale: ['sale'],
 
@@ -235,7 +235,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 159.99,
+    price: 15999,
 
     brand: 'Michael Kors',
 
@@ -243,7 +243,7 @@ export const products2 = [
       'Amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ut nemo delectus commodi harum ducimus fuga! Eius, at blanditiis quod quam nobis temporibus neque deleniti accusamus quis officiis excepturi sapiente inventore magnam reiciendis laudantium? Aliquam, quas animi soluta at itaque neque voluptatem nostrum fugiat porro voluptate doloremque odio culpa vero ratione quo quia vel voluptates repellendus a eius sit ducimus qui! Enim, earum modi, eveniet atque amet nam, autem consequatur repellat non reiciendis deserunt harum illo temporibus error. Ut nihil quos officiis eum molestias corrupti, adipisci veniam aut tempore! Vitae suscipit cumque voluptates itaque labore laborum voluptas in blanditiis aliquam minima et vel qui fugit ad maiores culpa quo, quod optio provident sapiente quisquam! Nesciunt fugit esse quae possimus dolor iure cum minus fugiat tempora, voluptatibus iusto. Excepturi, voluptate dignissimos porro assumenda officia deserunt rem dolorum quod ab alias odio nam fugit nulla incidunt aspernatur! Neque ',
     category: 'handbag',
     inStock: true,
-    salePrice: 99.99,
+    salePrice: 9999,
     isOnSale: true,
 
     images: [
@@ -272,7 +272,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 279.99,
+    price: 27999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -323,7 +323,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 49.99,
+    price: 4999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -360,7 +360,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 149.99,
+    price: 14999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -397,14 +397,14 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 180.99,
+    price: 18099,
     brand: 'Michael Kors',
 
     descriptionLong:
       'Amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ut nemo delectus commodi harum ducimus fuga! Eius, at blanditiis quod quam nobis temporibus neque deleniti accusamus quis officiis excepturi sapiente inventore magnam reiciendis laudantium? Aliquam, quas animi soluta at itaque neque voluptatem nostrum fugiat porro voluptate doloremque odio culpa vero ratione quo quia vel voluptates repellendus a eius sit ducimus qui! Enim, earum modi, eveniet atque amet nam, autem consequatur repellat non reiciendis deserunt harum illo temporibus error. Ut nihil quos officiis eum molestias corrupti, adipisci veniam aut tempore! Vitae suscipit cumque voluptates itaque labore laborum voluptas in blanditiis aliquam minima et vel qui fugit ad maiores culpa quo, quod optio provident sapiente quisquam! Nesciunt fugit esse quae possimus dolor iure cum minus fugiat tempora, voluptatibus iusto. Excepturi, voluptate dignissimos porro assumenda officia deserunt rem dolorum quod ab alias odio nam fugit nulla incidunt aspernatur! Neque ',
     category: 'watch',
     inStock: true,
-    salePrice: 140.99,
+    salePrice: 14099,
     isOnSale: true,
 
     isNewItem: false,
@@ -443,7 +443,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 359.99,
+    price: 35999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -490,7 +490,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 199.99,
+    price: 19999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -537,7 +537,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 89.99,
+    price: 8999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -602,7 +602,7 @@ export const products2 = [
         productId: '648437b38c44d52b9542e340',
         rating: 5,
         comment: 'I really liked it!!',
-        createdDate: '2023-06-26T14:30:40.998Z',
+        createdDate: '2023-06-26T14:30:40998Z',
         user: {
           id: '6475af156bad4917456e6e1e',
           name: 'Charles',
@@ -624,7 +624,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 159.99,
+    price: 15999,
 
     brand: 'Michael Kors',
 
@@ -632,7 +632,7 @@ export const products2 = [
       'Amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ut nemo delectus commodi harum ducimus fuga! Eius, at blanditiis quod quam nobis temporibus neque deleniti accusamus quis officiis excepturi sapiente inventore magnam reiciendis laudantium? Aliquam, quas animi soluta at itaque neque voluptatem nostrum fugiat porro voluptate doloremque odio culpa vero ratione quo quia vel voluptates repellendus a eius sit ducimus qui! Enim, earum modi, eveniet atque amet nam, autem consequatur repellat non reiciendis deserunt harum illo temporibus error. Ut nihil quos officiis eum molestias corrupti, adipisci veniam aut tempore! Vitae suscipit cumque voluptates itaque labore laborum voluptas in blanditiis aliquam minima et vel qui fugit ad maiores culpa quo, quod optio provident sapiente quisquam! Nesciunt fugit esse quae possimus dolor iure cum minus fugiat tempora, voluptatibus iusto. Excepturi, voluptate dignissimos porro assumenda officia deserunt rem dolorum quod ab alias odio nam fugit nulla incidunt aspernatur! Neque ',
     category: 'handbag',
     inStock: true,
-    salePrice: 99.99,
+    salePrice: 9999,
     isOnSale: true,
 
     isNewItem: true,
@@ -662,7 +662,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 279.99,
+    price: 27999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -713,7 +713,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 49.99,
+    price: 4999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -750,7 +750,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 149.99,
+    price: 14999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -787,14 +787,14 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 180.99,
+    price: 18099,
     brand: 'Michael Kors',
 
     descriptionLong:
       'Amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ut nemo delectus commodi harum ducimus fuga! Eius, at blanditiis quod quam nobis temporibus neque deleniti accusamus quis officiis excepturi sapiente inventore magnam reiciendis laudantium? Aliquam, quas animi soluta at itaque neque voluptatem nostrum fugiat porro voluptate doloremque odio culpa vero ratione quo quia vel voluptates repellendus a eius sit ducimus qui! Enim, earum modi, eveniet atque amet nam, autem consequatur repellat non reiciendis deserunt harum illo temporibus error. Ut nihil quos officiis eum molestias corrupti, adipisci veniam aut tempore! Vitae suscipit cumque voluptates itaque labore laborum voluptas in blanditiis aliquam minima et vel qui fugit ad maiores culpa quo, quod optio provident sapiente quisquam! Nesciunt fugit esse quae possimus dolor iure cum minus fugiat tempora, voluptatibus iusto. Excepturi, voluptate dignissimos porro assumenda officia deserunt rem dolorum quod ab alias odio nam fugit nulla incidunt aspernatur! Neque ',
     category: 'watch',
     inStock: true,
-    salePrice: 140.99,
+    salePrice: 14099,
     isOnSale: true,
 
     isNewItem: false,
@@ -833,7 +833,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 359.99,
+    price: 35999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -880,7 +880,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 199.99,
+    price: 19999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -927,7 +927,7 @@ export const products2 = [
     description:
       'Short Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio sit ut, possimus itaque numquam accusamus et culpa aliquam dicta laudantium, quam voluptas eveniet autem expedita esse',
 
-    price: 89.99,
+    price: 8999,
     brand: 'Michael Kors',
 
     descriptionLong:
@@ -992,7 +992,7 @@ export const products2 = [
         productId: '648437b38c44d52b9542e340',
         rating: 5,
         comment: 'I really liked it!!',
-        createdDate: '2023-06-26T14:30:40.998Z',
+        createdDate: '2023-06-26T14:30:40998Z',
         user: {
           id: '6475af156bad4917456e6e1e',
           name: 'Charles',

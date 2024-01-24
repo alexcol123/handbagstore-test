@@ -28,7 +28,7 @@ const ItemContent = ({ item }) => {
         <Link href={`/product/${item.id}`}>
           <div className='relative w-20 aspect-square hover:scale-105'>
             <Image
-              src={item.selectedImage}
+              src={item.selectedImg}
               alt={item.name}
               fill
               className=' object-contain'

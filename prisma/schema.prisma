@@ -65,14 +65,15 @@ type CartProductType {
   description String
   category    String
   brand       String
-  selectedImg Image
+  selectedImg String
   quantity    Int
   price       Float
+  size        String
 }
 
-type Image {
-  image String
-}
+// type Image {
+//   image String
+// }
 
 type Address {
   city        String

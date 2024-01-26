@@ -9,9 +9,10 @@ import MyButton from '../../components/MyButton'
 import { formatPrice } from '../../../utils/formatPrice'
 import { useRouter } from 'next/navigation'
 
-const CartClient = () => {
+const CartClient = ({ currentUser }) => {
+  // console.log(currentUser)
 
-const router = useRouter()
+  const router = useRouter()
 
   const { cartProducts, handleClearCart, cartTotalAmount } = useCart()
 
@@ -71,18 +72,23 @@ const router = useRouter()
           <p className='text-slate-500/80'>
             Taxes and Shipping calculated at checkout
           </p>
-
+          {/* 
           <MyButton
             label={'Checkout'}
             outline={false}
             onClick={() => {router.push('/checkout')}}
             // onClick={() => { currentUser ? router.push('/checkout'): router.push('/login')}}
+          /> */}
+
+          <MyButton
+            label={currentUser ? 'Checkout' : 'Login to Checkout'}
+            outline={false}
+            onClick={() => {
+              currentUser ? router.push('/checkout') : router.push('/login')
+            }}
           />
 
-          <Link
-            href='/'
-            className='flex items-center gap-1 border px-3 py-1  rounded-md border-primary/40 mt-12 transition duratin-300 hover:border-primary'
-          >
+          <Link href='/' className='btn btn-outline btn-primary btn-sm mt-4'>
             <MdArrowBack />
             <span>Continue Shopping</span>
           </Link>

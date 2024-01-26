@@ -80,6 +80,12 @@ export async function POST(request) {
         }),
       ])
 
+      console.log('1 existing order ======================     ============================================  >>>>>>>>>>>>>>>>>>>>')
+      console.log(existing_order)
+
+      console.log('2 update order  ======================     ============================================  >>>>>>>>>>>>>>>>>>>> ')
+      console.log(update_order)
+
       if (!existing_order) {
         return NextResponse.json(
           { error: 'Invalid Payment Intent' },
@@ -89,6 +95,7 @@ export async function POST(request) {
 
       return NextResponse.json({ paymentIntent: updated_intent })
     }
+ 
   } else {
     // Create the intent
 
@@ -100,9 +107,14 @@ export async function POST(request) {
     // create the order
     orderData.paymentIntentId = paymentIntent.id
 
-    await prisma.order.create({
+   const createdOrder =  await prisma.order.create({
       data: orderData,
     })
+
+
+
+    console.log('3 created order  ======================     ============================================  >>>>>>>>>>>>>>>>>>>> ')
+    console.log(createdOrder)
 
     return NextResponse.json({ paymentIntent })
   }

@@ -122,7 +122,7 @@ const ProductDetails = ({ product }) => {
             <ProductPrice
               price={product.price}
               isOnSale={product.isOnSale}
-              salePrice={product.salePrice}
+              previousPrice={product.previousPrice}
               fontSize='text-md'
             />
           </div>

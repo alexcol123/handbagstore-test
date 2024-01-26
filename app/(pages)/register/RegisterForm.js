@@ -85,13 +85,15 @@ const RegisterForm = ({ currentUser }) => {
       </div>
 
       <MyButton
-        btnBGColor='bg-orange-400 '
+        btnBGColor='bg-orange-500 '
+        btnTextColor={'text-gray-50'}
         label={'Continue with Google'}
         icon={AiOutlineGoogle}
         onClick={() => {
           signIn('google')
         }}
       />
+
 
 
       <div className='divider'>OR</div>

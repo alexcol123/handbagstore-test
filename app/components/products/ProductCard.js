@@ -20,13 +20,11 @@ const ProductCard = ({ product }) => {
         />
         {/* Optional items absolute  */}
         <div className='absolute top-5 right-5'>
-          <ProductSaleBadge isOnSale={product.isOnSale}/>
+          <ProductSaleBadge isOnSale={product.isOnSale} />
         </div>
 
         <div className=' relative px-5  flex  flex-col   gap-1 my-4 flex-grow    '>
-          <h2 className='w-full  '>
-            {truncateText(product.brand, 22)}
-          </h2>
+          <h2 className='w-full  '>{truncateText(product.brand, 22)}</h2>
           <h2 className=' text-xs md:text-sm font-light opacity-80 '>
             {truncateText(product.name, 50)}
           </h2>
@@ -34,7 +32,7 @@ const ProductCard = ({ product }) => {
           <ProductPrice
             price={product.price}
             isOnSale={product.isOnSale}
-            salePrice={product.salePrice}
+            previousPrice={product.previousPrice}
             fontSize='text-sm'
           />
 

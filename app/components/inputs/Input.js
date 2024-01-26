@@ -12,7 +12,7 @@ const Input = ({ id, label, type, disabled, register, required, errors }) => {
   return (
     <form className='w-full  relative'>
       <input
-        autoComplete='off'
+        // autoComplete='off'
         id={id}
         disabled={disabled}
         {...register(id, { required })}
@@ -23,8 +23,7 @@ const Input = ({ id, label, type, disabled, register, required, errors }) => {
       w-full 
       p-4
       pt-6
-  
-      border-2 
+      border
       rounded-box
       transition 
      disabled:opacity-70

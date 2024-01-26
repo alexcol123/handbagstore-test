@@ -11,19 +11,23 @@ const MyButton = ({
   onClick,
   isLoading,
   btnBGColor,
+  btnTextColor,
 }) => {
-
   return (
     <button
       onClick={onClick}
       disabled={disabled}
       className={` btn btn-block transition duration-300 flex items-center justify-center gap-8 text-center	btn-primary 
-       ${btnBGColor ? btnBGColor : 'btn-primary'}
+       ${btnBGColor && `btn-neutral ${btnBGColor} hover:border hover:border-primary `}
+       ${btnTextColor && `${btnTextColor}`}
+   
        ${isLoading && 'btn-loading opacity-70 disabled'}
 
-       ${outline &&  'btn-outline'}
-       ${small &&  'btn-small w-fit'}
+       ${outline && 'btn-outline'}
+       ${small && 'btn-small w-fit'}
 
+
+     
 
 
     `}

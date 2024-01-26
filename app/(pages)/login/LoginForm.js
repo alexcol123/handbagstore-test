@@ -73,7 +73,8 @@ const LoginForm = ({ currentUser }) => {
       </div>
 
       <MyButton
-        btnBGColor='bg-orange-400 '
+        btnBGColor='bg-orange-500 '
+        btnTextColor={'text-gray-50'}
         label={'Continue with Google'}
         icon={AiOutlineGoogle}
         onClick={() => {
@@ -107,9 +108,10 @@ const LoginForm = ({ currentUser }) => {
       />
 
       <MyButton
-        label={isLoading ? 'Loading' : 'Sign Up'}
+        label={isLoading ? 'Loading' : 'Login'}
         onClick={handleSubmit(onSubmit)}
         isLoading={isLoading}
+
       />
 
       <p className='text-sm mt-3 mb-8'>

@@ -1,16 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useCart } from '../../../hooks/useCart'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+
+import CheckoutForm from './CheckoutForm'
+
+import { Elements } from '@stripe/react-stripe-js'
+import { StripeElementsOptions, loadStripe } from '@stripe/stripe-js'
+import MyButton from '../../components/MyButton'
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 const CheckoutClient = () => {
   const router = useRouter()
 
   const { cartProducts, paymentIntent, handleSetPaymentIntent } = useCart()
 
-  console.log(cartProducts)
+  // console.log(cartProducts)
 
   const [loading, setloading] = useState(false)
   const [error, setError] = useState(false)
@@ -18,8 +26,7 @@ const CheckoutClient = () => {
 
   const [paymentSuccess, setPaymentSuccess] = useState(false)
 
-  console.log('Payment Intent', paymentIntent)
-  console.log('Client Secret', clientSecret)
+  console.log('client secret', clientSecret)
 
   useEffect(() => {
     // create a payment intent as soon as page loads
@@ -36,7 +43,6 @@ const CheckoutClient = () => {
         }),
       })
         .then((res) => {
-          console.log(' res from  post req',res)
           setloading(false)
           if (res.status === 401) {
             return router.push('/login')
@@ -44,20 +50,63 @@ const CheckoutClient = () => {
           return res.json()
         })
         .then((data) => {
-          console.log('data   ================================>>>')
-          console.log(data)
           setClientSecret(data.paymentIntent.client_secret)
           handleSetPaymentIntent(data.paymentIntent.id)
         })
         .catch((error) => {
           setError(true)
-          console.log('Error', error)
-          toast.error('Something went wrong')
+          console.log('Error', { error })
+          // toast.error('Something went wrong')
         })
     }
   }, [cartProducts, paymentIntent])
 
-  return <div>Checkout</div>
+  const options = {
+    clientSecret,
+    appearance: {
+      theme: 'stripe',
+      labels: 'floating',
+    },
+  }
+
+  const handleSetPaymentSuccess = useCallback((value) => {
+    setPaymentSuccess(value)
+  }, [])
+
+  return (
+    <div className='w-full'>
+      {clientSecret && cartProducts && (
+        <Elements options={options} stripe={stripePromise}>
+          <CheckoutForm
+            clientSecret={clientSecret}
+            handleSetPaymentSuccess={handleSetPaymentSuccess}
+          />
+        </Elements>
+      )}
+
+      {loading && <div className='text-center'> Loading Checkout...</div>}
+      {error && (
+        <div className='text-center text-rose-500'>
+          {' '}
+          Something went wrong...{' '}
+        </div>
+      )}
+      {paymentSuccess && (
+        <div className='flex items-center flex-col gap-4 my-8 '>
+          <div className='text-center font-semibold text-lg md:text-xl my-8'>
+            {' '}
+            Congratulations your Payment was Success
+          </div>
+          <div className='max-w-[220px] w-full'>
+            <MyButton
+              label='View Your Orders'
+              onClick={() => router.push('/orders')}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default CheckoutClient

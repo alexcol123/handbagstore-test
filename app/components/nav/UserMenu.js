@@ -4,12 +4,15 @@ import { signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser } from 'react-icons/fa'
 
 import toast from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 
 const UserMenu = ({ currentUser }) => {
   // console.log(currentUser)
+
+  const router = useRouter()
 
   return (
     <div className='dropdown dropdown-end mr-4'>
@@ -27,10 +30,7 @@ const UserMenu = ({ currentUser }) => {
               alt='avatar'
             />
           ) : (
-            <FaRegUser
-              size={20}
-              className='h-full w-full p-2 '
-            />
+            <FaRegUser size={20} className='h-full w-full p-2 ' />
           )}
         </div>
       </div>
@@ -43,7 +43,6 @@ const UserMenu = ({ currentUser }) => {
             {' '}
             {/* Logged In */}
             <div>
-        
               <li>
                 <Link href={'/admin'} className='justify-between font-semibold'>
                   Dashboard
@@ -68,7 +67,9 @@ const UserMenu = ({ currentUser }) => {
               <li>
                 <div
                   onClick={() => {
-                    signOut()
+                    signOut().then(() => {
+                      router.push("/"); // Redirect to the dashboard page after signing out
+                  });
                   }}
                   className='justify-between  font-semibold  mt-4 bg-primary/80 text-primary-content hover:bg-primary/100  '
                 >
@@ -81,7 +82,6 @@ const UserMenu = ({ currentUser }) => {
           <>
             {/* Not logged In */}
             <div>
-         
               <li>
                 <Link href={'/login'} className='justify-between font-semibold'>
                   Login

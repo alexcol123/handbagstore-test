@@ -31,6 +31,7 @@ const ItemContent = ({ item }) => {
               src={item.selectedImg}
               alt={item.name}
               fill
+              sizes='35vw'
               className=' object-contain'
             />
           </div>

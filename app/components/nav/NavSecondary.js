@@ -2,24 +2,27 @@ import Link from 'next/link'
 import ThemeToggle from '../ThemeToggle'
 
 const NavSecondary = ({ categoriesLinks }) => {
-  // console.log(categoriesLinks)
   return (
     <div>
-      <div className='flex md:hidden items-center justify-center p-1'>
-        {' '}
-        <ThemeToggle />
-      </div>
-      <ul className='hidden md:flex items-center justify-center gap-2 md:gap-5 p-1 text-sm  uppercase '>
-        {categoriesLinks.map((item) => {
+
+      <ul className='flex items-center justify-between gap-2 md:gap-5 p-1 text-sm  uppercase '>
+        {categoriesLinks.map(({ name, href, color, icon: Icon }) => {
           return (
             <Link
-              key={item.name}
-              href={item.href}
+              key={name}
+              href={href}
               className={`py-1 pl-3 hover:text-primary hover:bg-base-100  ${
-                item?.color && 'text-error font-semibold'
+                color && 'text-error font-semibold'
               }`}
             >
-              {item.name}
+              <div className='flex items-center justify-center gap-1'>
+          <span className='hidden md:flex'>      {name}</span>
+                {Icon && (
+                  <span className='text-primary text-xl md:text-sm'>
+                    <Icon  />
+                  </span>
+                )}
+              </div>
             </Link>
           )
         })}

@@ -43,6 +43,19 @@ const UserMenu = ({ currentUser }) => {
             {' '}
             {/* Logged In */}
             <div>
+
+              {/* Only admins can see this */}
+              {currentUser.role === 'ADMIN' && (
+                <li>
+                  <Link
+                    href={'/admin'}
+                    className='justify-between font-semibold text-primary  mb-4 mt-2 transition bg-base-100'
+                  >
+                    Admin-Dashboard
+                  </Link>
+                </li>
+              )}
+
               <li>
                 <Link href={'/admin'} className='justify-between font-semibold'>
                   Dashboard
@@ -68,10 +81,10 @@ const UserMenu = ({ currentUser }) => {
                 <div
                   onClick={() => {
                     signOut().then(() => {
-                      router.push("/"); // Redirect to the dashboard page after signing out
-                  });
+                      router.push('/') // Redirect to the dashboard page after signing out
+                    })
                   }}
-                  className='justify-between  font-semibold  mt-4 bg-primary/80 text-primary-content hover:bg-primary/100  '
+                  className='justify-between  font-semibold  mt-4 bg-primary text-primary-content  hover:bg-primary/80 '
                 >
                   Logout
                 </div>

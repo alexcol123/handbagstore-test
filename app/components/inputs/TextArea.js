@@ -1,22 +1,30 @@
 'use client'
 
 import React from 'react'
+import {
+  Field,
+  FieldErrors,
+  FieldValues,
+  UseFormRegister,
+} from 'react-hook-form'
 
-const Input = ({ id, label, type, disabled, register, required, errors }) => {
+const TextArea = ({ id, label, disabled, register, required, errors }) => {
   return (
     <div className='w-full  relative'>
-      <input
-        autoComplete='on'
+      <textarea
+
         id={id}
         disabled={disabled}
         {...register(id, { required: `${label}, Is required` })}
         placeholder=''
-        type={type}
+  
         className={`
         peer
       w-full 
       p-4
       pt-6
+      max-h-[160px]
+      min-h-[120px]
       border
       rounded-box
       transition 
@@ -32,11 +40,10 @@ const Input = ({ id, label, type, disabled, register, required, errors }) => {
         `}
         htmlFor={id}
       >
-      
-        {errors[id]?.message ? errors[id].message : label}
+    {errors[id]?.message ? errors[id].message : label}
       </label>
     </div>
   )
 }
 
-export default Input
+export default TextArea

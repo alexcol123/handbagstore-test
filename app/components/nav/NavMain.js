@@ -1,18 +1,14 @@
-'use client'
 import NavSearch from './NavSearch'
 import { FaSearch } from 'react-icons/fa'
 import { Redressed } from 'next/font/google'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useCart } from '../../../hooks/useCart'
 import { formatPrice } from '../../../utils/formatPrice'
 import MyLogo from '../MyLogo'
 import UserMenu from './UserMenu'
-
-import { BsCart3 } from 'react-icons/bs'
+import NavCart from './NavCart'
 
 const NavMain = ({ categoriesLinks, currentUser }) => {
-  const { cartTotalAmount, cartTotalQty } = useCart()
   return (
     <div className='navbar bg-base-300 '>
       {/* Nav Start  */}
@@ -49,37 +45,7 @@ const NavMain = ({ categoriesLinks, currentUser }) => {
         </div>
 
         {/* Cart */}
-
-        <div className='dropdown dropdown-end mr-4'>
-          <div tabIndex={0} role='button' className='btn btn-ghost btn-circle'>
-            <div className='indicator'>
-              <BsCart3 size={22} />
-
-              {cartTotalQty >= 1 && (
-                <span className='badge badge-sm indicator-item border-primary  text-xs  '>
-                  {cartTotalQty}
-                </span>
-              )}
-            </div>
-          </div>
-
-          <div
-            tabIndex={0}
-            className='mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-300 shadow'
-          >
-            <div className='card-body'>
-              <span className='font-bold text-lg'>
-                {cartTotalQty} {cartTotalQty === 1 ? 'Item' : 'Items'}
-              </span>
-              <span className=''>Subtotal: {formatPrice(cartTotalAmount)}</span>
-              <div className='card-actions'>
-                <Link href='/cart' className='btn btn-primary btn-block'>
-                  View cart
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <NavCart />
 
         {/* Avatar */}
         <UserMenu currentUser={currentUser} />
@@ -105,16 +71,24 @@ const NavMain = ({ categoriesLinks, currentUser }) => {
             tabIndex={0}
             className='menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-300 rounded-box w-52 space-y-4 p-6'
           >
-            {categoriesLinks.map((item) => {
+            {categoriesLinks.map(({ name, href, color, icon: Icon }) => {
               return (
                 <Link
-                  key={item.name}
-                  href={item.href}
-                  className={` py-1 pl-3 hover:text-primary  ${
-                    item.color && 'text-error font-semibold'
+                  key={name}
+                  href={href}
+                  className={` py-1 pl-3 hover:text-primary hover:bg-base-100 transition duration-300 rounded-box  ${
+                    color && 'text-error font-semibold '
                   }`}
                 >
-                  <div>{item.name}</div>
+                  <div className='flex items-center gap-2'>
+                    {name}
+                    {Icon && (
+                      <span className='text-primary'>
+                        {' '}
+                        <Icon />
+                      </span>
+                    )}
+                  </div>
                 </Link>
               )
             })}

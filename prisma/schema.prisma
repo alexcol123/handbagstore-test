@@ -42,6 +42,42 @@ model User {
 
   accounts Account[]
   orders   Order[]
+  reviews  Review[]
+}
+
+model Product {
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  description   String
+  price         Float
+  previousPrice Float?        @default(0)
+  brand         String
+  category      String
+  inStock       Int
+  color         String?
+  isOnSale      OnSale        @default(no)
+  size          String?
+  measurements  String?
+  images        imageFormat[]
+
+  adminProductCostAndExpenses Float   @default(0)
+  showInStore                 Boolean @default(true)
+
+  reviews Review[]
+}
+
+model Review {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+
+  productId String?  @db.ObjectId
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Product Product? @relation(fields: [productId], references: [id])
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Order {
@@ -84,7 +120,19 @@ type Address {
   state       String
 }
 
+type imageFormat {
+  image   String
+  preview String
+  path    String
+}
+
 enum Role {
   USER
   ADMIN
+}
+
+enum OnSale {
+  no
+  sale
+  clearance
 }

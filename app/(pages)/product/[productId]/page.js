@@ -1,6 +1,6 @@
-import { products } from '../../../../utils/products'
 import ListRating from './ListRating'
 import ProductDetails from './ProductDetails'
+import getProductsById from '../../../../actions/getProductById'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,10 +20,11 @@ export const metadata = {
   },
 }
 
-const ProductPage = ({ params }) => {
-  const product = products.find((p) => p.id === params.productId)
+const ProductPage = async ({ params }) => {
 
-  // console.log(product)
+let productId = params.productId
+
+  const product = await getProductsById(productId)
 
   if (!product || product === undefined)
     return (
@@ -38,6 +39,7 @@ const ProductPage = ({ params }) => {
       <div className='flex flex-col mt-20 gap-4'>
         <div>Add Rating</div>
         {/* Next share */}
+        
 
         <ListRating product={product} />
       </div>

@@ -14,6 +14,7 @@ import MyButton from '../../../components/MyButton'
 import ProductImages from '../../../components/products/ProductImages'
 import { useCart } from '../../../../hooks/useCart'
 import Share from './Share'
+import NoImage from '../../../../public/noimg.jpg'
 
 import { usePathname } from 'next/navigation'
 
@@ -30,7 +31,7 @@ const ProductDetails = ({ product }) => {
 
   const { handleAddProductToCart, cartProducts } = useCart()
 
-  const productRating = product?.reviews.reduce(
+  const productRating = product?.reviews?.reduce(
     (acc, item) => (acc += item.rating / product.reviews.length),
     0
   )
@@ -53,7 +54,7 @@ const ProductDetails = ({ product }) => {
   }, [cartProducts, product.id])
 
   const Horizontal = () => {
-    return <hr className='w-60 opacity-80' />
+    return <hr className='w-[99%] opacity-80' />
   }
 
   const [cartProduct, setcartProduct] = useState({
@@ -62,7 +63,7 @@ const ProductDetails = ({ product }) => {
     description: product.description,
     category: product.category,
     brand: product.brand,
-    selectedImg: product.images[0],
+    selectedImg: product.images.length ? product.images[0].image : NoImage,
     quantity: 1,
     price: product.price,
     size: product.size,
@@ -81,10 +82,8 @@ const ProductDetails = ({ product }) => {
     })
   }
 
-  const cartCounter = () => {}
-
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 rounded  border overflow-hidden '>
+    <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 rounded  border overflow-hidden  '>
       {/* Images */}
 
       <ProductImages product={product} cartProduct={cartProduct} />
@@ -95,7 +94,7 @@ const ProductDetails = ({ product }) => {
         <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
 
         {/* Share  */}
-        <div>{url !== null && <Share url={url} />}</div>
+        {/* <div>{url !== null && <Share url={url} />}</div> */}
 
         <div className='badge badge-neutral uppercase px-4 py-1'>
           {product.brand}
@@ -112,11 +111,11 @@ const ProductDetails = ({ product }) => {
         </div>
 
         <Horizontal />
-        <div className='text-base  md:text-lg text-justify opacity-80 leading-5 md:leading-normal '>
+        <div className='  md:text-md   text-justify opacity-80 leading-5 md:leading-normal max-w-[96%]'>
           {product.description}
         </div>
         <Horizontal />
-        <div className='text-sm  md:text-lg'>
+        <div className='text-sm  md:text-md'>
           <div className='flex items-center '>
             <span className='font-semibold mr-2 '>Price:</span>
             <ProductPrice
@@ -183,10 +182,7 @@ const ProductDetails = ({ product }) => {
           </>
         ) : (
           <>
-            <Horizontal />
-            <div>Quantity</div>
             <SetQuantity
-              cartCounter={cartCounter}
               cartProduct={cartProduct}
               handleQtyIncrease={handleQtyIncrease}
               handleQtyDecrease={handleQtyDecrease}

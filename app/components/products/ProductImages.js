@@ -2,18 +2,21 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import ProductSaleBadge from './ProductSaleBadge'
+import NoImage from '../../../public/noimg.jpg'
 
 const ProductImages = ({ cartProduct, product }) => {
-
-// console.log(product)
+  // console.log(product)
 
   const [curImg, setcurImg] = useState(0)
 
-
   return (
-    <div className='flex flex-col md:flex-row  gap-4 p-2'>
+    <div className='flex flex-col md:flex-row  gap-4 p-2      lg:max-h-[900px]  '>
       {/*  Image scroll */}
-      <div className='flex flex-row md:flex-col order-last md:order-first  items-center gap-2 md:gap-2 lg:gap-3 max-h-[600px]  w-fit   md:overflow-y-scroll  '>
+      <div
+        className='flex flex-row md:flex-col order-last md:order-first   items-center gap-2 md:gap-2 lg:gap-3  w-fit    
+ 
+      '
+      >
         {product.images.map((img, i) => {
           // console.log(img)
 
@@ -27,11 +30,11 @@ const ProductImages = ({ cartProduct, product }) => {
               } `}
             >
               <Image
-                src={img}
+                src={img.image}
                 height={200}
                 width={140}
                 alt='product'
-                className='w-20  h-full object-cover min-w-12 '
+                className='w-20  h-full object-cover min-w-12 transition duration-300  hover:scale-125  '
               />
             </div>
           )
@@ -40,41 +43,44 @@ const ProductImages = ({ cartProduct, product }) => {
 
       {/* Main */}
 
-      <div className='carousel w-full'>
-        <div className='carousel-item relative w-full flex '>
-          <div className='relative overflow-hidden h-fit '>
-            <Image
-              priority
-              src={product.images[curImg]}
-              height={700}
-              width={600}
-              alt='product'
-              className=' min-w-full h-[400px]  md:h-[600px]  lg:h-[700px] object-cover object-bottom transition duration-300  hover:scale-110    '
-            />
-          </div>
-          <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 '>
-            <a
-              onClick={() =>
-                curImg === 0
-                  ? setcurImg(product.images.length - 1)
-                  : setcurImg(curImg - 1)
-              }
-              className='btn btn-circle'
-            >
-              ❮
-            </a>
+      <div className='flex items-center justify-center'>
+        <div className='carousel w-full  '>
+          <div className='carousel-item relative w-full h-full flex   '>
+            <div className='relative overflow-hidden h-fit  '>
+              <Image
+                priority
+                src={
+                  product.images.length ? product.images[curImg].image : NoImage
+                }
+                height={850}
+                width={800}
+                alt='product'
+                className=' min-w-full min-h-full   object-cover object-center transition duration-300  hover:scale-110    '
+              />
+            </div>
+            <div className='absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2  '>
+              <div
+                onClick={() =>
+                  curImg === 0
+                    ? setcurImg(product.images.length - 1)
+                    : setcurImg(curImg - 1)
+                }
+                className='btn btn-circle bg-base-100  '
+              >
+                ❮
+              </div>
 
-            <a
-              onClick={() =>
-                curImg === product.images.length - 1
-                  ? setcurImg(0)
-                  : setcurImg(curImg + 1)
-              }
-              className='btn btn-circle'
-            >
-              {' '}
-              ❯
-            </a>
+              <div
+                onClick={() =>
+                  curImg === product.images.length - 1
+                    ? setcurImg(0)
+                    : setcurImg(curImg + 1)
+                }
+                className='btn btn-circle bg-base-100'
+              >
+                ❯
+              </div>
+            </div>
           </div>
         </div>
       </div>

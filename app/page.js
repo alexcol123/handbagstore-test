@@ -1,13 +1,18 @@
-import { products } from '../utils/products'
+//  import { products } from '../utils/products'
 import Hero from './components/Hero'
 import ProductCard from './components/products/ProductCard'
 import { truncateText } from '../utils/truncateText'
+import getProducts from '../actions/getProducts'
 
 
 // webhook stripe = stripe listen --forward-to localhost:3000/api/stripe-webhook
 
 
-export default function Home() {
+export default async function Home () {
+
+
+   const products = await getProducts({ category: null })
+
   return (
     
     <div className= 'max-w-screen-2xl mx-auto p-2 lg:p-1  '>

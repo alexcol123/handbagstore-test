@@ -3,7 +3,7 @@
 import React from 'react'
 
 const SetQuantity = ({
-  cartCounter,
+
   cartProduct,
   handleQtyIncrease,
   handleQtyDecrease,
@@ -12,8 +12,8 @@ const SetQuantity = ({
 const btnStyles = 'btn btn-sm  btn-outline  hover:bg-primary duration-300 font-bold'
 
   return (
-    <div className='flex gap-8  items-center text-base  md:text-lg'>
-      {cartCounter ? null : <div className='font-semibold'>QUANTITY:</div>}
+    <div className='flex  gap-8  items-center text-base  md:text-lg'>
+    <div className='font-semibold'>QUANTITY:</div>
       <div className='flex gap-2 md:gap-4 items-center text-center'>
         <button
           className={btnStyles}

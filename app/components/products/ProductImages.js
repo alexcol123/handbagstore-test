@@ -26,7 +26,7 @@ const ProductImages = ({ cartProduct, product }) => {
               onClick={() => setcurImg(+i)}
               className={`${
                 i === curImg &&
-                'rounded-sm  border-2 border-primary/60  transition duration-300 '
+                'rounded-sm  border-2 border-primary  transition duration-300 p-[1px]'
               } `}
             >
               <Image
@@ -34,7 +34,7 @@ const ProductImages = ({ cartProduct, product }) => {
                 height={200}
                 width={140}
                 alt='product'
-                className='w-20  h-full object-cover min-w-12 transition duration-300  hover:scale-125  '
+                className='w-20  h-full object-contain min-w-12 transition duration-300  hover:scale-90   '
               />
             </div>
           )
@@ -55,7 +55,7 @@ const ProductImages = ({ cartProduct, product }) => {
                 height={850}
                 width={800}
                 alt='product'
-                className=' min-w-full min-h-full   object-cover object-center transition duration-300  hover:scale-110    '
+                className='   object-contain object-center transition duration-300  hover:scale-110    '
               />
             </div>
             <div className='absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2  '>

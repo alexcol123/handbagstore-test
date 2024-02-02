@@ -83,123 +83,129 @@ const ProductDetails = ({ product }) => {
   }
 
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 rounded  border overflow-hidden  '>
-      {/* Images */}
+    <div>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-10 rounded  border overflow-hidden  '>
+        {/* Images */}
 
-      <ProductImages product={product} cartProduct={cartProduct} />
+        <ProductImages product={product} cartProduct={cartProduct} />
 
-      {/* Details */}
+        {/* Details */}
 
-      <div className='flex flex-col  items-start justify-center  gap-3 md:gap-4  p-2 md:p-3'>
-        <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
-
-        {/* Share  */}
-        {/* <div>{url !== null && <Share url={url} />}</div> */}
+        <div className='flex flex-col  items-start justify-center  gap-3 md:gap-4  p-2 md:p-3'>
 
         <div className='badge badge-neutral uppercase px-4 py-1'>
-          {product.brand}
-        </div>
-
-        {/* Reviews  */}
-
-        <div className='flex items-center justify-center gap-4 '>
-          {/* <Ratings productRating={productRating} /> */}
-          {productRating > 0 && (
-            <ProductShowRating productRating={productRating} />
-          )}
-          {product.reviews.length} reviews
-        </div>
-
-        <Horizontal />
-        <div className='  md:text-md   text-justify opacity-80 leading-5 md:leading-normal max-w-[96%]'>
-          {product.description}
-        </div>
-        <Horizontal />
-        <div className='text-sm  md:text-md'>
-          <div className='flex items-center '>
-            <span className='font-semibold mr-2 '>Price:</span>
-            <ProductPrice
-              price={product.price}
-              isOnSale={product.isOnSale}
-              previousPrice={product.previousPrice}
-              fontSize='text-md'
-            />
-          </div>
-
-          <div>
-            <span className='font-semibold mr-2 '>CATEGORY:</span>
-            {product.category}
-          </div>
-          <div>
-            <span className='font-semibold mr-2 '>Brand:</span>
             {product.brand}
           </div>
 
-          {product?.size !== '' && (
-            <div>
-              <span className='font-semibold mr-2 '>Size:</span>
-              {product.size}
-            </div>
-          )}
 
-          {product?.measurements !== '' && (
-            <div>
-              <span className='font-semibold mr-2 '>Measurements:</span>
-              {product.measurements}
-            </div>
-          )}
+          <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
 
-          <div>
-            <span className='font-semibold mr-2 '>Availability:</span>
-            <span
-              className={
-                !product.inStock
-                  ? 'text-red-500'
-                  : 'text-success px-2 rounded-sm  font-semibold'
-              }
-            >
-              {product.inStock ? 'In Stock' : 'Out of Stock'}{' '}
-            </span>
+      
+          {/* Reviews  */}
+
+          <div className='flex items-center justify-center gap-4 '>
+            {/* <Ratings productRating={productRating} /> */}
+            {productRating > 0 && (
+              <ProductShowRating productRating={productRating} />
+            )}
+            {product.reviews.length} reviews
           </div>
-        </div>
-        <Horizontal />
 
-        {isProductInCart ? (
-          <>
+          <Horizontal />
+          <div className='  md:text-md   text-justify opacity-80 leading-5 md:leading-normal max-w-[96%]'>
+            {product.description}
+          </div>
+          <Horizontal />
+          <div className='text-sm  md:text-md'>
+            <div className='flex items-center '>
+              <span className='font-semibold mr-2 '>Price:</span>
+              <ProductPrice
+                price={product.price}
+                isOnSale={product.isOnSale}
+                previousPrice={product.previousPrice}
+                fontSize='text-md'
+              />
+            </div>
+
+            <div>
+              <span className='font-semibold mr-2 '>CATEGORY:</span>
+              {product.category}
+            </div>
+            <div>
+              <span className='font-semibold mr-2 '>Brand:</span>
+              {product.brand}
+            </div>
+
+            {product?.size !== '' && (
+              <div>
+                <span className='font-semibold mr-2 '>Size:</span>
+                {product.size}
+              </div>
+            )}
+
+            {product?.measurements !== '' && (
+              <div>
+                <span className='font-semibold mr-2 '>Measurements:</span>
+                {product.measurements}
+              </div>
+            )}
+
+            <div>
+              <span className='font-semibold mr-2 '>Availability:</span>
+              <span
+                className={
+                  !product.inStock
+                    ? 'text-red-500'
+                    : 'text-success px-2 rounded-sm  font-semibold'
+                }
+              >
+                {product.inStock ? 'In Stock' : 'Out of Stock'}{' '}
+              </span>
+            </div>
+          </div>
+          <Horizontal />
+
+          {isProductInCart ? (
             <>
-              <p className='mb-2 text-primary flex  items-center gap-1'>
-                <MdCheckCircle size={23} className='text-accent ' />
-                <span>Product Added to cart </span>
-              </p>
-              <div className='w-[350px]'>
+              <>
+                <p className='mb-2 text-primary flex  items-center gap-1'>
+                  <MdCheckCircle size={23} className='text-accent ' />
+                  <span>Product Added to cart </span>
+                </p>
+                <div className='w-[350px]'>
+                  <MyButton
+                    onClick={() => router.push('/cart')}
+                    label='View In Cart'
+                    outline
+                  />
+                </div>
+              </>
+            </>
+          ) : (
+            <>
+              <SetQuantity
+                cartProduct={cartProduct}
+                handleQtyIncrease={handleQtyIncrease}
+                handleQtyDecrease={handleQtyDecrease}
+              />
+
+              <Horizontal />
+
+              <div className='w-full my-4 lg:max-w-[400px]'>
                 <MyButton
-                  onClick={() => router.push('/cart')}
-                  label='View In Cart'
-                  outline
+                  label={'Add To Cart'}
+                  onClick={() => {
+                    handleAddProductToCart(cartProduct)
+                  }}
                 />
               </div>
             </>
-          </>
-        ) : (
-          <>
-            <SetQuantity
-              cartProduct={cartProduct}
-              handleQtyIncrease={handleQtyIncrease}
-              handleQtyDecrease={handleQtyDecrease}
-            />
-
-            <Horizontal />
-
-            <div className='w-full lg:max-w-[400px]'>
-              <MyButton
-                label={'Add To Cart'}
-                onClick={() => {
-                  handleAddProductToCart(cartProduct)
-                }}
-              />
-            </div>
-          </>
-        )}
+          )}
+        </div>
+      </div>
+      {/* Share  */}
+      <div className='mt-4  flex items-center justify-center w-full mx-auto px-4 pb-3 border'>
+        {url !== null && <Share url={url} />}
       </div>
     </div>
   )

@@ -12,29 +12,26 @@ const ProductCard = ({ product }) => {
   if (product.isOnSale !== 'no') {
     percentageOff = Math.ceil((product.price / product.previousPrice) * 100)
 
-    console.log(product.previousPrice)
-    console.log(product.price)
-    console.log(percentageOff)
-    console.log('---------')
   }
 
   return (
-    <Link href={`/product/${product.id}`}>
+    <Link  className=''    href={`/product/${product.id}`  
+    }>
       <div
-        className='group relative my-2 flex w-full max-w-xs  rounded flex-col overflow-hidden 
-    border border-base-content/5  hover:shadow-lg
+        className='group relative my-2 flex w-full max-w-xs  rounded flex-col    overflow-hidden 
+    shadow-sm  transition duration-300    hover:shadow-lg
       '
       >
         <div className='relative flex h-72 w-full overflow-hidden'>
           <Image
-            className='absolute top-0 right-0 h-full w-full object-cover object-center   group-hover:scale-105 duration-300'
+            className='absolute top-0 right-0 h-full w-full object-contain object-center   group-hover:scale-105 duration-300'
             src={product.images.length ? product.images[0].image : NoImage}
             alt={product.category}
             fill
           />
         </div>
 
-        <div className='pt-2 pb-5 px-2 bg-base-100'>
+        <div className='pt-2 pb-5 px-2 '>
           <div className=' uppercase text-sm font-semibold mb-2'>
             {' '}
             {truncateText(product.brand, 22)}

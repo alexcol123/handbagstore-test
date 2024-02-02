@@ -2,6 +2,7 @@ import ListRating from './ListRating'
 import ProductDetails from './ProductDetails'
 import getProductsById from '../../../../actions/getProductById'
 
+
 export const dynamic = 'force-dynamic'
 
 // MORE ABOUT METADATA https://www.youtube.com/shorts/MYU_7RK3RHM
@@ -39,7 +40,6 @@ let productId = params.productId
       <div className='flex flex-col mt-20 gap-4'>
         <div>Add Rating</div>
         {/* Next share */}
-        
 
         <ListRating product={product} />
       </div>

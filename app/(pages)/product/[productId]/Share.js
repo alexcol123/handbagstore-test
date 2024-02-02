@@ -1,3 +1,5 @@
+'use client'
+
 // Next share
 import {
   FacebookShareButton,
@@ -21,8 +23,8 @@ import {
 const Share = ({ url }) => {
   // console.log(typeof url)
   return (
-    <div className='bg-base-200/50 py-2 px-4 rounded'>
-      <h2 className='text-center mb-2'>Share on Social Media</h2>
+    <div className='py-2 px-4 rounded'>
+      <h2 className='text-center mb-2 font-semibold'>Share  With Your Friends</h2>
       <div className='flex gap-2'>
         <FacebookShareButton
           url={url}
@@ -41,14 +43,14 @@ const Share = ({ url }) => {
           <PinterestIcon size={32} round />
         </PinterestShareButton>
 
-        <RedditShareButton
+        {/* <RedditShareButton
           url={url}
           title={
             'next-share is a social share buttons for your next React apps.'
           }
         >
           <RedditIcon size={32} round />
-        </RedditShareButton>
+        </RedditShareButton> */}
 
         <TwitterShareButton
           url={url}
@@ -56,7 +58,7 @@ const Share = ({ url }) => {
             'next-share is a social share buttons for your next React apps.'
           }
         >
-          <TwitterIcon size={32} round />
+          <TwitterIcon   size={32} round />
         </TwitterShareButton>
 
         <WhatsappShareButton
@@ -69,9 +71,9 @@ const Share = ({ url }) => {
           <WhatsappIcon size={32} round />
         </WhatsappShareButton>
 
-        <LinkedinShareButton url={url}>
+        {/* <LinkedinShareButton url={url}>
           <LinkedinIcon size={32} round />
-        </LinkedinShareButton>
+        </LinkedinShareButton> */}
 
         <FacebookMessengerShareButton url={url} appId={''}>
           <FacebookMessengerIcon size={32} round />

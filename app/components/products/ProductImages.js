@@ -57,7 +57,12 @@ const ProductImages = ({ cartProduct, product }) => {
                 alt='product'
                 className='   object-contain object-center transition duration-300  hover:scale-110    '
               />
+
+              <div className='absolute top-5 right-3  '>
+                <ProductSaleBadge isOnSale={product.isOnSale} />
+              </div>
             </div>
+
             <div className='absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2  '>
               <div
                 onClick={() =>

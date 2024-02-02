@@ -80,11 +80,6 @@ export async function POST(request) {
         }),
       ])
 
-      console.log('1 existing order ======================     ============================================  >>>>>>>>>>>>>>>>>>>>')
-      console.log(existing_order)
-
-      console.log('2 update order  ======================     ============================================  >>>>>>>>>>>>>>>>>>>> ')
-      console.log(update_order)
 
       if (!existing_order) {
         return NextResponse.json(
@@ -113,8 +108,7 @@ export async function POST(request) {
 
 
 
-    console.log('3 created order  ======================     ============================================  >>>>>>>>>>>>>>>>>>>> ')
-    console.log(createdOrder)
+
 
     return NextResponse.json({ paymentIntent })
   }

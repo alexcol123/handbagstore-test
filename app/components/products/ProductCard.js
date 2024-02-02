@@ -5,30 +5,33 @@ import Link from 'next/link'
 import ProductPrice from './ProductPrice'
 import ProductSaleBadge from './ProductSaleBadge'
 import NoImage from '../../../public/noimg.jpg'
+import ProductIsOnSale from '../../components/products/ProductIsOnSale'
 
 const ProductCard = ({ product }) => {
   let percentageOff = null
 
   if (product.isOnSale !== 'no') {
     percentageOff = Math.ceil((product.price / product.previousPrice) * 100)
-
   }
 
   return (
-    <Link  className=''    href={`/product/${product.id}`  
-    }>
+    <Link className='' href={`/product/${product.id}`}>
       <div
         className='group relative my-2 flex w-full max-w-xs  rounded flex-col    overflow-hidden 
     shadow-sm  transition duration-300    hover:shadow-lg
       '
       >
-        <div className='relative flex h-72 w-full overflow-hidden'>
+        <div className='relative flex h-80 w-full overflow-hidden'>
           <Image
-            className='absolute top-0 right-0 h-full w-full object-contain object-center   group-hover:scale-105 duration-300'
+            className=' h-full w-full object-contain object-center   group-hover:scale-105 duration-300'
             src={product.images.length ? product.images[0].image : NoImage}
             alt={product.category}
             fill
           />
+
+          <div className='absolute top-6 right-3  '>
+            <ProductSaleBadge isOnSale={product.isOnSale} />
+          </div>
         </div>
 
         <div className='pt-2 pb-5 px-2 '>
@@ -49,28 +52,11 @@ const ProductCard = ({ product }) => {
               fontSize='text-xs'
             />
 
-            {product.isOnSale === 'sale' && (
-              <h2 className='text-error uppercase'>Limited Time Sale</h2>
-            )}
-
-            {product.isOnSale === 'clearance' && (
-              <h2 className='text-primary uppercase'>
-                {percentageOff >= 20 ? (
-                  <>{`Clearance  ${percentageOff}% off`} </>
-                ) : (
-                  <> On Clearance</>
-                )}
-              </h2>
-            )}
-
-            {product.isOnSale === 'no' && (
-              <h2 className='text-transparent uppercase'>no</h2>
-            )}
+            <ProductIsOnSale
+              onSale={product.isOnSale}
+              percentageOff={percentageOff}
+            />
           </div>
-        </div>
-
-        <div className='absolute top-2 right-1  '>
-          <ProductSaleBadge isOnSale={product.isOnSale} />
         </div>
       </div>
     </Link>

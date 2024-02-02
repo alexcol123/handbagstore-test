@@ -26,7 +26,7 @@ const CheckoutClient = () => {
 
   const [paymentSuccess, setPaymentSuccess] = useState(false)
 
-  console.log('client secret', clientSecret)
+  // console.log('client secret', clientSecret)
 
   useEffect(() => {
     // create a payment intent as soon as page loads

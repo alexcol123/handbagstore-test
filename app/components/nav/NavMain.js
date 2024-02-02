@@ -10,7 +10,7 @@ import NavCart from './NavCart'
 
 const NavMain = ({ categoriesLinks, currentUser }) => {
   return (
-    <div className='navbar bg-base-300 '>
+    <div className='navbar  '>
       {/* Nav Start  */}
       <div className='navbar-start '>
         <div className=' text-primary text:sm md:text-2xl '>

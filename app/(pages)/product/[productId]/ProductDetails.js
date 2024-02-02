@@ -17,11 +17,18 @@ import Share from './Share'
 import NoImage from '../../../../public/noimg.jpg'
 
 import { usePathname } from 'next/navigation'
+import ProductIsOnSale from '../../../components/products/ProductIsOnSale'
 
 const ProductDetails = ({ product }) => {
   const pathname = usePathname()
 
   const [url, seturl] = useState(null)
+
+  let percentageOff = null
+
+  if (product.isOnSale !== 'no') {
+    percentageOff = Math.ceil((product.price / product.previousPrice) * 100)
+  }
 
   useEffect(() => {
     if (window !== undefined) {
@@ -92,15 +99,12 @@ const ProductDetails = ({ product }) => {
         {/* Details */}
 
         <div className='flex flex-col  items-start justify-center  gap-3 md:gap-4  p-2 md:p-3'>
-
-        <div className='badge badge-neutral uppercase px-4 py-1'>
+          <div className='badge badge-neutral uppercase px-4 py-1'>
             {product.brand}
           </div>
 
-
           <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
-
-      
+   
           {/* Reviews  */}
 
           <div className='flex items-center justify-center gap-4 '>
@@ -112,9 +116,14 @@ const ProductDetails = ({ product }) => {
           </div>
 
           <Horizontal />
+          <ProductIsOnSale
+              onSale={product.isOnSale}
+              percentageOff={percentageOff}
+            />
           <div className='  md:text-md   text-justify opacity-80 leading-5 md:leading-normal max-w-[96%]'>
             {product.description}
           </div>
+          
           <Horizontal />
           <div className='text-sm  md:text-md'>
             <div className='flex items-center '>
@@ -204,7 +213,7 @@ const ProductDetails = ({ product }) => {
         </div>
       </div>
       {/* Share  */}
-      <div className='mt-4  flex items-center justify-center w-full mx-auto px-4 pb-3 border'>
+      <div className='mt-12  flex items-center justify-center w-full mx-auto px-4 pb-3 border'>
         {url !== null && <Share url={url} />}
       </div>
     </div>

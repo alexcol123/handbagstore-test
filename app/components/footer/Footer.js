@@ -11,7 +11,7 @@ const Footer = () => {
     <div className='bg-base-300 mt-8'>
       <div className='container mx-auto'>
         <footer className='flex   justify-between py-12  text-xs md:text-base'>
-          <nav className='flex flex-col items-center gap-2  w-full '>
+          {/* <nav className='flex flex-col items-center gap-2  w-full '>
             <div className='flex flex-col gap-2'>
               <header className='font-bold uppercase text-primary'>
                 Services
@@ -31,13 +31,13 @@ const Footer = () => {
               <a className='link link-hover'>Jobs</a>
               <a className='link link-hover'>Press kit</a>
             </div>
-          </nav>
+          </nav> */}
 
           <nav className='flex flex-col items-center gap-2  w-full '>
             <header className='font-bold uppercase text-primary'>
               Follow Us
             </header>
-            <div className='flex gap-4 '>
+            <div className='flex gap-6 '>
               <a>
                 <FaFacebook size={20} />
               </a>

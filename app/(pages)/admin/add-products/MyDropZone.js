@@ -15,7 +15,7 @@ const MyDropZone = ({ setimagesArr, isProductCreated }) => {
     },
     onDrop: (acceptedFiles) => {
 
-      console.log(acceptedFiles)
+      // console.log(acceptedFiles)
       setFiles(
         acceptedFiles.map((file) =>
           Object.assign(file, {

@@ -7,7 +7,8 @@ import { formatPrice } from '../../../../utils/formatPrice'
 import ActionBtn from '../manage-products/ActionBtn'
 import NoImg from '../../../../public/noimg.jpg'
 import { useCallback } from 'react'
-import Status from '../manage-products/Status'
+import Status from '../../../components/Status'
+
 import {
   MdAccessTimeFilled,
   MdDeliveryDining,
@@ -16,6 +17,9 @@ import {
 } from 'react-icons/md'
 
 import { VscError } from 'react-icons/vsc'
+
+import PaymentActions from '../../../components/orders/PaymentActions'
+import DeliveryActions from '../../../components/orders/DeliveryActions'
 
 import Heading from '../../../components/Heading'
 
@@ -59,7 +63,8 @@ const ManageOrdersClient = ({ orders }) => {
       renderCell: (params) => {
         return (
           <div className='flex items-center justify-center ml-2 w-full'>
-            {params.row.paymentStatus === 'pending' ? (
+            <PaymentActions pmtStatus={params.row.paymentStatus} />
+            {/* {params.row.paymentStatus === 'pending' ? (
               <Status
                 text={params.row.paymentStatus}
                 icon={MdAccessTimeFilled}
@@ -80,7 +85,7 @@ const ManageOrdersClient = ({ orders }) => {
                 bgColor={'bg-primary'}
                 textColor='text-primary-content'
               />
-            )}
+            )} */}
           </div>
         )
       },
@@ -110,7 +115,8 @@ const ManageOrdersClient = ({ orders }) => {
       renderCell: (params) => {
         return (
           <div className='flex items-center justify-center ml-2 w-full'>
-            {params.row.deliveryStatus === 'pending' ? (
+            <DeliveryActions deliveryStatus={params.row.deliveryStatus} />
+            {/* {params.row.deliveryStatus === 'pending' ? (
               <Status
                 text={params.row.deliveryStatus}
                 icon={MdAccessTimeFilled}
@@ -145,7 +151,7 @@ const ManageOrdersClient = ({ orders }) => {
                 bgColor={'bg-primary'}
                 textColor='text-primary-content'
               />
-            )}
+            )} */}
           </div>
         )
       },

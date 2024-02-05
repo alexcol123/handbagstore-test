@@ -64,28 +64,6 @@ const ManageOrdersClient = ({ orders }) => {
         return (
           <div className='flex items-center justify-center ml-2 w-full'>
             <PaymentActions pmtStatus={params.row.paymentStatus} />
-            {/* {params.row.paymentStatus === 'pending' ? (
-              <Status
-                text={params.row.paymentStatus}
-                icon={MdAccessTimeFilled}
-                bgColor={'bg-base-200'}
-                textColor='text-base-content'
-              />
-            ) : params.row.paymentStatus === 'complete' ? (
-              <Status
-                text={params.row.paymentStatus}
-                icon={MdDone}
-                bgColor={'bg-success'}
-                textColor='text-success-content'
-              />
-            ) : (
-              <Status
-                text={'NO DATA'}
-                icon={MdDeliveryDining}
-                bgColor={'bg-primary'}
-                textColor='text-primary-content'
-              />
-            )} */}
           </div>
         )
       },
@@ -116,42 +94,6 @@ const ManageOrdersClient = ({ orders }) => {
         return (
           <div className='flex items-center justify-center ml-2 w-full'>
             <DeliveryActions deliveryStatus={params.row.deliveryStatus} />
-            {/* {params.row.deliveryStatus === 'pending' ? (
-              <Status
-                text={params.row.deliveryStatus}
-                icon={MdAccessTimeFilled}
-                bgColor={'bg-base-200'}
-                textColor='text-base-content'
-              />
-            ) : params.row.deliveryStatus === 'dispatched' ? (
-              <Status
-                text={params.row.deliveryStatus}
-                icon={MdDeliveryDining}
-                bgColor={'bg-warning'}
-                textColor='text-warning-content'
-              />
-            ) : params.row.deliveryStatus === 'delivered' ? (
-              <Status
-                text={params.row.deliveryStatus}
-                icon={MdDone}
-                bgColor={'bg-success'}
-                textColor='text-success-content'
-              />
-            ) : params.row.deliveryStatus === 'returned' ? (
-              <Status
-                text={params.row.deliveryStatus}
-                icon={VscError}
-                bgColor={'bg-error'}
-                textColor='text-error-content'
-              />
-            ) : (
-              <Status
-                text={'NO DATA'}
-                icon={MdDeliveryDining}
-                bgColor={'bg-primary'}
-                textColor='text-primary-content'
-              />
-            )} */}
           </div>
         )
       },

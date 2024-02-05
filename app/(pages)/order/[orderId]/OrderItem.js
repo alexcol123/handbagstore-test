@@ -8,7 +8,7 @@ import { truncateText } from '../../../../utils/truncateText'
 
 
 const OrderItem = ({ item }) => {
-  console.log(item)
+
   return (
     <div className='grid grid-cols-5 text-xs md:text-sm gap-4 boder-t-[2px] border-slate-200 py-4 items-center '>
       <div className='col-span-2 justify-self-start flex items-center gap-2 md:gap-4'>

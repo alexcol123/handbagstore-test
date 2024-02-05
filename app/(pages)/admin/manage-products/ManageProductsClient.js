@@ -7,7 +7,7 @@ import { formatPrice } from '../../../../utils/formatPrice'
 import ActionBtn from './ActionBtn'
 import NoImg from '../../../../public/noimg.jpg'
 
-import Status from './Status'
+import Status from '../../../components/Status'
 import {
   MdCached,
   MdClose,

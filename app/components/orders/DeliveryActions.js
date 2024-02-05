@@ -11,7 +11,7 @@ import { VscError } from 'react-icons/vsc'
 
 const DeliveryActions = ({deliveryStatus}) => {
 
-  console.log(deliveryStatus)
+
   return (
     <div>
       {deliveryStatus === 'pending' ? (

@@ -39,11 +39,12 @@ const AddProductForm = () => {
   } = useForm({
     defaultValues: {
       name: 'Bleeker Stencil ',
-      description: 'A compact companion with enough room for all the essentials, our color-blocked Marilyn satchel is the epitome of polished ease. It’s crafted from Saffiano leather and opens to a lined interior with dedicated pockets for your phone, wallet and other small items. Attach the adjustable strap to wear it cross-body.',
+      description:
+        'A compact companion with enough room for all the essentials, our color-blocked Marilyn satchel is the epitome of polished ease. It’s crafted from Saffiano leather and opens to a lined interior with dedicated pockets for your phone, wallet and other small items. Attach the adjustable strap to wear it cross-body.',
       price: '248',
       previousPrice: '320',
       brand: 'Michael Kors',
-      category: 'Handbag',
+      category: '',
       inStock: '9',
       isOnSale: 'no',
       size: 'Medium',
@@ -143,14 +144,16 @@ const AddProductForm = () => {
     // Upload images to FireBase https://firebase.google.com/docs/storage/web/upload-files
     let uploadedImages = []
 
-    if (!data.category) {
+    if (data.category === '') {
       setisLoading(false)
       toast.error('Select Product Category')
+      return
     }
 
-    if (data.images.length < 1) {
+    if (data.images.length === 0) {
       setisLoading(false)
       toast.error('Add Product Images')
+      return
     }
 
     const handleImageUploads = async () => {
@@ -223,20 +226,24 @@ const AddProductForm = () => {
 
     // After uploads
     const productData = { ...data, images: uploadedImages }
-     console.log(productData)
+    console.log(productData)
 
     // Save Product to Database
-    // Save to mongodb 
-    axios.post('/api/product', productData).then(() => {
-      toast.success("Product Created ")
-      setIsProductCreated(true)
-      router.refresh()
-    }).catch((error) => {
-      console.log(error)
-      toast.error('Something went wrong in catch')
-    }).finally(() => {
-      setisLoading(false)
-    })
+    // Save to mongodb
+    axios
+      .post('/api/product', productData)
+      .then(() => {
+        toast.success('Product Created ')
+        setIsProductCreated(true)
+        router.refresh()
+      })
+      .catch((error) => {
+        console.log(error)
+        toast.error('Something went wrong in catch')
+      })
+      .finally(() => {
+        setisLoading(false)
+      })
   }
 
   return (
@@ -342,8 +349,7 @@ const AddProductForm = () => {
         required
       />
 
-
-<Input
+      <Input
         id='inStock'
         label='In Stock'
         disabled={isLoading}

@@ -86,7 +86,7 @@ model Order {
   amount          Float
   currency        String
   status          String
-  deliveryStatus  String?
+  deliveryStatus  String
   createdDate     DateTime          @default(now())
   paymentIntentId String            @unique
   products        CartProductType[]
@@ -136,3 +136,10 @@ enum OnSale {
   sale
   clearance
 }
+
+// enum deliveryStatusEnum {
+//   pending
+//   dispatched
+//   delivered
+//   returned
+// }

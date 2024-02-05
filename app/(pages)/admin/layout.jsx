@@ -1,4 +1,4 @@
-import { getCurrentUser } from '../../../actions/getCurrentUser'
+import getCurrentUser from '../../../actions/getCurrentUser'
 import AdminNav from '../../components/admin/AdminNav'
 import { redirect } from 'next/navigation'
 

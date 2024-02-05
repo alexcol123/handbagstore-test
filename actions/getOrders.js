@@ -14,5 +14,6 @@ export default async function getOrders() {
     return orders
   } catch (error) {
     throw new Error(error)
+    console.log(error)
   }
 }

@@ -1,13 +1,13 @@
 import AddProductForm from './AddProductForm'
 import FormWrap from '../../../components/FormWrap'
 
-import { getCurrentUser } from '../../../../actions/getCurrentUser'
+import getCurrentUser from '../../../../actions/getCurrentUser'
 import { redirect } from 'next/navigation'
 
 const AddProductsPage = async () => {
-  const currentUser =await  getCurrentUser()
+  const currentUser = await getCurrentUser()
 
-  console.log(currentUser)
+  // console.log(currentUser)
 
   if (!currentUser || currentUser.role !== 'ADMIN') {
     redirect('/')

@@ -1,6 +1,6 @@
 import ManageProductsClient from './ManageProductsClient'
 import getProducts from '../../../../actions/getProducts'
-import { getCurrentUser } from '../../../../actions/getCurrentUser'
+import getCurrentUser from '../../../../actions/getCurrentUser'
 import { redirect } from 'next/navigation'
 
 const ManageProducts = async () => {

@@ -2,7 +2,7 @@ import Stripe from 'stripe'
 import prisma from '../../../libs/prismadb'
 import { NextResponse } from 'next/server'
 
-import { getCurrentUser } from '../../../actions/getCurrentUser'
+import getCurrentUser from '../../../actions/getCurrentUser'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2022-11-15',
@@ -80,7 +80,6 @@ export async function POST(request) {
         }),
       ])
 
-
       if (!existing_order) {
         return NextResponse.json(
           { error: 'Invalid Payment Intent' },
@@ -90,7 +89,6 @@ export async function POST(request) {
 
       return NextResponse.json({ paymentIntent: updated_intent })
     }
- 
   } else {
     // Create the intent
 
@@ -102,13 +100,9 @@ export async function POST(request) {
     // create the order
     orderData.paymentIntentId = paymentIntent.id
 
-   const createdOrder =  await prisma.order.create({
+    const createdOrder = await prisma.order.create({
       data: orderData,
     })
-
-
-
-
 
     return NextResponse.json({ paymentIntent })
   }

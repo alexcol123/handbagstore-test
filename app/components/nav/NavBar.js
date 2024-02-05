@@ -1,4 +1,4 @@
-import { getCurrentUser } from '../../../actions/getCurrentUser'
+import getCurrentUser from '../../../actions/getCurrentUser'
 import NavMain from './NavMain'
 import NavSecondary from './NavSecondary'
 

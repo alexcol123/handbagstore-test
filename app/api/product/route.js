@@ -1,6 +1,6 @@
 import prisma from '../../../libs/prismadb'
 
-import { getCurrentUser } from '../../../actions/getCurrentUser'
+import getCurrentUser from '../../../actions/getCurrentUser'
 
 import { NextResponse } from 'next/server'
 
@@ -12,7 +12,6 @@ export const POST = async (request) => {
   }
 
   const body = await request.json()
-
 
   const {
     name,
@@ -33,8 +32,6 @@ export const POST = async (request) => {
   } = body
 
   // let imageToSend = [images[0].image]
-
-
 
   const product = await prisma.product.create({
     data: {

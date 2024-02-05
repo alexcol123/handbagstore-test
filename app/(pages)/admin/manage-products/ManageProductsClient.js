@@ -13,6 +13,7 @@ import {
   MdClose,
   MdDelete,
   MdDone,
+  MdEditDocument,
   MdRemoveRedEye,
 } from 'react-icons/md'
 import Heading from '../../../components/Heading'
@@ -157,19 +158,13 @@ const ManageProductsClient = ({ products }) => {
     },
     {
       field: 'action',
-      headerName: 'Actions',
+      headerName: 'Product Actions',
       width: 260,
       headerAlign: 'center',
       renderCell: (params) => {
         // console.log(params.row.images)
         return (
-          <div className='flex  items-center justify-evenly gap-2  w-full '>
-            <ActionBtn
-              icon={MdCached}
-              onClick={() => {
-                handleToggleStock(params.row.id, params.row.inStock)
-              }}
-            />
+          <div className='flex  items-center justify-around gap-1  w-full  '>
             <ActionBtn
               icon={MdDelete}
               onClick={() => {
@@ -180,6 +175,13 @@ const ManageProductsClient = ({ products }) => {
               icon={MdRemoveRedEye}
               onClick={() => {
                 router.push(`/product/${params.row.id}`)
+              }}
+            />
+
+            <ActionBtn
+              icon={MdEditDocument}
+              onClick={() => {
+                router.push(`/product/edit/${params.row.id}`)
               }}
             />
           </div>
@@ -200,7 +202,7 @@ const ManageProductsClient = ({ products }) => {
       const handleImageDelete = async () => {
         try {
           for (const singleimg of images) {
-            console.log(singleimg.image)
+            // console.log(singleimg.image)
 
             if (singleimg.image) {
               const imageRef = ref(storage, singleimg.image)
@@ -222,10 +224,6 @@ const ManageProductsClient = ({ products }) => {
 
       await handleImageDelete()
 
-      // NO--------- Images
-      console.log(id)
-      console.log('in  client ')
-
       //  DELETE FROM DB ---------------------
       axios
         .delete(`/api/product/${id}`)
@@ -243,10 +241,14 @@ const ManageProductsClient = ({ products }) => {
     }
   }, [])
 
+  if (products.length === 0) {
+    return <div className='text-xl mt-20 ml-8'> No Products Found</div>
+  }
+
   return (
     <div className='max-2-[1150px] m-auto'>
       <div className='my-4 mb-8'>
-        <Heading title='Manage Products ' center />{' '}
+        <Heading title='Manage Products' center />
       </div>
 
       <div className='bg-white shadow-lg'>
@@ -271,6 +273,29 @@ const ManageProductsClient = ({ products }) => {
             },
           }}
         />
+      </div>
+
+      {/* Glosary */}
+      <div className='mt-8 '>
+        <div className='flex flex-col gap-4  w-fit border p-4   shadow-lg bg-base-200/50  '>
+          <div>
+            <h2 className='text-lg text-center '>Product Actions</h2>
+            <hr />
+          </div>
+
+          <div className=' flex items-center   w-full  gap-2'>
+            <ActionBtn icon={MdDelete} />
+            <h4>Delete Product</h4>
+          </div>
+          <div className=' flex items-center   w-full  gap-2'>
+            <ActionBtn icon={MdRemoveRedEye} />
+            <h4> View Product </h4>
+          </div>
+          <div className=' flex items-center   w-full  gap-2'>
+            <ActionBtn icon={MdEditDocument} />
+            <h4> Edit Product </h4>
+          </div>
+        </div>
       </div>
     </div>
   )

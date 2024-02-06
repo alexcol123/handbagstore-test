@@ -43,7 +43,6 @@ const UserMenu = ({ currentUser }) => {
             {' '}
             {/* Logged In */}
             <div>
-
               {/* Only admins can see this */}
               {currentUser.role === 'ADMIN' && (
                 <li>
@@ -57,10 +56,19 @@ const UserMenu = ({ currentUser }) => {
               )}
 
               <li>
+                <Link
+                  href={'/orders'}
+                  className='justify-between font-semibold'
+                >
+                  My Orders
+                </Link>
+              </li>
+
+              {/* <li>
                 <Link href={'/admin'} className='justify-between font-semibold'>
                   Dashboard
                 </Link>
-              </li>
+              </li> */}
 
               <li>
                 <Link
@@ -68,12 +76,6 @@ const UserMenu = ({ currentUser }) => {
                   className='justify-between font-semibold'
                 >
                   Profile
-                </Link>
-              </li>
-
-              <li>
-                <Link href={'/admin'} className='justify-between font-semibold'>
-                  Orders
                 </Link>
               </li>
 

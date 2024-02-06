@@ -4,7 +4,7 @@
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
 import { formatPrice } from '../../../../utils/formatPrice'
 // import Heading from "@/app/components/Heading"
-import ActionBtn from './ActionBtn'
+import ActionBtn from '../../../components/ActionBtn'
 import NoImg from '../../../../public/noimg.jpg'
 
 import Status from '../../../components/Status'

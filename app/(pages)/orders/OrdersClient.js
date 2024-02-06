@@ -2,33 +2,28 @@
 
 // import { Product } from "@prisma/client"
 import { DataGrid } from '@mui/x-data-grid'
-import { formatPrice } from '../../../../utils/formatPrice'
+import { formatPrice } from '../../../utils/formatPrice'
 // import Heading from "@/app/components/Heading"
-import ActionBtn from '../../../components/ActionBtn'
-import NoImg from '../../../../public/noimg.jpg'
+import ActionBtn from '../../components/ActionBtn'
+import NoImg from '../../../public/noimg.jpg'
 import { useCallback } from 'react'
-import Status from '../../../components/Status'
+import Status from '../../components/Status'
 
-import {
-  MdAccessTimeFilled,
-  MdDeliveryDining,
-  MdDone,
-  MdRemoveRedEye,
-} from 'react-icons/md'
+import { FaRegEye } from "react-icons/fa";
 
 import { VscError } from 'react-icons/vsc'
 
-import PaymentActions from '../../../components/orders/PaymentActions'
-import DeliveryActions from '../../../components/orders/DeliveryActions'
+import PaymentActions from '../../components/orders/PaymentActions'
+import DeliveryActions from '../../components/orders/DeliveryActions'
 
-import Heading from '../../../components/Heading'
+import Heading from '../../components/Heading'
 
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import moment from 'moment'
 
-const ManageOrdersClient = ({ orders }) => {
+const OrdersClient = ({ orders }) => {
   const router = useRouter()
 
   let rows = []
@@ -47,6 +42,8 @@ const ManageOrdersClient = ({ orders }) => {
   }
 
   const columns = [
+
+    { field: 'id', headerName: 'Order ID', headerAlign: 'center', width: 230 },
     {
       field: 'customer',
       headerName: 'Customer Name',
@@ -59,7 +56,7 @@ const ManageOrdersClient = ({ orders }) => {
       headerName: 'Payment Status',
       headerAlign: 'center',
 
-      width: 170,
+      width: 160,
       renderCell: (params) => {
         return (
           <div className='flex items-center justify-center ml-2 w-full'>
@@ -74,7 +71,7 @@ const ManageOrdersClient = ({ orders }) => {
       headerName: 'Amount(USD)',
       headerAlign: 'center',
 
-      width: 150,
+      width: 140,
       renderCell: (params) => {
         return (
           <div className='font-bold text-lg p-1 rounded-box text-center w-full '>
@@ -89,7 +86,7 @@ const ManageOrdersClient = ({ orders }) => {
       headerName: 'Delivery Status',
       headerAlign: 'center',
 
-      width: 170,
+      width: 160,
       renderCell: (params) => {
         return (
           <div className='flex items-center justify-center ml-2 w-full'>
@@ -108,27 +105,15 @@ const ManageOrdersClient = ({ orders }) => {
 
     {
       field: 'action',
-      headerName: 'Order Actions',
-      width: 260,
+      headerName: 'View Orders',
+      width: 180,
       headerAlign: 'center',
       renderCell: (params) => {
         // console.log(params.row.images)
         return (
-          <div className='flex  items-center justify-around gap-1  w-full  '>
+          <div className='flex  items-center justify-around gap-1  w-full   '>
             <ActionBtn
-              icon={MdDeliveryDining}
-              onClick={() => {
-                handleDispatch(params.row.id)
-              }}
-            />
-            <ActionBtn
-              icon={MdDone}
-              onClick={() => {
-                handleDelivered(params.row.id)
-              }}
-            />
-            <ActionBtn
-              icon={MdRemoveRedEye}
+              icon={FaRegEye}
               onClick={() => {
                 router.push(`/order/${params.row.id}`)
               }}
@@ -138,7 +123,6 @@ const ManageOrdersClient = ({ orders }) => {
       },
     },
 
-    { field: 'id', headerName: 'Order ID', headerAlign: 'center', width: 220 },
   ]
 
   const handleDelivered = useCallback((id) => {
@@ -183,8 +167,6 @@ const ManageOrdersClient = ({ orders }) => {
     }
   }, [])
 
-
-
   if (orders.length === 0) {
     return <div className='text-xl mt-20 ml-8'> No Orders Found</div>
   }
@@ -192,7 +174,7 @@ const ManageOrdersClient = ({ orders }) => {
   return (
     <div className='max-2-[1150px] m-auto'>
       <div className='my-4 mb-8'>
-        <Heading title='Manage Orders ' center />{' '}
+        <Heading title='My Orders ' center />{' '}
       </div>
 
       <div className='bg-white shadow-lg'>
@@ -218,28 +200,8 @@ const ManageOrdersClient = ({ orders }) => {
           }}
         />
       </div>
-
-      <div className='mt-8 '>
-        <div className='flex flex-col gap-4  w-fit border p-4   shadow-lg bg-base-200/50  '>
-          <div>
-            <h2 className='text-lg text-center '>Order Actions</h2>
-            <hr />
-          </div>
-          <div className=' flex items-center  w-full  gap-2'>
-            <ActionBtn icon={MdDeliveryDining} /> <h4>Mark as Order Sent </h4>
-          </div>
-          <div className=' flex items-center   w-full  gap-2'>
-            <ActionBtn icon={MdDone} />
-            <h4>Mark as Order Delivered </h4>
-          </div>
-          <div className=' flex items-center   w-full  gap-2'>
-            <ActionBtn icon={MdRemoveRedEye} />
-            <h4>View Order</h4>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
 
-export default ManageOrdersClient
+export default OrdersClient

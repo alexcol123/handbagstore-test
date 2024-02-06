@@ -7,7 +7,11 @@ import { NextResponse } from 'next/server'
 export const POST = async (request) => {
   const currentUser = await getCurrentUser()
 
-  if (!currentUser || !currentUser.role === 'ADMIN') {
+  if (!currentUser) {
+    return NextResponse.error()
+  }
+
+  if (  currentUser.role !== 'ADMIN') {
     return NextResponse.error()
   }
 

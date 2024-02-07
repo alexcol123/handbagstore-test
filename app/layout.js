@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
               </main>
             </CartProvider>
             <Footer />
-            <div className='fixed -bottom-2 left-0 right-0 bg-base-200 overflow-y-scroll '>
+            <div className='fixed -bottom-2 left-0 right-0  overflow-y-scroll  bg-base-200/95 '>
               <NavSecondary />
             </div>
           </div>

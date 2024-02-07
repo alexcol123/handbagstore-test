@@ -27,7 +27,7 @@ const NavBar = async () => {
       </div>
 
       <div className='border-b border-primary/50  bg-base-100/80 backdrop-blur-xl '>
-        <div className='container mx-auto  '>
+        <div className='container mx-auto max-w-4xl  '>
           <NavSecondary  />
         </div>
       </div>

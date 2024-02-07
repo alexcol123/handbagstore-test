@@ -9,14 +9,9 @@ import MyLogo from '../MyLogo'
 import UserMenu from './UserMenu'
 import NavCart from './NavCart'
 
-
-
 import NavMenuLinks from './NavMenuLinks'
 
-
-const NavMain = ({  currentUser }) => {
-
-
+const NavMain = ({ currentUser }) => {
   return (
     <div className='navbar  '>
       {/* Nav Start  */}
@@ -77,29 +72,11 @@ const NavMain = ({  currentUser }) => {
           </div>
           <ul
             tabIndex={0}
-            className='menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-300 rounded-box w-52 space-y-4 p-6'
+            className='menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-300 rounded-box w-52 space-y-4 p-6 '
           >
-             <NavMenuLinks    /> 
-            {/* {categoriesLinks.map(({ name, href, color, icon: Icon }) => {
-              return (
-                <Link
-                  key={name}
-                  href={href}
-                  className={` py-1 pl-3 hover:text-primary hover:bg-base-100 transition duration-300 rounded-box  ${
-                    color && 'text-error font-semibold '
-                  }`}
-                >
-                  <div className='flex items-center gap-2'>
-                    {name}
-                    {Icon && (
-                      <span className='text-primary'>
-                        <Icon />
-                      </span>
-                    )}
-                  </div>
-                </Link>
-              )
-            })} */}
+            <div >
+              <NavMenuLinks />
+            </div>
           </ul>
         </div>
       </div>

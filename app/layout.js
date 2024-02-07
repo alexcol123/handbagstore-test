@@ -6,7 +6,6 @@ import Footer from './components/footer/Footer'
 import CartProvider from '../providers/CartProvider'
 import { Toaster } from 'react-hot-toast'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import NavSecondary from './components/nav/NavSecondary'
 
 export const dynamic = 'force-dynamic'
 
@@ -49,19 +48,14 @@ export default function RootLayout({ children }) {
             position='top-center'
             toastOptions={{ background: 'rgba(51 65 85) ', color: '#fff' }}
           />
-          <div className='relative'>
-            <CartProvider>
-              <NavBar />
-              <main className=' container mx-auto mt-36'>
-                {children}
-                <SpeedInsights />
-              </main>
-            </CartProvider>
-            <Footer />
-            <div className='fixed -bottom-2 left-0 right-0  bg-base-200/95 h-fit overflow-x-scroll overflow-y-hidden '>
-              <NavSecondary />
-            </div>
-          </div>
+          <CartProvider>
+            <NavBar />
+            <main className=' container mx-auto mt-36'>
+              {children}
+              <SpeedInsights />
+            </main>
+          </CartProvider>
+          <Footer />
         </div>
       </body>
     </html>

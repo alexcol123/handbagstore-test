@@ -21,7 +21,7 @@ const UserMenu = ({ currentUser }) => {
         role='button'
         className='btn btn-ghost btn-circle avatar  '
       >
-        <div className='w-10 rounded-full '>
+        <div className='w-8 md:w-10 rounded-full '>
           {currentUser?.image ? (
             <Image
               src={currentUser?.image && currentUser?.image}

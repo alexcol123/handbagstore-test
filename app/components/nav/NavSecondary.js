@@ -18,11 +18,10 @@ const NavSecondary = ({ categoriesLinks }) => {
   if (!isMainPage) return null
 
   return (
+    <ul className='flex items-center justify-between gap-2 md:gap-3 p-1 text-sm  uppercase cursor-pointer h-fit  '>
+      <NavMenuLinks category={category} />
 
-      <ul className='flex items-center justify-between gap-2 md:gap-3 p-1 text-sm  uppercase cursor-pointer  '>
-        <NavMenuLinks  category={category} />
-
-        {/* 
+      {/* 
  {menuLinks.map(({ name, href, color, icon: Icon }) => {
    
    return (
@@ -40,11 +39,10 @@ const NavSecondary = ({ categoriesLinks }) => {
    )
  })} */}
 
-        <li className='ml-4'>
-          <ThemeToggle />
-        </li>
-      </ul>
-    
+      <li className='ml-4'>
+        <ThemeToggle />
+      </li>
+    </ul>
   )
 }
 

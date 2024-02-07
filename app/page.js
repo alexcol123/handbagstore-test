@@ -29,7 +29,6 @@ export default async function Home({ searchParams }) {
           return <ProductCard key={product.id} product={product} />
         })}
       </div>
-
     </div>
   )
 }

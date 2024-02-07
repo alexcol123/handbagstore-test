@@ -4,7 +4,7 @@ import getCurrentUser from '../../../../actions/getCurrentUser'
 import { redirect } from 'next/navigation'
 
 const ManageProducts = async () => {
-  const products = await getProducts({ category: null })
+  const products = await getProducts({  })
   const currentUser = await getCurrentUser()
 
   if (!currentUser || currentUser.role !== 'ADMIN') {

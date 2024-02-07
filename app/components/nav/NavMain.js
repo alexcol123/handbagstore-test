@@ -13,9 +13,9 @@ import NavMenuLinks from './NavMenuLinks'
 
 const NavMain = ({ currentUser }) => {
   return (
-    <div className='navbar  '>
+    <div className='navbar '>
       {/* Nav Start  */}
-      <div className='navbar-start '>
+      <div className='navbar-start'>
         <div className=' text-primary text:sm md:text-2xl '>
           <Link href={'/'}>
             <MyLogo />
@@ -74,7 +74,7 @@ const NavMain = ({ currentUser }) => {
             tabIndex={0}
             className='menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-300 rounded-box w-52 space-y-4 p-6 '
           >
-            <div >
+            <div>
               <NavMenuLinks />
             </div>
           </ul>

@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
           />
           <CartProvider>
             <NavBar />
-            <main className=' container mx-auto mt-36'>
+            <main className=' container mx-auto  mt-20 md:mt-36 '>
               {children}
               <SpeedInsights />
             </main>

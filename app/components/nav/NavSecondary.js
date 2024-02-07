@@ -1,29 +1,38 @@
+'use client'
+import { menuLinks } from '../../../utils/categories'
+
 import Link from 'next/link'
 import ThemeToggle from '../ThemeToggle'
+import CategoryItem from './CatergoryItem'
+import { useSearchParams, usePathname } from 'next/navigation'
 
 const NavSecondary = ({ categoriesLinks }) => {
+  const params = useSearchParams()
+  const category = params?.get('category')
+
+  const pathname = usePathname()
+
+  const isMainPage = pathname === '/'
+
+   if (!isMainPage) return null
+
   return (
     <div>
-
-      <ul className='flex items-center justify-between gap-2 md:gap-5 p-1 text-sm  uppercase '>
-        {categoriesLinks.map(({ name, href, color, icon: Icon }) => {
+      <ul className='flex items-center justify-between gap-2 md:gap-5 p-1 text-sm  uppercase cursor-pointer '>
+        {menuLinks.map(({ name, href, color, icon: Icon }) => {
+   
           return (
-            <Link
+            <CategoryItem
               key={name}
+              name={name}
               href={href}
-              className={`py-1 pl-3 hover:text-primary hover:bg-base-100  ${
-                color && 'text-error font-semibold'
-              }`}
-            >
-              <div className='flex items-center justify-center gap-1'>
-          <span className='hidden md:flex'>      {name}</span>
-                {Icon && (
-                  <span className='text-primary text-xl md:text-sm'>
-                    <Icon  />
-                  </span>
-                )}
-              </div>
-            </Link>
+              color={color}
+              icon={Icon}
+              selected={
+                category?.toLowerCase() === name?.toLowerCase() ||
+                (category === null && name === 'All')
+              }
+            />
           )
         })}
 

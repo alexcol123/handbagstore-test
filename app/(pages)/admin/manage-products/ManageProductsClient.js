@@ -34,7 +34,7 @@ const ManageProductsClient = ({ products }) => {
 
   let rows = []
   if (products) {
-    rows = products.map((product) => {
+    rows = products?.map((product) => {
       return {
         id: product.id,
         name: product.name,

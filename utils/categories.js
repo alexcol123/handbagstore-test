@@ -8,29 +8,25 @@ import {
 } from 'react-icons/md'
 import { RiHandbagLine } from 'react-icons/ri'
 import { LiaGlassesSolid } from 'react-icons/lia'
-
-import { GiPearlNecklace } from "react-icons/gi";
-
-
+import { PiHighHeelLight } from 'react-icons/pi'
+import { MdDiscount } from "react-icons/md";
+import { GiPearlNecklace } from 'react-icons/gi'
 
 export const menuLinks = [
-  { href: '#', name: 'All' },
-  { href: '#', name: 'Sale' },
-  
-  { href: '#', name: 'Handbags', icon: RiHandbagLine },
-  { href: '#', name: 'Watches', icon: MdOutlineWatch },
-  { href: '#', name: 'Sunglasses', icon: LiaGlassesSolid },
-  { href: '#', name: 'Accesories', icon: GiPearlNecklace },
-  
-  { href: '#', name: 'Clearance 70% OFF', color: true, },
+  { href: '#', name: 'all' },
+  { href: '#', name: 'sale' },
+  { href: '#', name: 'handbags', icon: RiHandbagLine },
+  { href: '#', name: 'watches', icon: MdOutlineWatch },
+  { href: '#', name: 'sunglasses', icon: LiaGlassesSolid },
+  { href: '#', name: 'shoes', icon: PiHighHeelLight },
+  { href: '#', name: 'accesories', icon: GiPearlNecklace },
+  { href: '#', name: 'clearance',icon: MdDiscount , color: true },
 ]
 
-
 export const categories = [
-
-  { href: '#', name: 'Handbags', icon: RiHandbagLine },
-  { href: '#', name: 'Watches', icon: MdOutlineWatch },
-  { href: '#', name: 'Sunglasses', icon: LiaGlassesSolid },
-  { href: '#', name: 'Accesories', icon: GiPearlNecklace },
-
+  { href: '#', name: 'handbags', icon: RiHandbagLine },
+  { href: '#', name: 'watches', icon: MdOutlineWatch },
+  { href: '#', name: 'sunglasses', icon: LiaGlassesSolid },
+  { href: '#', name: 'shoes', icon: PiHighHeelLight },
+  { href: '#', name: 'accesories', icon: GiPearlNecklace },
 ]

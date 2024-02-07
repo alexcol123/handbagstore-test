@@ -18,9 +18,10 @@ const NavSecondary = ({ categoriesLinks }) => {
   if (!isMainPage) return null
 
   return (
-    <ul className=' 
-   flex
-     items-center justify-around gap-1 md:gap-3 p-1 text-sm  uppercase cursor-pointer h-fit '>
+    <ul
+      className=' 
+   flex items-center justify-between gap-1 md:gap-2 p-1 text-sm  uppercase cursor-pointer h-fit w-fit mx-auto  '
+    >
       <NavMenuLinks category={category} />
 
       <li className='ml-4 mr-2'>

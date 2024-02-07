@@ -1,14 +1,22 @@
+'use client'
+
 import NavSearch from './NavSearch'
 import { FaSearch } from 'react-icons/fa'
-import { Redressed } from 'next/font/google'
+
 import Link from 'next/link'
-import Image from 'next/image'
-import { formatPrice } from '../../../utils/formatPrice'
+
 import MyLogo from '../MyLogo'
 import UserMenu from './UserMenu'
 import NavCart from './NavCart'
 
-const NavMain = ({ categoriesLinks, currentUser }) => {
+
+
+import NavMenuLinks from './NavMenuLinks'
+
+
+const NavMain = ({  currentUser }) => {
+
+
   return (
     <div className='navbar  '>
       {/* Nav Start  */}
@@ -71,7 +79,8 @@ const NavMain = ({ categoriesLinks, currentUser }) => {
             tabIndex={0}
             className='menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-300 rounded-box w-52 space-y-4 p-6'
           >
-            {categoriesLinks.map(({ name, href, color, icon: Icon }) => {
+             <NavMenuLinks    /> 
+            {/* {categoriesLinks.map(({ name, href, color, icon: Icon }) => {
               return (
                 <Link
                   key={name}
@@ -84,14 +93,13 @@ const NavMain = ({ categoriesLinks, currentUser }) => {
                     {name}
                     {Icon && (
                       <span className='text-primary'>
-                        {' '}
                         <Icon />
                       </span>
                     )}
                   </div>
                 </Link>
               )
-            })}
+            })} */}
           </ul>
         </div>
       </div>

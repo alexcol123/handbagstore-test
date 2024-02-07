@@ -27,17 +27,13 @@ const CatergoryItem = ({ name, href, color, icon: Icon, selected }) => {
       )
 
       router.push(url)
-   
+
       return
     } else {
       let currentQuery = {}
       if (params) {
         currentQuery = queryString.parse(params.toString)
       }
-
-      // console.log(params)
-      // console.log('-----------')
-      // console.log(currentQuery)
 
       const updatedQuery = {
         ...currentQuery,
@@ -51,9 +47,7 @@ const CatergoryItem = ({ name, href, color, icon: Icon, selected }) => {
 
       router.push(url)
     }
-  }, [])
-
-  //name, params, router
+  }, [name, params, router])
 
   return (
     <div
@@ -61,7 +55,7 @@ const CatergoryItem = ({ name, href, color, icon: Icon, selected }) => {
       key={name}
       href={href}
       className={`py-1 pl-3 hover:text-primary hover:bg-base-200 w-full h-full   ${
-        color && 'text-error font-semibold cursor-pointer transition '
+        color && 'text-error font-semibold cursor-pointer transition  '
       }
       ${selected && 'bg-primary/20 '}
 
@@ -69,9 +63,9 @@ const CatergoryItem = ({ name, href, color, icon: Icon, selected }) => {
        `}
     >
       <div className='flex items-center justify-center gap-1'>
-        <span className='hidden md:flex'> {name}</span>
+        <span className='text-xs md:text-base'> {name}</span>
         {Icon && (
-          <span className='text-primary text-xl md:text-sm'>
+          <span className='text-primary text-xs md:text-base'>
             <Icon className={color && 'text-error'} />
           </span>
         )}

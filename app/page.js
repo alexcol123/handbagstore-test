@@ -3,6 +3,9 @@ import Hero from './components/Hero'
 import ProductCard from './components/products/ProductCard'
 import { truncateText } from '../utils/truncateText'
 import getProducts from '../actions/getProducts'
+import NavBar from './components/nav/NavBar'
+import NavSearch from './components/nav/NavSearch'
+import NavSecondary from './components/nav/NavSecondary'
 
 // webhook stripe = stripe listen --forward-to localhost:3000/api/stripe-webhook
 
@@ -12,7 +15,7 @@ export default async function Home({ searchParams }) {
   const products = await getProducts(searchParams)
 
   return (
-    <div className='max-w-screen-2xl mx-auto p-2 lg:p-1  '>
+    <div className=' relative max-w-screen-2xl mx-auto p-2 lg:p-1  '>
       <Hero
         opacity='50'
         title='Handbags Up to 70 % off'
@@ -26,6 +29,7 @@ export default async function Home({ searchParams }) {
           return <ProductCard key={product.id} product={product} />
         })}
       </div>
+
     </div>
   )
 }

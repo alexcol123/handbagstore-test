@@ -2,6 +2,7 @@
 
 import NavSearch from './NavSearch'
 import { FaSearch } from 'react-icons/fa'
+import { FaCaretDown } from 'react-icons/fa'
 
 import Link from 'next/link'
 
@@ -51,7 +52,9 @@ const NavMain = ({ currentUser }) => {
         <NavCart />
 
         {/* Avatar */}
-        <UserMenu currentUser={currentUser} />
+   
+          <UserMenu currentUser={currentUser} />
+   
 
         <div className='dropdown  dropdown-end sm:hidden'>
           <div tabIndex={0} role='button' className='btn btn-ghost btn-circle'>

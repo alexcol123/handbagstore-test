@@ -62,11 +62,11 @@ const CatergoryItem = ({ name, href, color, icon: Icon, selected }) => {
 
        `}
     >
-      <div className='flex   sm:p-1 md:p-2 items-center md:justify-center gap-1 capitalize'>
-        <span className=' text-xs sm:text-sm'> {name}</span>
+      <div className='flex sm:p-1 md:p-2 md:gap-1 items-center md:justify-center capitalize'>
+        <span className='text-[8.3px] sm:text-sm'> {name}</span>
         {Icon && (
           <span className='text-primary text-xs'>
-            <Icon className={color && 'text-xl md:text-base text-error'} />
+            <Icon className={`hidden sm:flex md:text-base  ${color &&  'text-error'} `} />
           </span>
         )}
       </div>

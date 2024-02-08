@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { FaRegUser } from 'react-icons/fa'
+import { FaCaretDown } from 'react-icons/fa'
 
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
@@ -15,7 +16,8 @@ const UserMenu = ({ currentUser }) => {
   const router = useRouter()
 
   return (
-    <div className='dropdown dropdown-end mr-4'>
+    <div className='dropdown dropdown-end mr-4 '>
+  
       <div
         tabIndex={0}
         role='button'
@@ -33,7 +35,11 @@ const UserMenu = ({ currentUser }) => {
             <FaRegUser size={20} className='h-full w-full p-2 ' />
           )}
         </div>
+      
+
       </div>
+
+  
       <ul
         tabIndex={0}
         className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-40 lg:w-52'

@@ -2,12 +2,11 @@
 
 import Link from 'next/link'
 import Heading from '../../components/Heading'
-import Input from '../../components/inputs/Input'
+import Input from '../../components/inputs/MyInput'
 import MyButton from '../../components/MyButton'
 import { useState, useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import {  AiOutlineGoogle } from 'react-icons/ai'
-
+import { AiOutlineGoogle } from 'react-icons/ai'
 
 import MyLogo from '../../components/MyLogo'
 import { signIn } from 'next-auth/react'
@@ -82,8 +81,6 @@ const LoginForm = ({ currentUser }) => {
         }}
       />
 
-
-
       <div className='divider'>OR</div>
 
       <h2>Email</h2>
@@ -111,7 +108,6 @@ const LoginForm = ({ currentUser }) => {
         label={isLoading ? 'Loading' : 'Login'}
         onClick={handleSubmit(onSubmit)}
         isLoading={isLoading}
-
       />
 
       <p className='text-sm mt-3 mb-8'>

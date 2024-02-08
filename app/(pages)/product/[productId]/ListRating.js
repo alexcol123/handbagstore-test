@@ -31,7 +31,7 @@ const ListRating = ({ product }) => {
                 </div>
                 <div className='mt-2  '>
                   <ProductShowRating productRating={review.rating} />
-                  <div className='text-center px-6 max-h-[180px] overflow-y-scroll '>
+                  <div className='text-center px-6 max-h-[180px] overflow-y-scroll no-scrollbar '>
                     {review.comment}
                   </div>
                 </div>

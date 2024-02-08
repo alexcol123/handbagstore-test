@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Heading from '../../../components/Heading'
-import Input from '../../../components/inputs/Input'
+import Input from '../../../components/inputs/MyInput'
 import TextArea from '../../../components/inputs/TextArea'
 import CustomCheckBox from '../../../components/inputs/CustomCheckbox'
 import CategoryInput from '../../../components/inputs/CategoryInput'

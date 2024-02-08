@@ -20,11 +20,11 @@ const NavSecondary = ({ categoriesLinks }) => {
   return (
     <ul
       className=' 
-   flex items-center justify-between gap-1 md:gap-2 p-1 text-sm  uppercase cursor-pointer h-fit w-fit mx-auto  '
+   flex items-center justify-between md:gap-2 cursor-pointer h-fit w-fit mx-auto  '
     >
       <NavMenuLinks category={category} />
 
-      <li className='ml-4 mr-2'>
+      <li className='mx-2'>
         <ThemeToggle />
       </li>
     </ul>

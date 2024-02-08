@@ -2,12 +2,11 @@
 
 import Link from 'next/link'
 import Heading from '../../components/Heading'
-import Input from '../../components/inputs/Input'
+import Input from '../../components/inputs/MyInput'
 import MyButton from '../../components/MyButton'
 import { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import {  AiOutlineGoogle } from 'react-icons/ai'
-
+import { AiOutlineGoogle } from 'react-icons/ai'
 
 import MyLogo from '../../components/MyLogo'
 import axios from 'axios'
@@ -93,8 +92,6 @@ const RegisterForm = ({ currentUser }) => {
           signIn('google')
         }}
       />
-
-
 
       <div className='divider'>OR</div>
 

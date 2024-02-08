@@ -1,13 +1,7 @@
-
 import { menuLinks } from '../../../utils/categories'
 import CatergoryItem from './CatergoryItem'
 
-const NavMenuLinks = ({  category }) => {
-
-  console.log(menuLinks)
-
-console.log(menuLinks)
-
+const NavMenuLinks = ({ category }) => {
   return (
     <>
       {menuLinks?.map(({ name, href, color, icon: Icon }) => {

@@ -74,21 +74,21 @@ const ThemeToggle = () => {
 
   return (
     <div className=''>
-      <div className='dropdown  border border-primary rounded-md '>
-        <div tabIndex={0} role='button' className='btn btn-xs'>
+      <div className='dropdown dropdown-end  border border-primary rounded-md '>
+        <div tabIndex={0} role='button' className='btn btn-xs text-xs '>
           {themeVal}
         </div>
 
         <ul
           tabIndex={0}
-          className='dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-40'
+          className='dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-40 '
         >
           {themes.map((theme) => (
             <li key={theme.value}>
               <input
                 type='radio'
                 name='theme-dropdown'
-                className='theme-controller btn btn-sm btn-block btn-ghost justify-start'
+                className='theme-controller btn btn-sm btn-block btn-ghost justify-start '
                 aria-label={theme.ariaLabel}
                 value={themeVal | 'light'}
                 onChange={(e) => handleChange(theme.value)}

@@ -81,14 +81,14 @@ model Review {
 }
 
 model Order {
-  id              String            @id @default(auto()) @map("_id") @db.ObjectId
-  userId          String            @db.ObjectId
+  id              String             @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String             @db.ObjectId
   amount          Float
   currency        String
   status          String
-  deliveryStatus  String
-  createdDate     DateTime          @default(now())
-  paymentIntentId String            @unique
+  deliveryStatus  DeliveryStatusEnum @default(pending)
+  createdDate     DateTime           @default(now())
+  paymentIntentId String             @unique
   products        CartProductType[]
   address         Address?
 
@@ -137,9 +137,9 @@ enum OnSale {
   clearance
 }
 
-// enum deliveryStatusEnum {
-//   pending
-//   dispatched
-//   delivered
-//   returned
-// }
+enum DeliveryStatusEnum {
+  pending
+  dispatched
+  delivered
+  returned
+}

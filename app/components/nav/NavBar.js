@@ -25,7 +25,7 @@ const NavBar = async () => {
       </div>
 
       <div className='border-b border-primary/50  bg-base-100/80 backdrop-blur-xl '>
-        <div className='container mx-auto  overflow-y-hidden overflow-x-scroll no-scrollbar   ' > 
+        <div className='container mx-auto    '>
           <NavSecondary />
         </div>
       </div>

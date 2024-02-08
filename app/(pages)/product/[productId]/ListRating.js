@@ -6,6 +6,8 @@ import ProductShowRating from '../../../components/products/ProductShowRating'
 import moment from 'moment'
 
 const ListRating = ({ product }) => {
+  if (product.reviews.length === 0) return null
+  
   return (
     <div>
       <Heading title='Product Reviews' />

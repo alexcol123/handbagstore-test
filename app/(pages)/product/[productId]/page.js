@@ -29,6 +29,8 @@ const ProductPage = async ({ params }) => {
 let productId = params.productId
 const user = await getCurrentUser()
 
+console.log(user)
+
   const product = await getProductsById(productId)
 
   if (!product || product === undefined)

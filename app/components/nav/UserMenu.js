@@ -17,7 +17,6 @@ const UserMenu = ({ currentUser }) => {
 
   return (
     <div className='dropdown dropdown-end mr-4 '>
-  
       <div
         tabIndex={0}
         role='button'
@@ -35,11 +34,8 @@ const UserMenu = ({ currentUser }) => {
             <FaRegUser size={20} className='h-full w-full p-2 ' />
           )}
         </div>
-      
-
       </div>
 
-  
       <ul
         tabIndex={0}
         className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-40 lg:w-52'
@@ -78,7 +74,7 @@ const UserMenu = ({ currentUser }) => {
 
               <li>
                 <Link
-                  href={'/orders'}
+                  href={'/user-profile'}
                   className='justify-between font-semibold'
                 >
                   Profile

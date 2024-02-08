@@ -70,7 +70,7 @@ const ThemeToggle = () => {
     if (localStorage.getItem('bgThemecolor')) {
       setthemeVal(localStorage.getItem('bgThemecolor'))
     }
-  }, [])
+  }, [themeVal])
 
   return (
     <div className=''>
@@ -90,7 +90,7 @@ const ThemeToggle = () => {
                 name='theme-dropdown'
                 className='theme-controller btn btn-sm btn-block btn-ghost justify-start '
                 aria-label={theme.ariaLabel}
-                value={themeVal | 'light'}
+                value={themeVal}
                 onChange={(e) => handleChange(theme.value)}
               />
             </li>

@@ -43,70 +43,10 @@ const OrdersClient = ({ orders }) => {
 
   const columns = [
 
-    { field: 'id', headerName: 'Order ID', headerAlign: 'center', width: 230 },
-    {
-      field: 'customer',
-      headerName: 'Customer Name',
-      headerAlign: 'center',
-      width: 140,
-    },
-
-    {
-      field: 'paymentStatus',
-      headerName: 'Payment Status',
-      headerAlign: 'center',
-
-      width: 160,
-      renderCell: (params) => {
-        return (
-          <div className='flex items-center justify-center ml-2 w-full'>
-            <PaymentActions pmtStatus={params.row.paymentStatus} />
-          </div>
-        )
-      },
-    },
-
-    {
-      field: 'amount',
-      headerName: 'Amount(USD)',
-      headerAlign: 'center',
-
-      width: 140,
-      renderCell: (params) => {
-        return (
-          <div className='font-bold text-lg p-1 rounded-box text-center w-full '>
-            {params.row.amount}
-          </div>
-        )
-      },
-    },
-
-    {
-      field: 'deliveryStatus',
-      headerName: 'Delivery Status',
-      headerAlign: 'center',
-
-      width: 160,
-      renderCell: (params) => {
-        return (
-          <div className='flex items-center justify-center ml-2 w-full'>
-            <DeliveryActions deliveryStatus={params.row.deliveryStatus} />
-          </div>
-        )
-      },
-    },
-
-    {
-      field: 'date',
-      headerName: 'Order Date',
-      headerAlign: 'center',
-      width: 120,
-    },
-
     {
       field: 'action',
       headerName: 'View Orders',
-      width: 180,
+      width: 200,
       headerAlign: 'center',
       renderCell: (params) => {
         // console.log(params.row.images)
@@ -122,6 +62,61 @@ const OrdersClient = ({ orders }) => {
         )
       },
     },
+
+
+    {
+      field: 'paymentStatus',
+      headerName: 'Payment Status',
+      headerAlign: 'center',
+
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className='flex items-center justify-center ml-2 w-full'>
+            <PaymentActions pmtStatus={params.row.paymentStatus} />
+          </div>
+        )
+      },
+    },
+
+    {
+      field: 'amount',
+      headerName: 'Amount(USD)',
+      headerAlign: 'center',
+
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className='font-bold text-lg p-1 rounded-box text-center w-full '>
+            {params.row.amount}
+          </div>
+        )
+      },
+    },
+
+    {
+      field: 'deliveryStatus',
+      headerName: 'Delivery Status',
+      headerAlign: 'center',
+
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className='flex items-center justify-center ml-2 w-full'>
+            <DeliveryActions deliveryStatus={params.row.deliveryStatus} />
+          </div>
+        )
+      },
+    },
+
+    {
+      field: 'date',
+      headerName: 'Order Date',
+      headerAlign: 'center',
+      width: 200,
+    },
+
+    { field: 'id', headerName: 'Order ID', headerAlign: 'center', width: 230 },
 
   ]
 
@@ -172,7 +167,7 @@ const OrdersClient = ({ orders }) => {
   }
 
   return (
-    <div className='max-2-[1150px] m-auto'>
+    <div className='w-full m-auto'>
       <div className='my-4 mb-8'>
         <Heading title='My Orders ' center />{' '}
       </div>

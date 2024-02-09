@@ -83,11 +83,14 @@ const UserMenu = ({ currentUser }) => {
 
               <li>
                 <div
-                  onClick={() => {
-                    signOut().then(() => {
-                      router.push('/') // Redirect to the dashboard page after signing out
-                    })
-                  }}
+                  onClick={ 
+                    ()=>signOut({ callbackUrl: 'http://localhost:3000' })
+                  //   () => {
+                  //   signOut().then(() => {
+                  //     router.push('/') // Redirect to the dashboard page after signing out
+                  //   })
+                  // }
+                }
                   className='justify-between  font-semibold  mt-4 bg-primary text-primary-content  hover:bg-primary/80 '
                 >
                   Logout

@@ -12,9 +12,14 @@ import MyLogo from '../../components/MyLogo'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { useCart } from '@/hooks/useCart'
 
 const LoginForm = ({ currentUser }) => {
   const router = useRouter()
+
+  const { cartProducts } = useCart()
+
+  console.log(cartProducts)
 
   const {
     register,
@@ -30,10 +35,14 @@ const LoginForm = ({ currentUser }) => {
 
   useEffect(() => {
     if (currentUser) {
-      router.push('/cart')
-      router.refresh()
+      if (cartProducts === null) {
+        router.push('/')
+      } else {
+        router.push('/cart')
+        router.refresh()
+      }
     }
-  }, [currentUser, router])
+  }, [currentUser, router, cartProducts])
 
   const [isLoading, setisLoading] = useState(false)
 

@@ -2,7 +2,7 @@
 
 const CategoryInput = ({selected, label, icon: Icon, onClick }) => {
 
-  console.log(label)
+
 
   
   return (

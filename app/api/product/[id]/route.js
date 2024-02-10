@@ -19,3 +19,65 @@ export async function DELETE(request, { params }) {
 
   return NextResponse.json(product)
 }
+
+export const PUT = async (request, { params }) => {
+  const { id } = params
+
+  const currentUser = await getCurrentUser()
+
+  if (!currentUser) {
+    return NextResponse.error()
+  }
+
+  if (currentUser.role !== 'ADMIN') {
+    return NextResponse.error()
+  }
+
+  const body = await request.json()
+
+  const {
+    name,
+    description,
+    price,
+    previousPrice,
+    brand,
+    category,
+    inStock,
+    isOnSale,
+    size,
+    measurements,
+    images,
+    reviews,
+    adminProductCostAndExpenses,
+    showInStore,
+    color,
+  } = body
+
+  // let imageToSend = [images[0].image]
+
+  const product = await prisma.product.update({
+    where: {
+      id: id,
+    },
+    data: {
+      name,
+      description,
+      price: parseFloat(price),
+      previousPrice: parseFloat(previousPrice),
+      brand,
+      category,
+      inStock: parseInt(inStock),
+      isOnSale,
+      size,
+      measurements,
+      // images: imageToSend,
+      images,
+      reviews,
+      adminProductCostAndExpenses: parseFloat(adminProductCostAndExpenses),
+      showInStore,
+      color,
+    },
+  })
+
+  return NextResponse.json(product)
+}

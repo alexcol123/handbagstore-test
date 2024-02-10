@@ -1,33 +1,75 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import Heading from '../../../components/Heading'
-import Input from '../../../components/inputs/MyInput'
-import TextArea from '../../../components/inputs/TextArea'
-import CustomCheckBox from '../../../components/inputs/CustomCheckbox'
-import CategoryInput from '../../../components/inputs/CategoryInput'
-import Select from '../../../components/inputs/Select'
+import { useState, useEffect, useCallback } from 'react'
 
-import MyButton from '../../../components/MyButton'
+import Heading from '@/app/components/Heading'
+import Input from '@/app/components/inputs/MyInput'
+import TextArea from '@/app/components/inputs/TextArea'
+import CategoryInput from '@/app/components/inputs/CategoryInput'
+import CustomCheckbox from '@/app/components/inputs/CustomCheckbox'
+import Select from '@/app/components/inputs/Select'
 
-import { categories } from '../../../../utils/categories'
+import { MdDeleteForever } from 'react-icons/md'
+
+import MyButton from '@/app/components/MyButton'
+
+import { categories } from '../../../../../utils/categories'
 import { useForm } from 'react-hook-form'
 
-import MyDropzone from './MyDropZone'
 import toast from 'react-hot-toast'
 
 //  firebase
-import firebaseApp from '../../../../libs/firebase'
+import firebaseApp from '@/libs/firebase'
 import {
   getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
+  deleteObject,
 } from 'firebase/storage'
+
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import MyDropZone from '../../add-products/MyDropZone'
+import Image from 'next/image'
 
-const AddProductForm = () => {
+const AddProductForm = ({ product }) => {
+  const storage = getStorage(firebaseApp)
+
+  const [oldImages, setoldImages] = useState(
+    product?.images ? product.images : []
+  )
+
+  // console.log(oldImages)
+
+  // DeleteASingleImage
+  const handleImageDelete = useCallback(async (ipAddressOfImg) => {
+    let text = 'Are You sure you want to delete? '
+
+    //  if Ok to delete
+    if (confirm(text) === true) {
+      toast('Deleting Image, Please wait')
+
+      try {
+        const imageRef = ref(storage, ipAddressOfImg)
+        await deleteObject(imageRef)
+        console.log(
+          'Image delete =======================================>>>>>>>'
+        )
+        toast.success('Image Deleted')
+      } catch (error) {
+        console.log('Deleting Image Error')
+        console.log(error)
+        return
+      }
+    } else {
+      // If cancell
+      toast('Deleting Image Cancelled')
+    }
+
+    router.refresh()
+  }, [])
+
   const {
     register,
     getValues,
@@ -38,36 +80,46 @@ const AddProductForm = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: 'Bleeker Stencil ',
-      description:
-        'A compact companion with enough room for all the essentials, our color-blocked Marilyn satchel is the epitome of polished ease. It’s crafted from Saffiano leather and opens to a lined interior with dedicated pockets for your phone, wallet and other small items. Attach the adjustable strap to wear it cross-body.',
-      price: '248',
-      previousPrice: '320',
-      brand: 'Michael Kors',
-      category: '',
-      inStock: '9',
-      isOnSale: 'no',
-      size: 'Medium',
-      measurements: '11.25”W X 8.25”H X 5.5”D',
-      images: [],
-      adminProductCostAndExpenses: '180',
-      showInStore: true,
-      color: 'red',
-
-      // name: '',
-      // description: '',
-      // price: '',
-      // previousPrice: '',
-      // brand: '',
+      // name: 'Bleeker Stencil ',
+      // description:
+      //   'A compact companion with enough room for all the essentials, our color-blocked Marilyn satchel is the epitome of polished ease. It’s crafted from Saffiano leather and opens to a lined interior with dedicated pockets for your phone, wallet and other small items. Attach the adjustable strap to wear it cross-body.',
+      // price: '248',
+      // previousPrice: '320',
+      // brand: 'Michael Kors',
       // category: '',
-      // inStock: '',
-      // isOnSale: '',
-      // size: '',
-      // measurements: '',
+      // inStock: '9',
+      // isOnSale: 'no',
+      // size: 'Medium',
+      // measurements: '11.25”W X 8.25”H X 5.5”D',
       // images: [],
-      // adminProductCostAndExpenses: '',
+      // adminProductCostAndExpenses: '180',
       // showInStore: false,
-      // color: '',
+      // color: 'red',
+
+      name: product?.name ? product.name : '',
+      description: product?.description ? product.description : '',
+      price: product?.price ? product.price : '',
+      previousPrice: product?.previousPrice ? product.previousPrice : '',
+      brand: product?.brand ? product.brand : '',
+
+      category: product?.category ? product.category : '',
+
+      inStock: product?.inStock ? product.inStock : '',
+
+      isOnSale: product?.isOnSale ? product.isOnSale : '',
+
+      size: product?.size ? product.size : '',
+      measurements: product?.measurements ? product.measurements : '',
+
+      // Falta hacer
+      images: [],
+      adminProductCostAndExpenses: '',
+      adminProductCostAndExpenses: product?.adminProductCostAndExpenses
+        ? product.adminProductCostAndExpenses
+        : '',
+
+      showInStore: product?.showInStore ? product.showInStore : true,
+      color: product?.color ? product.color : '',
     },
   })
 
@@ -142,7 +194,7 @@ const AddProductForm = () => {
     setisLoading(true)
 
     // Upload images to FireBase https://firebase.google.com/docs/storage/web/upload-files
-    let uploadedImages = []
+    let uploadedImages = [...oldImages]
 
     if (data.category === '') {
       setisLoading(false)
@@ -150,11 +202,11 @@ const AddProductForm = () => {
       return
     }
 
-    if (data.images.length === 0) {
-      setisLoading(false)
-      toast.error('Add Product Images')
-      return
-    }
+    // if (data.images.length === 0) {
+    //   setisLoading(false)
+    //   toast.error('Add Product Images')
+    //   return
+    // }
 
     const handleImageUploads = async () => {
       toast('Creating product images')
@@ -231,11 +283,11 @@ const AddProductForm = () => {
     // Save Product to Database
     // Save to mongodb
     axios
-      .post('/api/product', productData)
+      .put('/api/product/' + product.id, productData)
       .then(() => {
         toast.success('Product Created ')
         setIsProductCreated(true)
-        router.redirect('/')
+        router.push(`/product/${product.id}`)
       })
       .catch((error) => {
         console.log(error)
@@ -325,7 +377,7 @@ const AddProductForm = () => {
         required
       />
 
-      <CustomCheckBox
+      <CustomCheckbox
         id='showInStore'
         register={register}
         label='Show In the store'
@@ -395,10 +447,37 @@ const AddProductForm = () => {
       {/* Image */}
       <div className='w-full flex-col items-center justify-center gap-2 text-center'>
         <div className='font-bold'> Upload product Images</div>
-        <MyDropzone
+        <MyDropZone
           setimagesArr={setimagesArr}
           isProductCreated={isProductCreated}
         />
+      </div>
+
+      <div className='divider divider-primary'>Original Images</div>
+
+      <div className='flex  gap-3 flex-wrap'>
+        {oldImages?.map((file, i) => {
+          return (
+            <div
+              className='relative h-20 w-20 z-0 cursor-pointer group'
+              key={i}
+            >
+              <Image
+                className=' rounded-box shadow-lg h-20 w-20  z-5 mx-auto object-cover '
+                fill
+                alt='product'
+                src={file.image}
+              />
+              <div className='absolute flex items-center justify-center top-1 right-1 w-6 h-6 bg-error-content rounded-full text-error z-50 duration-300 hover:scale-125'>
+                <MdDeleteForever
+                  size={18}
+                  className='hover:scale-110'
+                  onClick={() => handleImageDelete(file.image)}
+                />
+              </div>
+            </div>
+          )
+        })}
       </div>
 
       <div>
@@ -406,7 +485,7 @@ const AddProductForm = () => {
           onClick={handleSubmit(onSubmit)}
           disabled={isLoading}
           isLoading={isLoading}
-          label={isLoading ? 'Loading...' : 'Create Product'}
+          label={isLoading ? 'Loading...' : 'Update Product'}
         />
       </div>
     </>

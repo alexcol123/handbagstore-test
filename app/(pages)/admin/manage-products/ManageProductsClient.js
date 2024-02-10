@@ -181,7 +181,7 @@ const ManageProductsClient = ({ products }) => {
             <ActionBtn
               icon={MdEditDocument}
               onClick={() => {
-                router.push(`/product/edit/${params.row.id}`)
+                router.push(`/admin/edit-products/${params.row.id}`)
               }}
             />
           </div>

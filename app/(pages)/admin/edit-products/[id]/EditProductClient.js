@@ -33,17 +33,18 @@ import { useRouter } from 'next/navigation'
 import MyDropZone from '../../add-products/MyDropZone'
 import Image from 'next/image'
 
-const AddProductForm = ({ product }) => {
+const EditProductClient = ({ product }) => {
   const storage = getStorage(firebaseApp)
 
   const [oldImages, setoldImages] = useState(
     product?.images ? product.images : []
   )
 
-  // console.log(oldImages)
+  console.log(oldImages)
 
   // DeleteASingleImage
   const handleImageDelete = useCallback(async (ipAddressOfImg) => {
+
     let text = 'Are You sure you want to delete? '
 
     //  if Ok to delete
@@ -56,6 +57,13 @@ const AddProductForm = ({ product }) => {
         console.log(
           'Image delete =======================================>>>>>>>'
         )
+        // Remove from local state so that we can  send  updated list to backen
+        setoldImages((prev) =>
+          prev.filter((img) => {
+            return img.image !== ipAddressOfImg
+          })
+        )
+
         toast.success('Image Deleted')
       } catch (error) {
         console.log('Deleting Image Error')
@@ -492,4 +500,4 @@ const AddProductForm = ({ product }) => {
   )
 }
 
-export default AddProductForm
+export default EditProductClient

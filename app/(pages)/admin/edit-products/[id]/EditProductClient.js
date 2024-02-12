@@ -40,13 +40,11 @@ const EditProductClient = ({ product }) => {
     product?.images ? product.images : []
   )
 
-  console.log(oldImages)
 
   // DeleteASingleImage
-  const handleImageDelete = useCallback(async (ipAddressOfImg) => {
-
+  const handleImageDelete = async (ipAddressOfImg) => {
     let text = 'Are You sure you want to delete? '
-
+    let updatedImageList
     //  if Ok to delete
     if (confirm(text) === true) {
       toast('Deleting Image, Please wait')
@@ -57,14 +55,26 @@ const EditProductClient = ({ product }) => {
         console.log(
           'Image delete =======================================>>>>>>>'
         )
-        // Remove from local state so that we can  send  updated list to backen
-        setoldImages((prev) =>
-          prev.filter((img) => {
-            return img.image !== ipAddressOfImg
-          })
-        )
 
-        toast.success('Image Deleted')
+        updatedImageList = oldImages.filter((img) => {
+          return img.image !== ipAddressOfImg
+        })
+
+
+        // console.log(updatedImageList)
+
+
+        // toast.success('Image Deleted')
+
+        // Delete from db
+        await axios.patch('/api/product/' + product.id, {
+          images: updatedImageList,
+        })
+        toast.success('Image removed from db')
+
+        // updated local storage image list
+        setoldImages(updatedImageList)
+
       } catch (error) {
         console.log('Deleting Image Error')
         console.log(error)
@@ -76,7 +86,7 @@ const EditProductClient = ({ product }) => {
     }
 
     router.refresh()
-  }, [])
+  }
 
   const {
     register,
@@ -131,41 +141,7 @@ const EditProductClient = ({ product }) => {
     },
   })
 
-  // const name = watch('name')
-  // const description = watch('description')
-  // const price = watch('price')
-  // const previousPrice = watch('previousPrice')
-
-  // const brand = watch('brand')
   const category = watch('category')
-  // const inStock = watch('inStock')
-  // const isOnSale = watch('isOnSale')
-
-  // const size = watch('size')
-  // const measurements = watch('measurements')
-
-  // const images = watch('images')
-
-  // const adminProductCostAndExpenses = watch('adminProductCostAndExpenses')
-  // const showInStore = watch('showInStore')
-  // const color = watch('color')
-
-  // console.log({
-  //   name,
-  //   description,
-  //   price,
-  //   previousPrice,
-  //   brand,
-  //   category,
-  //   inStock,
-  //   isOnSale,
-  //   size,
-  //   measurements,
-  //   adminProductCostAndExpenses,
-  //   showInStore,
-  //   color,
-  //   images,
-  // })
 
   const router = useRouter()
 
@@ -202,7 +178,7 @@ const EditProductClient = ({ product }) => {
     setisLoading(true)
 
     // Upload images to FireBase https://firebase.google.com/docs/storage/web/upload-files
-    let uploadedImages = [...oldImages]
+    let uploadedImages = []
 
     if (data.category === '') {
       setisLoading(false)
@@ -210,14 +186,8 @@ const EditProductClient = ({ product }) => {
       return
     }
 
-    // if (data.images.length === 0) {
-    //   setisLoading(false)
-    //   toast.error('Add Product Images')
-    //   return
-    // }
-
     const handleImageUploads = async () => {
-      toast('Creating product images')
+      toast('Updating the product images')
 
       try {
         for (const item of data.images) {
@@ -285,15 +255,14 @@ const EditProductClient = ({ product }) => {
     await handleImageUploads()
 
     // After uploads
-    const productData = { ...data, images: uploadedImages }
-    console.log(productData)
+    const productData = { ...data, images: [...oldImages, ...uploadedImages] }
 
     // Save Product to Database
     // Save to mongodb
     axios
       .put('/api/product/' + product.id, productData)
       .then(() => {
-        toast.success('Product Created ')
+        toast.success('Product Updated ')
         setIsProductCreated(true)
         router.push(`/product/${product.id}`)
       })

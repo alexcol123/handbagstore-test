@@ -81,3 +81,32 @@ export const PUT = async (request, { params }) => {
 
   return NextResponse.json(product)
 }
+
+export const PATCH = async (request, { params }) => {
+  const { id } = params
+
+  const currentUser = await getCurrentUser()
+
+  if (!currentUser) {
+    return NextResponse.error()
+  }
+
+  if (currentUser.role !== 'ADMIN') {
+    return NextResponse.error()
+  }
+
+  const body = await request.json()
+
+  const { images } = body
+
+  const product = await prisma.product.update({
+    where: {
+      id: id,
+    },
+    data: {
+      images: images,
+    },
+  })
+
+  return NextResponse.json(product)
+}

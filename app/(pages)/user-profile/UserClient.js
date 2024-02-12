@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const UserClient = ({ currentUser }) => {
-  console.log(currentUser)
+
   return (
     <div>
       <div className='m-10 max-w-sm mx-auto  bg-base-200'>

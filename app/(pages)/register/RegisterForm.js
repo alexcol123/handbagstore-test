@@ -40,7 +40,7 @@ const RegisterForm = ({ currentUser }) => {
 
   const onSubmit = (data) => {
     setisLoading(true)
-    console.log(data)
+    // console.log(data)
 
     axios
       .post('/api/register', data)

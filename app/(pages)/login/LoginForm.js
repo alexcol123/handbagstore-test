@@ -19,7 +19,7 @@ const LoginForm = ({ currentUser }) => {
 
   const { cartProducts } = useCart()
 
-  console.log(cartProducts)
+  // console.log(cartProducts)
 
   const {
     register,

@@ -226,7 +226,7 @@ const AddProductForm = () => {
 
     // After uploads
     const productData = { ...data, images: uploadedImages }
-    console.log(productData)
+    // console.log(productData)
 
     // Save Product to Database
     // Save to mongodb
@@ -235,7 +235,7 @@ const AddProductForm = () => {
       .then(() => {
         toast.success('Product Created ')
         setIsProductCreated(true)
-        router.redirect('/')
+        router.push('/')
       })
       .catch((error) => {
         console.log(error)

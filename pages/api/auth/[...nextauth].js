@@ -29,8 +29,8 @@ export const authOptions = {
         },
       },
       async authorize(credentials) {
-        console.log('here ====?? ')
-        console.log(credentials)
+        // console.log('here ====?? ')
+        // console.log(credentials)
 
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid email or password')
@@ -42,7 +42,7 @@ export const authOptions = {
           },
         })
 
-        console.log('user', user)
+        // console.log('user', user)
 
         if (!user || !user.hashedPassword) {
           throw new Error('Invalid email or password')

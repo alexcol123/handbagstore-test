@@ -10,7 +10,7 @@ import MyButton from '../../components/MyButton'
 
 import { useRouter } from 'next/navigation'
 
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { CartProductType } from '../product/[productId]/ProductDetails'
 import { formatPrice } from '../../../utils/formatPrice'
 
@@ -21,8 +21,27 @@ import { truncateText } from '../../../utils/truncateText'
 // import { formatPrice } from '../../../utils/formatPrice'
 import SetQuantity from '../../components/products/SetQuantity'
 
-const CartClient = ({ currentUser, products }) => {
-  // console.log(currentUser)
+const CartClient = ({ currentUser }) => {
+  const [products, setproducts] = useState(null)
+
+  console.log(products)
+
+  const fetchProducts = async function getProducts() {
+    try {
+      const res = await fetch(`/api/product`, {
+        cache: 'no-store',
+      })
+
+      const response = await res.json()
+      setproducts(response)
+    } catch (error) {
+      console.log('Error getting products')
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
 
   const router = useRouter()
 
@@ -38,15 +57,14 @@ const CartClient = ({ currentUser, products }) => {
   // console.log(cartProducts)
 
   const isProductStillAvailable = (item) => {
-    console.log('inside item')
-
     const currentProduct = products.filter((p) => p.id === item.id)
-
     if (currentProduct[0].inStock < 1) {
       handleRemoveProductFromCart(item)
-      console.log('In stock === ', currentProduct[0].inStock)
+      // console.log('In stock === ', currentProduct[0].inStock)
     }
   }
+
+  if (!products) return <div>Loading...</div>
 
   if (!cartProducts || cartProducts.length === 0) {
     return (
@@ -113,7 +131,6 @@ const CartClient = ({ currentUser, products }) => {
                                     <p className='shrink-0 w-20 text-base font-semibold  sm:order-2 sm:ml-8 sm:text-right'>
                                       {formatPrice(item.quantity * item.price)}
                                     </p>
-
 
                                     <div className='justify-self-center'>
                                       <SetQuantity

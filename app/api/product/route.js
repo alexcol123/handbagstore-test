@@ -4,6 +4,12 @@ import getCurrentUser from '../../../actions/getCurrentUser'
 
 import { NextResponse } from 'next/server'
 
+export const GET = async (request) => {
+  const products = await prisma.product.findMany()
+
+  return NextResponse.json(products)
+}
+
 export const POST = async (request) => {
   const currentUser = await getCurrentUser()
 
@@ -11,7 +17,7 @@ export const POST = async (request) => {
     return NextResponse.error()
   }
 
-  if (  currentUser.role !== 'ADMIN') {
+  if (currentUser.role !== 'ADMIN') {
     return NextResponse.error()
   }
 

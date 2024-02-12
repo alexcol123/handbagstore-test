@@ -17,8 +17,6 @@ export default async function Home({ searchParams }) {
 
   const banner = await getBanner()
 
-  console.log('banner')
-  console.log(banner)
   return (
     <div className=' relative max-w-screen-2xl mx-auto p-2 lg:p-1  '>
       <Hero
@@ -36,7 +34,11 @@ export default async function Home({ searchParams }) {
 
       <div className='grid grid-cols-2 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-5  2xl:grid-cols-6 gap-8   '>
         {products?.map((product) => {
-          return <ProductCard key={product.id} product={product} />
+          // Hide product if stock is  0
+          if (product.inStock < 1) return null
+          else {
+            return <ProductCard key={product.id} product={product} />
+          }
         })}
       </div>
     </div>

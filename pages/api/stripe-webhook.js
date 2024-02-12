@@ -69,6 +69,10 @@ export default async function handler(req, res) {
             },
           })
         }
+
+        console.log(
+          'WEBHOOK :  ----   Inventory Updated -1  of each item sold  ----'
+        )
       }
 
       break

@@ -15,12 +15,12 @@ import { useRouter } from 'next/navigation'
 import Hero from '@/app/components/Hero'
 import Link from 'next/link'
 
+// update banner
 const UpdateBannerForm = ({ banner }) => {
   const {
     register,
-    getValues,
     handleSubmit,
-    setValue,
+
     watch,
     reset,
     formState: { errors },
@@ -76,8 +76,8 @@ const UpdateBannerForm = ({ banner }) => {
       .then(() => {
         toast.success('Banner Created ')
         setIsProductCreated(true)
-       router.push('/')
-       router.refresh()
+        router.push('/')
+        router.refresh()
       })
       .catch((error) => {
         console.log(error)
@@ -131,7 +131,9 @@ const UpdateBannerForm = ({ banner }) => {
         >
           Pexels.com Link
         </Link>
-        <p className='text-xs'>Then left click and select: Copy Image Address</p>
+        <p className='text-xs'>
+          Then left click and select: Copy Image Address
+        </p>
       </div>
 
       <Input

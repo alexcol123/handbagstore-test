@@ -104,7 +104,7 @@ const ProductDetails = ({ product }) => {
           </div>
 
           <h2 className='text-xl md:text-3xl font-medium'>{product.name}</h2>
-   
+
           {/* Reviews  */}
 
           <div className='flex items-center justify-center gap-4 '>
@@ -117,13 +117,13 @@ const ProductDetails = ({ product }) => {
 
           <Horizontal />
           <ProductIsOnSale
-              onSale={product.isOnSale}
-              percentageOff={percentageOff}
-            />
+            onSale={product.isOnSale}
+            percentageOff={percentageOff}
+          />
           <div className='  md:text-md   text-justify opacity-80 leading-5 md:leading-normal max-w-[96%]'>
             {product.description}
           </div>
-          
+
           <Horizontal />
           <div className='text-sm  md:text-md'>
             <div className='flex items-center '>
@@ -163,9 +163,9 @@ const ProductDetails = ({ product }) => {
               <span className='font-semibold mr-2 '>Availability:</span>
               <span
                 className={
-                  !product.inStock
-                    ? 'text-red-500'
-                    : 'text-success px-2 rounded-sm  font-semibold'
+                  product.inStock <= 0
+                    ? 'text-error'
+                    : 'text-success px-2 rounded-sm'
                 }
               >
                 {product.inStock ? 'In Stock' : 'Out of Stock'}{' '}
@@ -201,12 +201,14 @@ const ProductDetails = ({ product }) => {
               <Horizontal />
 
               <div className='w-full my-4 lg:max-w-[400px]'>
-                <MyButton
-                  label={'Add To Cart'}
-                  onClick={() => {
-                    handleAddProductToCart(cartProduct)
-                  }}
-                />
+                {product?.inStock >= 1 && (
+                  <MyButton
+                    label={'Add To Cart'}
+                    onClick={() => {
+                      handleAddProductToCart(cartProduct)
+                    }}
+                  />
+                )}
               </div>
             </>
           )}

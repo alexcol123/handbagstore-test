@@ -18,7 +18,10 @@ const MyButton = ({
       onClick={onClick}
       disabled={disabled}
       className={` btn btn-block transition duration-300 flex items-center justify-center gap-8 text-center	btn-primary 
-       ${btnBGColor && `btn-neutral ${btnBGColor} hover:border hover:border-primary `}
+       ${
+         btnBGColor &&
+         `btn-neutral ${btnBGColor} hover:border hover:border-primary `
+       }
        ${btnTextColor && `${btnTextColor}`}
    
        ${isLoading && 'btn-loading opacity-70 disabled'}

@@ -16,8 +16,10 @@ const SetQuantity = ({ cartProduct, handleQtyIncrease, handleQtyDecrease }) => {
           -
         </button> */}
         <div>
-          Quantity:{' '}
-          <span className='ml-1 font-semibold'>{cartProduct.quantity}</span>{' '}
+          Amount:
+          <span className='ml-1 font-semibold'>
+            {cartProduct.quantity}
+          </span>
         </div>
         {/* <button
           className={btnStyles}

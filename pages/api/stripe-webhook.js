@@ -41,21 +41,34 @@ export default async function handler(req, res) {
     case 'charge.succeeded':
       const charge = event.data.object
 
-      // console.log(
-      //   '4 webhook event.data ======================     ============================================  ======================     ============================================  ======================     ============================================  ======================     ============================================  ======================     ============================================  >>>>>>>>>>>>>>>>>>>> '
-      // )
-      // console.log(charge)
-
       if (typeof charge.payment_intent === 'string') {
         const webhookorderUpdate = await prisma?.order.update({
           where: { paymentIntentId: charge.payment_intent },
           data: { status: 'complete', address: charge.shipping?.address },
         })
+        console.log(
+          'Webhook  ============================================================================================================     '
+        )
 
-        // console.log(
-        //   '5 webhook order update ======================     ============================================  ======================     ============================================  ======================     ============================================  ======================     ============================================  ======================     ============================================  >>>>>>>>>>>>>>>>>>>> '
-        // )
-        // console.log(webhookorderUpdate)
+        console.log(webhookorderUpdate.products)
+
+        console.log(
+          'productsSold  ============================================================================================================     '
+        )
+        const productsSold = webhookorderUpdate.products.map((p) => p.id)
+
+        // Remove  1 from inventory  of each from inventory  in DB
+
+        for (const singleProductId of productsSold) {
+          await prisma?.product.update({
+            where: { id: singleProductId },
+            data: {
+              inStock: {
+                decrement: 1,
+              },
+            },
+          })
+        }
       }
 
       break

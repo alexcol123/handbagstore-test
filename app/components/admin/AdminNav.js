@@ -8,6 +8,9 @@ import {
   MdFormatListBulleted,
   MdLibraryAdd,
 } from 'react-icons/md'
+
+import { TbMessage2Plus } from 'react-icons/tb'
+
 import { usePathname } from 'next/navigation'
 
 const AdminNav = () => {
@@ -48,6 +51,14 @@ const AdminNav = () => {
               label='Manage Orders'
               icon={MdFormatListBulleted}
               selected={pathname === '/admin/manage-orders'}
+            />
+          </Link>
+
+          <Link href='/admin/update-banner'>
+            <AdminNavItem
+              label='Update Banner'
+              icon={TbMessage2Plus}
+              selected={pathname === '/admin/update-banner'}
             />
           </Link>
         </div>

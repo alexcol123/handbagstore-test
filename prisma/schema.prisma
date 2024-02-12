@@ -95,6 +95,13 @@ model Order {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Banner {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  heading String
+  text    String
+  url     String
+}
+
 type CartProductType {
   id          String
   name        String

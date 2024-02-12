@@ -89,8 +89,8 @@ export const CartContextProvider = ({ children }) => {
   const handleCartQtyIncrease = useCallback(
     (product) => {
       let updatedCart
-      if (product.quantity >= 25) {
-        return toast.error('Opps! Maximun reached 25', { id: 'qty' })
+      if (product.quantity >= 1) {
+        return toast.error('Opps! Maximun reached 1', { id: 'qty' })
       }
 
       if (cartProducts) {

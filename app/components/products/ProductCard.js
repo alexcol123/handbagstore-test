@@ -23,15 +23,15 @@ const ProductCard = ({ product }) => {
       >
         <div className='relative flex h-80 w-full overflow-hidden'>
           <Image
-            className=' h-full w-full object-cover object-center   group-hover:scale-105 duration-300'
+            className=' h-full w-full  object-center object-contain   group-hover:scale-105 duration-300'
             src={product.images.length ? product.images[0].image : NoImage}
             alt={product.category}
             fill
           />
 
-          <div className='absolute top-4 right-3  '>
+          {/* <div className='absolute top-4 right-3  '>
             <ProductSaleBadge isOnSale={product.isOnSale} />
-          </div>
+          </div> */}
         </div>
 
         <div className='pt-2 pb-5 px-2 '>

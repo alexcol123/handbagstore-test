@@ -22,7 +22,9 @@ export const metadata = {
     'Experience luxury redefined at our online boutique, where sophistication meets style. Discover a curated selection of designer handbags, watches, and more, meticulously crafted for the modern trendsetter. Elevate your wardrobe with timeless elegance and unparalleled quality. Shop now and make a statement with [Your E-commerce Store Name]. ',
 
   openGraph: {
-    images: ['../public/pink.jpg'],
+    images: [
+      'https://firebasestorage.googleapis.com/v0/b/carmen-handbag.appspot.com/o/pink.jpg?alt=media&token=836f1718-fbf2-4d9b-bf2e-7ebfe76483c0',
+    ],
   },
 }
 

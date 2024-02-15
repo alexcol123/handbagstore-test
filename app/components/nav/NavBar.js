@@ -2,15 +2,7 @@ import getCurrentUser from '../../../actions/getCurrentUser'
 import NavMain from './NavMain'
 import NavSecondary from './NavSecondary'
 
-// const categoriesLinks = [
-//   { href: '#', name: 'All' },
-//   { href: '#', name: 'Sale' },
-//   { href: '#', name: 'Handbags' },
-//   { href: '#', name: 'Watches' },
-//   { href: '#', name: 'Sunglasses' },
-//   { href: '#', name: 'Accesories' },
-//   { href: '#', name: 'Clearance 70% OFF', color: true },
-// ]
+
 
 const NavBar = async () => {
   const currentUser = await getCurrentUser()

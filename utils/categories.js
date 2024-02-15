@@ -17,6 +17,7 @@ export const categories = [
   { href: '#', name: 'watches', icon: MdOutlineWatch },
   { href: '#', name: 'sunglasses', icon: LiaGlassesSolid },
   { href: '#', name: 'shoes', icon: PiHighHeelLight },
+  { href: '#', name: 'accessories', icon: GiPearlNecklace },
 ]
 
 export const menuLinks = [

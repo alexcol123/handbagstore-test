@@ -3,8 +3,8 @@ import ProductDetails from './ProductDetails'
 import getProductsById from '../../../../actions/getProductById'
 import AddRating from './AddRating'
 import getCurrentUser from '@/actions/getCurrentUser'
-
-
+import getRelatedProducts from '@/actions/getRelatedProducts'
+import RelatedProducts from './RelatedProducts'
 
 export const dynamic = 'force-dynamic'
 
@@ -25,13 +25,14 @@ export const metadata = {
 }
 
 const ProductPage = async ({ params }) => {
-
-let productId = params.productId
-const user = await getCurrentUser()
-
-console.log(user)
+  let productId = params.productId
+  const user = await getCurrentUser()
 
   const product = await getProductsById(productId)
+
+  const relatedProducts = await getRelatedProducts(productId, product.category)
+
+
 
   if (!product || product === undefined)
     return (
@@ -44,10 +45,10 @@ console.log(user)
     <div className='p-4 md:p-2'>
       <ProductDetails product={product} />
       <div className='flex flex-col mt-20 gap-4'>
-    
-
         {/* Next share */}
-
+        {relatedProducts && (
+          <RelatedProducts relatedProducts={relatedProducts} />
+        )}
         <AddRating product={product} user={user} />
 
         <ListRating product={product} />

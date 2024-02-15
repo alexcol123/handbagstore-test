@@ -24,7 +24,9 @@ const Share = ({ url }) => {
   // console.log(typeof url)
   return (
     <div className='py-2 px-4 rounded'>
-      <h2 className='text-center mb-2 font-semibold'>Share  With Your Friends</h2>
+      <h2 className='text-center mb-2 font-semibold'>
+        Share With Your Friends
+      </h2>
       <div className='flex gap-2'>
         <FacebookShareButton
           url={url}
@@ -34,14 +36,14 @@ const Share = ({ url }) => {
           <FacebookIcon size={32} round />
         </FacebookShareButton>
 
-        <PinterestShareButton
+        {/* <PinterestShareButton
           url={url}
           media={
             'next-share is a social share buttons for your next React apps.'
           }
         >
           <PinterestIcon size={32} round />
-        </PinterestShareButton>
+        </PinterestShareButton> */}
 
         {/* <RedditShareButton
           url={url}
@@ -58,7 +60,7 @@ const Share = ({ url }) => {
             'next-share is a social share buttons for your next React apps.'
           }
         >
-          <TwitterIcon   size={32} round />
+          <TwitterIcon size={32} round />
         </TwitterShareButton>
 
         <WhatsappShareButton
@@ -75,9 +77,9 @@ const Share = ({ url }) => {
           <LinkedinIcon size={32} round />
         </LinkedinShareButton> */}
 
-        <FacebookMessengerShareButton url={url} appId={''}>
+        {/* <FacebookMessengerShareButton url={url} appId={''}>
           <FacebookMessengerIcon size={32} round />
-        </FacebookMessengerShareButton>
+        </FacebookMessengerShareButton> */}
 
         <EmailShareButton url={url} subject={'Next Share'} body='body'>
           <EmailIcon size={32} round />

@@ -17,8 +17,13 @@ const poppins = Poppins({
 //https://www.youtube.com/shorts/MYU_7RK3RHM
 
 export const metadata = {
-  title: 'Layout comp Handbag page',
-  description: 'Handbags description ',
+  title: 'Luxury Designer Handbags, Watches and more',
+  description:
+    'Experience luxury redefined at our online boutique, where sophistication meets style. Discover a curated selection of designer handbags, watches, and more, meticulously crafted for the modern trendsetter. Elevate your wardrobe with timeless elegance and unparalleled quality. Shop now and make a statement with [Your E-commerce Store Name]. ',
+
+  openGraph: {
+    images: ['../public/pink.jpg'],
+  },
 }
 
 export default function RootLayout({ children }) {

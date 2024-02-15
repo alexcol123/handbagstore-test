@@ -1,5 +1,3 @@
-import { Metadata, ResolvingMetadata } from 'next'
-
 import ListRating from './ListRating'
 import ProductDetails from './ProductDetails'
 import getProductsById from '../../../../actions/getProductById'
@@ -12,20 +10,14 @@ export const dynamic = 'force-dynamic'
 
 // MORE ABOUT METADATA https://www.youtube.com/shorts/MYU_7RK3RHM
 
-export async function generateMetadata({ params, searchParams }) {
+export async function generateMetadata({ params }) {
   // read route params
   const id = params.productId
 
-  // fetch data
-  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
-
   const product = await getProductsById(id)
 
-  // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
-
   return {
-    title: product.name,
+    title: `${product.name} | Luxury Designer Handbags, Watches, Shoes, and Clothing | Your Online Boutique`,
     description: product.description,
     openGraph: {
       images: [product.images[0].image],
@@ -33,32 +25,11 @@ export async function generateMetadata({ params, searchParams }) {
   }
 }
 
-// export const metadata = {
-//   title: 'Handbag Store',
-//   description:
-//     'Handbags at the best prices buy today, online shop for jet set luxury designer handbags watches shoes clothing and more',
-//   metadataBase: new URL('https://handbagstore-test-3.vercel.app'),
-
-//   openGraph: {
-//     images: [
-//       {
-//         url: 'https://images.pexels.com/photos/1204464/pexels-photo-1204464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-//       },
-//     ],
-//   },
-// }
-
 const ProductPage = async ({ params }) => {
   let productId = params.productId
   const user = await getCurrentUser()
 
   const product = await getProductsById(productId)
-
-  console.log(
-    'product ========================================================================================================================================================================================================================      '
-  )
-
-  console.log(product)
 
   const relatedProducts = await getRelatedProducts(productId, product.category)
 

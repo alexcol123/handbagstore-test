@@ -29,7 +29,6 @@ const CheckoutForm = ({ clientSecret, handleSetPaymentSuccess }) => {
     handleSetPaymentSuccess(false)
   }, [stripe])
 
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 

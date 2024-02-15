@@ -19,6 +19,40 @@ const calculateOrderAmount = (items) => {
   return price
 }
 
+const verifyAmountsFromBackend = async (items) => {
+  let productIdList = items.map((product) => product.id)
+
+  try {
+    let totalPrice = 0
+
+    if (productIdList.length < 1) {
+      throw new Error('No products found')
+    }
+
+    for (const id of productIdList) {
+      const product = await prisma.Product.findFirst({
+        where: {
+          id: id,
+        },
+      })
+      //console.log(product)
+      if (product) {
+        totalPrice += product.price
+        // console.log('total price', totalPrice)
+      } else {
+        console.error('Product not found with ID:', id)
+        throw new Error('Product not found with ID')
+      }
+    }
+
+    return totalPrice
+
+  } catch (error) {
+    console.error('Error:', error)
+    throw new Error(' error validatin  totals  in func calculateOrderAmount')
+  }
+}
+
 export async function POST(request) {
   const currentUser = await getCurrentUser()
 
@@ -29,11 +63,18 @@ export async function POST(request) {
   const body = await request.json()
   const { items, payment_intent_id } = body
 
+
+
+  let totalAsFloat = await verifyAmountsFromBackend(items)
+
+
+
   // const total = calculateOrderAmount(items) * 100
 
-  const totalAsFloat = parseFloat(+calculateOrderAmount(items))
+  // const totalAsFloat = parseFloat(+calculateOrderAmount(items))
+   console.log(totalAsFloat)
 
-  const totalStripeAsCents = calculateOrderAmount(items) * 100
+  const totalStripeAsCents = totalAsFloat * 100
 
   // console.log(' TOTAL 1 ====================            ')
   // console.log(typeof totalAsFloat)
@@ -41,7 +82,7 @@ export async function POST(request) {
 
   // console.log(' TOTAL 2 ====================            ')
   // console.log(typeof totalStripeAsCents)
-  // console.log(totalStripeAsCents)
+   console.log(totalStripeAsCents)
 
   const orderData = {
     user: { connect: { id: currentUser.id } },

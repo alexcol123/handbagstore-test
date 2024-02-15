@@ -19,7 +19,20 @@ export async function generateMetadata({ params }) {
   return {
     title: `${product.name} | Luxury Designer Handbags, Watches, Shoes, and Clothing | Your Online Boutique`,
     description: product.description,
+    url: 'https://handbagstore-test-3.vercel.app/',
+    category: product.category,
+    // type: 'article',
+    // publishedTime: '2023-01-01T00:00:00.000Z',
     openGraph: {
+      images: [product.images[0].image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Next.js',
+      description: 'The React Framework for the Web',
+      siteId: '1467726470533754880',
+      creator: '@nextjs',
+      creatorId: '1467726470533754880',
       images: [product.images[0].image],
     },
   }
